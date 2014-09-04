@@ -4,8 +4,8 @@ public class AMSQueryBuilder {
 
     private AMSQuery query;
 
-    public AMSQueryBuilder() {
-	query = new AMSQuery();
+    public AMSQueryBuilder(AMSQuery.EndPoint endPoint) {
+	query = new AMSQuery(endPoint);
     }
 
     public AMSQueryBuilder page(Integer pageId) {
@@ -57,5 +57,4 @@ public class AMSQueryBuilder {
 	return query;
     }
 
-    
 }
