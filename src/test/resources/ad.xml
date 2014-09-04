@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<platsannons>
+	<annons>
+		<annonsid>2534149</annonsid>
+		<annonsrubrik>Taxiförare/Hela Stockholm/Taxikurir</annonsrubrik>
+		<annonstext>Nu söker vi flera chaufförer för anställning på
+			heltid/deltid.
+			Vi är ett taxiåkeri som är anslutna till Norden största taxi bolag
+			(Taxi Kurir).
+			För rätt person med rätt stämning kan företaget stå till Taxi
+			legitimation och taxikurir intern varumärkesutbildning.
+
+			Kontakta oss via mejl eller telefon om du har frågor och funderingar.
+
+			Lönen är provisionslön av inkört kassan , vi erbjuder 45% av inkört kassa
+			exklusiv moms. Ring eller mejla så berättar vi mer .
+
+			Vi har garage plats i Södertälje, Skärholmen,Sätra,Tumba, Farsta,
+			Skogås och Nacka . Det finns möjlighet att ni får bilen hos er om ni
+			är två som bor nära varandra och vill dela bilen, företaget betalar
+			självklart parkeringen . Detta gäller hela stora Stockholm.</annonstext>
+		<yrkesbenamning>Taxiförare/Taxichaufför</yrkesbenamning>
+		<yrkesid>6242</yrkesid>
+		<publiceraddatum>2014-09-04T00:00:00+02:00</publiceraddatum>
+		<antal_platser>2</antal_platser>
+		<kommunnamn>Stockholm</kommunnamn>
+	</annons>
+	<villkor>
+		<varaktighet>Tillsvidare</varaktighet>
+		<arbetstid>Heltid/Deltid</arbetstid>
+		<arbetstidvaraktighet>Tillsvidare/Heltid/Deltid</arbetstidvaraktighet>
+		<lonetyp>Rörlig lön</lonetyp>
+		<loneform>Rörlig lön</loneform>
+	</villkor>
+	<ansokan>
+		<referens></referens>
+		<epostadress>hasanin.farhan@swedengreentrading.se</epostadress>
+		<sista_ansokningsdag>2014-10-04T00:00:00+02:00</sista_ansokningsdag>
+		<ovrigt_om_ansokan></ovrigt_om_ansokan>
+	</ansokan>
+	<arbetsplats>
+		<arbetsplatsnamn>SWEDEN GREEN TRADING AB</arbetsplatsnamn>
+		<postnummer>13140</postnummer>
+		<postadress>Kantatvägen 18</postadress>
+		<postort>Nacka</postort>
+		<postland>Sverige</postland>
+		<land>Sverige</land>
+		<besoksadress>Kantatvägen 18</besoksadress>
+		<besoksort>Nacka</besoksort>
+		<telefonnummer>076-2899405</telefonnummer>
+		<faxnummer></faxnummer>
+		<epostadress>hasanin.farhan@swedengreentrading.se</epostadress>
+		<hemsida>http://www.swedengreentrading.se</hemsida>
+	</arbetsplats>
+	<krav>
+		<korkortslista>
+			<korkortstyp>B</korkortstyp>
+		</korkortslista>
+		<egenbil>false</egenbil>
+	</krav>
+</platsannons>
