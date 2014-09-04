@@ -16,6 +16,11 @@ public class AMSQueryBuilderTest {
     }
 
     @Test
+    public void testId() {
+	assertEquals(AMSQuery.EndPoint.MATCHING.getEndPoint() + "/1", queryBuilder.id("1").build().toString());
+    }
+
+    @Test
     public void testPage() {
 	assertEquals(AMSQuery.EndPoint.MATCHING.getEndPoint() + "?sida=1", queryBuilder.page(1).build().toString());
     }

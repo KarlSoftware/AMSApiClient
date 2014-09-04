@@ -1,15 +1,15 @@
 package com.youcruit.ams.api.client;
 
-import com.youcruit.ams.api.client.object.MatchDataList;
-
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 public class AMSQuery {
     private static final String CHARSET_ENCODING = "UTF-8";
     private StringBuilder queryString;
+    private StringBuilder queryPath;
     public enum EndPoint {
-	MATCHING("/platsannons/matchning");
+	MATCHING("/platsannons/matchning"),
+	AD("/platsannons");
 
 	private String endPoint;
 	private EndPoint(String endPoint) {
@@ -24,6 +24,7 @@ public class AMSQuery {
     
     AMSQuery(EndPoint endPoint) {
 	queryString = new StringBuilder();
+	queryPath = new StringBuilder();
 	this.endPoint = endPoint;
     }
 
@@ -40,8 +41,12 @@ public class AMSQuery {
 	}
     }
 
+    void addPath(String path) {
+	queryPath.append("/").append(path);
+    }
+
     @Override
     public String toString() {
-        return this.endPoint.getEndPoint() + queryString.toString();
+        return this.endPoint.getEndPoint() + queryPath.toString() + queryString.toString();
     }
 }

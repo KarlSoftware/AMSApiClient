@@ -8,6 +8,11 @@ public class AMSQueryBuilder {
 	query = new AMSQuery(endPoint);
     }
 
+    public AMSQueryBuilder id(String id) {
+	query.addPath(id);
+	return this;
+    }
+
     public AMSQueryBuilder page(Integer pageId) {
 	query.add("sida", pageId.toString());
 	return this;
