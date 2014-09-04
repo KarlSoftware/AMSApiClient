@@ -15,7 +15,7 @@ public class AMSQueryBuilder {
     }
 
     public AMSQueryBuilder county(Integer countyId) {
-	addQuery("lanId", countyId.toString());
+	addQuery("lanid", countyId.toString());
 	return this;
     }
 
@@ -25,31 +25,45 @@ public class AMSQueryBuilder {
     }
 
     public AMSQueryBuilder professionCategory(Integer professionCategoryId) {
-	addQuery("yrkesgruppid", professionCategoryId);
+	addQuery("yrkesomradeid", professionCategoryId.toString());
 	return this;
     }
 
     public AMSQueryBuilder professionSubCategory(Integer professionSubCategoryId) {
+	addQuery("yrkesgruppid", professionSubCategoryId.toString());
 	return this;
     }
 
     public AMSQueryBuilder municipality(Integer municipalityId) {
+	addQuery("kommunid", municipalityId.toString());
 	return this;
     }
 
-    public AMSQueryBuilder continentPart(Integer continendPartId) {
+    public AMSQueryBuilder continentPart(Integer continentPartId) {
+	addQuery("omradeid", continentPartId.toString());
 	return this;
     }
 
     public AMSQueryBuilder keyword(String freeTextKeyWord) {
+	addQuery("nyckelord", freeTextKeyWord);
 	return this;
+    }
+
+    public AMSQueryBuilder country(Integer countryId) {
+	addQuery("landid", countryId.toString());
+	return this;
+    }
+    
+    public String build(){
+	return queryString.toString();
     }
 
     private void addQuery(String queryParam, String value) {
 	if(queryString.length() == 0) {
-	    queryString.append("?").append(queryParam);
+	    queryString.append("?");
 	} else {
-	    queryString.append("&").append(queryParam);
+	    queryString.append("&");
 	}
+	queryString.append(queryParam).append("=").append(value);
     }
 }
