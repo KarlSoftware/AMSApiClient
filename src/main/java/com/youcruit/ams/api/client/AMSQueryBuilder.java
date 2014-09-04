@@ -1,9 +1,13 @@
 package com.youcruit.ams.api.client;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 
 public class AMSQueryBuilder {
 
-    StringBuilder queryString;
+    private static final String CHARSET_ENCODING = "UTF-8";
+    private StringBuilder queryString;
 
     public AMSQueryBuilder() {
 	queryString = new StringBuilder();
@@ -64,6 +68,10 @@ public class AMSQueryBuilder {
 	} else {
 	    queryString.append("&");
 	}
-	queryString.append(queryParam).append("=").append(value);
+	try {
+	    queryString.append(queryParam).append("=").append(URLEncoder.encode(value, CHARSET_ENCODING));
+	} catch (UnsupportedEncodingException e) {
+	    throw new RuntimeException(e);
+	}
     }
 }

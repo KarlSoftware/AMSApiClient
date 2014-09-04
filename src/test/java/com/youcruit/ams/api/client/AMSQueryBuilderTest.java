@@ -58,5 +58,20 @@ public class AMSQueryBuilderTest {
     public void testCountry(){
 	assertEquals("?landid=59", queryBuilder.country(59).build());
     }
+    
+    @Test
+    public void multiQuery(){
+	assertEquals("?landid=59&nyckelord=bagare", queryBuilder.country(59).keyword("bagare").build());
+    }
+    
+    @Test
+    public void urlEncode(){
+	assertEquals("?nyckelord=%C3%A5%C3%A4%C3%B6%C3%BC%2F%5Chttp%3A%2F%2F%3Fnyckelord%3Db%C3%A4gare", queryBuilder.keyword("åäöü/\\http://?nyckelord=bägare").build());
+    }
+    
+    @Test
+    public void unicode() {
+	assertEquals("?nyckelord=%E2%98%A2", queryBuilder.keyword("☢").build());
+    }
 
 }
