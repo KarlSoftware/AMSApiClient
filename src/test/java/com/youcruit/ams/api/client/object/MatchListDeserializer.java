@@ -13,12 +13,12 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
-final class MatchListDeserializer extends JsonDeserializer<MatchList> {
+final class MatchListDeserializer extends JsonDeserializer<MatchDataList> {
     private static final String MATCHNINGDATA = "matchningdata";
 
     @Override
-    public MatchList deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
-	MatchList result = new MatchList();
+    public MatchDataList deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+	MatchDataList result = new MatchDataList();
 	while (jp.nextToken() != null) {
 	    if (jp.getCurrentToken().compareTo(JsonToken.FIELD_NAME) == 0) {
 		if (jp.getCurrentName().equals(MATCHNINGDATA)) {
@@ -28,7 +28,7 @@ final class MatchListDeserializer extends JsonDeserializer<MatchList> {
 		} else {
 		    String localName = jp.getCurrentName();
 		    String fieldName = null;
-		    for (Field f : MatchList.class.getDeclaredFields()) {
+		    for (Field f : MatchDataList.class.getDeclaredFields()) {
 			JacksonXmlProperty a = f.getAnnotation(JacksonXmlProperty.class);
 			if (a != null && a.localName().equals(localName)) {
 			    fieldName = f.getName();

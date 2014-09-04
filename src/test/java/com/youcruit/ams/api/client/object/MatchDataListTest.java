@@ -20,7 +20,7 @@ public class MatchDataListTest {
     private InputStream is;
     private XmlMapper om;
     private MatchData expected;
-    private MatchList expectedList;
+    private MatchDataList expectedList;
 
     @Before
     public void setUp() {
@@ -43,7 +43,7 @@ public class MatchDataListTest {
 	expected.setPublished(cal.getTime());
 	expected.setRelevance(100);
 	expected.setCountOpenings(2);
-	expectedList = new MatchList();
+	expectedList = new MatchDataList();
 	expectedList.getMatchDataList().add(expected);
 	expectedList.setCount(8440);
 	expectedList.setCountExact(8440);
@@ -63,16 +63,16 @@ public class MatchDataListTest {
 
     @Test
     public void testParseAddress() throws JsonParseException, JsonMappingException, IOException {
-	MatchList actual = om.readValue(is, MatchList.class);
+	MatchDataList actual = om.readValue(is, MatchDataList.class);
 	assertEquals(expectedList, actual);
     }
 
     @Test
     public void testParseAsList() throws JsonParseException, JsonMappingException, IOException {
 	JacksonXmlModule module = new JacksonXmlModule();
-	module.addDeserializer(MatchList.class, new MatchListDeserializer());
+	module.addDeserializer(MatchDataList.class, new MatchListDeserializer());
 	om.registerModule(module);
-	MatchList actual = om.readValue(is, MatchList.class);
+	MatchDataList actual = om.readValue(is, MatchDataList.class);
 	assertEquals(expectedList, actual);
     }
 

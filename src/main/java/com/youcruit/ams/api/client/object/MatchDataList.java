@@ -6,7 +6,7 @@ import java.util.List;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 
-public class MatchList {
+public class MatchDataList {
     @JacksonXmlProperty(localName="antal_platsannonser")
     private int count;
     @JacksonXmlProperty(localName="antal_platsannonser_exakta")
@@ -65,8 +65,8 @@ public class MatchList {
     public boolean equals(Object obj) {
 	if (this == obj) return true;
 	if (obj == null) return false;
-	if (!(obj instanceof MatchList)) return false;
-	MatchList other = (MatchList) obj;
+	if (!(obj instanceof MatchDataList)) return false;
+	MatchDataList other = (MatchDataList) obj;
 	if (count != other.count) return false;
 	if (countAdjacent != other.countAdjacent) return false;
 	if (countExact != other.countExact) return false;
@@ -78,6 +78,6 @@ public class MatchList {
     }
     @Override
     public String toString() {
-	return "MatchList [count=" + count + ", countExact=" + countExact + ", countAdjacent=" + countAdjacent + ", countPages=" + countPages + ", matchDataList=" + matchDataList + "]";
+	return "MatchDataList [count=" + count + ", countExact=" + countExact + ", countAdjacent=" + countAdjacent + ", countPages=" + countPages + ", matchDataList=" + matchDataList + "]";
     }
 }
