@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.util.Calendar;
 import java.util.TimeZone;
 
+import com.youcruit.ams.api.client.deserializers.MatchListDeserializer;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -62,13 +63,7 @@ public class MatchDataListTest {
     }
 
     @Test
-    public void testParseAddress() throws JsonParseException, JsonMappingException, IOException {
-	MatchDataList actual = om.readValue(is, MatchDataList.class);
-	assertEquals(expectedList, actual);
-    }
-
-    @Test
-    public void testParseAsList() throws JsonParseException, JsonMappingException, IOException {
+    public void testParseAsList() throws IOException {
 	JacksonXmlModule module = new JacksonXmlModule();
 	module.addDeserializer(MatchDataList.class, new MatchListDeserializer());
 	om.registerModule(module);
