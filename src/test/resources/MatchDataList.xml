@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<matchningslista>
+	<antal_platsannonser>8440</antal_platsannonser>
+	<antal_platsannonser_exakta>8440</antal_platsannonser_exakta>
+	<antal_platsannonser_narliggande>0</antal_platsannonser_narliggande>
+	<antal_sidor>422</antal_sidor>
+	<matchningdata>
+		<annonsid>2534149</annonsid>
+		<annonsrubrik>Taxiförare / Hela Stockholm / Taxikurir</annonsrubrik>
+		<yrkesbenamning>Taxiförare/Taxichaufför</yrkesbenamning>
+		<arbetsplatsnamn>SWEDEN GREEN TRADING AB</arbetsplatsnamn>
+		<kommunnamn>Stockholm</kommunnamn>
+		<publiceraddatum>2014-09-04T00:00:00+02:00</publiceraddatum>
+		<relevans>100</relevans>
+		<antalplatser>2</antalplatser>
+	</matchningdata>
+	<matchningdata>
+		<annonsid>2535235</annonsid>
+		<annonsrubrik>Däckmontör säsong</annonsrubrik>
+		<yrkesbenamning>Däckmontör/Däck- och hjulmekaniker</yrkesbenamning>
+		<arbetsplatsnamn>JOAKIM ERIKSSON BIL AB</arbetsplatsnamn>
+		<kommunnamn>Botkyrka</kommunnamn>
+		<publiceraddatum>2014-09-04T00:00:00+02:00</publiceraddatum>
+		<relevans>100</relevans>
+		<antalplatser>3</antalplatser>
+	</matchningdata>
+</matchningslista>
+
