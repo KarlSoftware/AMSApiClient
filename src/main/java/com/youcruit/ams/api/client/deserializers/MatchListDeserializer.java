@@ -1,9 +1,12 @@
-package com.youcruit.ams.api.client.object;
+package com.youcruit.ams.api.client.deserializers;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 
+import com.youcruit.ams.api.client.exceptions.MatchListProcessingException;
+import com.youcruit.ams.api.client.object.MatchData;
+import com.youcruit.ams.api.client.object.MatchDataList;
 import org.apache.commons.beanutils.BeanUtils;
 
 import com.fasterxml.jackson.core.JsonParser;
@@ -13,7 +16,7 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
-final class MatchListDeserializer extends JsonDeserializer<MatchDataList> {
+public final class MatchListDeserializer extends JsonDeserializer<MatchDataList> {
     private static final String MATCHNINGDATA = "matchningdata";
 
     @Override

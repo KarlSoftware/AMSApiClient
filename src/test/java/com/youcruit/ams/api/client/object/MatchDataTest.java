@@ -45,7 +45,7 @@ public class MatchDataTest {
     }
 
     @Test
-    public void testParseAddress() throws JsonParseException, JsonMappingException, IOException {
+    public void testParseAddress() throws IOException {
 	MatchData actual = om.readValue(is, MatchData.class);
 	assertEquals(expected, actual);
     }

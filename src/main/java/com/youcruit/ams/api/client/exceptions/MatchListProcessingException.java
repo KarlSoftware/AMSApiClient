@@ -1,4 +1,4 @@
-package com.youcruit.ams.api.client.object;
+package com.youcruit.ams.api.client.exceptions;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
