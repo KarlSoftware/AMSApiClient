@@ -20,7 +20,7 @@ public class MatchDataTest {
     private InputStream is;
     private ObjectMapper om;
     private MatchData expected;
-    
+
     @Before
     public void setUp() {
 	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("MatchData.xml");
@@ -43,15 +43,15 @@ public class MatchDataTest {
 	expected.setRelevance(100);
 	expected.setCountOpenings(2);
     }
-    
+
     @Test
-    public void testParseAddress() throws JsonParseException, JsonMappingException, IOException{
-	MatchData actual = om.readValue(is,  MatchData.class);
+    public void testParseAddress() throws JsonParseException, JsonMappingException, IOException {
+	MatchData actual = om.readValue(is, MatchData.class);
 	assertEquals(expected, actual);
     }
-    
+
     @After
-    public void tearDown() throws IOException{
+    public void tearDown() throws IOException {
 	is.close();
     }
 
