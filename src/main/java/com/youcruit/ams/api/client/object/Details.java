@@ -2,8 +2,10 @@ package com.youcruit.ams.api.client.object;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Details {
     @JacksonXmlProperty(localName = "annonsid")
     private String adId;
