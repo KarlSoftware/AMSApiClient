@@ -41,6 +41,7 @@ public class AdTest {
 	Ad actual = om.readValue(is, Ad.class);
 	actual.setWorkplace(workplace);
 	actual.setDetails(null);
+	actual.setTerms(null);
 	assertEquals(expected, actual);
     }
     

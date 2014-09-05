@@ -11,6 +11,8 @@ public class Ad {
     private Workplace workplace;
     @JacksonXmlProperty(localName="annons")
     private Details details;
+    @JacksonXmlProperty(localName="villkor")
+    private Terms terms;
     public Application getApplication() {
         return application;
     }
@@ -29,12 +31,19 @@ public class Ad {
     public void setDetails(Details details) {
         this.details = details;
     }
+    public Terms getTerms() {
+        return terms;
+    }
+    public void setTerms(Terms terms) {
+        this.terms = terms;
+    }
     @Override
     public int hashCode() {
 	final int prime = 31;
 	int result = 1;
 	result = prime * result + ((application == null) ? 0 : application.hashCode());
 	result = prime * result + ((details == null) ? 0 : details.hashCode());
+	result = prime * result + ((terms == null) ? 0 : terms.hashCode());
 	result = prime * result + ((workplace == null) ? 0 : workplace.hashCode());
 	return result;
     }
@@ -50,6 +59,9 @@ public class Ad {
 	if (details == null) {
 	    if (other.details != null) return false;
 	} else if (!details.equals(other.details)) return false;
+	if (terms == null) {
+	    if (other.terms != null) return false;
+	} else if (!terms.equals(other.terms)) return false;
 	if (workplace == null) {
 	    if (other.workplace != null) return false;
 	} else if (!workplace.equals(other.workplace)) return false;
@@ -57,7 +69,7 @@ public class Ad {
     }
     @Override
     public String toString() {
-	return "Ad [application=" + application + ", workplace=" + workplace + ", details=" + details + "]";
+	return "Ad [application=" + application + ", workplace=" + workplace + ", details=" + details + ", terms=" + terms + "]";
     }
     public String getEmail() {
 	return getEmail(false);
