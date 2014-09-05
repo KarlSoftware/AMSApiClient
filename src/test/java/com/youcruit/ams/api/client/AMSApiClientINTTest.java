@@ -24,7 +24,7 @@ public class AMSApiClientINTTest {
 	int countDupes = 0;
 	HashMap<String, String> adNames = new HashMap<String,String>();
 	for(int i=1; i<=numberOfPages; i++) {
-	    query = new AMSQueryBuilder(AMSQuery.EndPoint.MATCHING).county(17).page(i).build();
+	    query = new AMSQueryBuilder(AMSQuery.EndPoint.MATCHING).county(County.VARMLAND).page(i).build();
 	    dataList = client.executeQuery(query, MatchDataList.class);
 	    if(i == 1) {
 		numberOfPages = dataList.getCountPages();

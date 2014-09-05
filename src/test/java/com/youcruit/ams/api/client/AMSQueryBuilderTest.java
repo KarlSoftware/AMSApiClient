@@ -27,7 +27,7 @@ public class AMSQueryBuilderTest {
 
     @Test
     public void testCounty() {
-	assertEquals(AMSQuery.EndPoint.MATCHING.getEndPoint() + "?lanid=5", queryBuilder.county(5).build().toString());
+	assertEquals(AMSQuery.EndPoint.MATCHING.getEndPoint() + "?lanid=1", queryBuilder.county(County.STOCKHOLM).build().toString());
     }
 
     @Test

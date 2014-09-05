@@ -18,8 +18,8 @@ public class AMSQueryBuilder {
 	return this;
     }
 
-    public AMSQueryBuilder county(Integer countyId) {
-	query.add("lanid", countyId.toString());
+    public AMSQueryBuilder county(County countyId) {
+	query.add("lanid", Integer.toString(countyId.getId()));
 	return this;
     }
 
