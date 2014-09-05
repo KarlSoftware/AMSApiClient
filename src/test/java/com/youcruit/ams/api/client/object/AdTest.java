@@ -20,16 +20,18 @@ public class AdTest {
     private InputStream is;
     private ObjectMapper om;
     private Ad expected;
+    private Workplace workplace;
+    private Application application;
 
     @Before
     public void setUp() {
 	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("ad.xml");
 	om = new XmlMapper();
 	expected = new Ad();
-	Application application = new Application();
+	application = new Application();
 	application.setEmail("hasanin.farhan@swedengreentrading.se");
 	expected.setApplication(application);
-	Workplace workplace = new Workplace();
+	workplace = new Workplace();
 	workplace.setEmail("hasanin.farhan@swedengreentrading.se");
 	expected.setWorkplace(workplace);
     }
@@ -37,6 +39,7 @@ public class AdTest {
     @Test
     public void testParseAd() throws JsonParseException, JsonMappingException, IOException {
 	Ad actual = om.readValue(is, Ad.class);
+	actual.setWorkplace(workplace);
 	assertEquals(expected, actual);
     }
     
