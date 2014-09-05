@@ -1,5 +1,8 @@
 package com.youcruit.ams.api.client.object;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -29,6 +32,8 @@ public class Workplace {
     private String homepage;
     @JacksonXmlProperty(localName="epostadress")
     private String email;
+    @JacksonXmlProperty(localName="kontaktpersonlista")
+    private List<Contact> contacts;
 
     public String getEmail() {
         return email;
@@ -126,12 +131,24 @@ public class Workplace {
         this.homepage = homepage;
     }
 
+    public List<Contact> getContacts() {
+	if(contacts == null){
+	    contacts = new ArrayList<Contact>();
+	}
+        return contacts;
+    }
+
+    public void setContacts(List<Contact> contacts) {
+        this.contacts = contacts;
+    }
+
     @Override
     public int hashCode() {
 	final int prime = 31;
 	int result = 1;
 	result = prime * result + ((adress == null) ? 0 : adress.hashCode());
 	result = prime * result + ((city == null) ? 0 : city.hashCode());
+	result = prime * result + ((contacts == null) ? 0 : contacts.hashCode());
 	result = prime * result + ((country == null) ? 0 : country.hashCode());
 	result = prime * result + ((email == null) ? 0 : email.hashCode());
 	result = prime * result + ((fax == null) ? 0 : fax.hashCode());
@@ -157,6 +174,9 @@ public class Workplace {
 	if (city == null) {
 	    if (other.city != null) return false;
 	} else if (!city.equals(other.city)) return false;
+	if (contacts == null) {
+	    if (other.contacts != null) return false;
+	} else if (!contacts.equals(other.contacts)) return false;
 	if (country == null) {
 	    if (other.country != null) return false;
 	} else if (!country.equals(other.country)) return false;
@@ -193,6 +213,6 @@ public class Workplace {
     @Override
     public String toString() {
 	return "Workplace [name=" + name + ", postalCode=" + postalCode + ", adress=" + adress + ", visitingAddress=" + visitingAddress + ", visitingCity=" + visitingCity + ", visitingCountry=" + visitingCountry + ", city=" + city
-		+ ", country=" + country + ", phone=" + phone + ", fax=" + fax + ", homepage=" + homepage + ", email=" + email + "]";
+		+ ", country=" + country + ", phone=" + phone + ", fax=" + fax + ", homepage=" + homepage + ", email=" + email + ", contacts=" + contacts + "]";
     }
 }

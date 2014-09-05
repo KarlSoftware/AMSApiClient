@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 import org.junit.After;
 import org.junit.Before;
@@ -46,6 +47,10 @@ public class WorkplaceTest {
 	expected.setVisitingCountry("Sverige");
 	expected.setPhone("076-2899405");
 	expected.setEmail("11111@3333.3333");
+	Contact c = new Contact();
+	c.setName("Sara Al-Amrri");
+	c.setRole("Regionskoordinator");
+	expected.getContacts().add(c);
 	expected.setHomepage("http://www.swedengreentrading.se");
     }
 
