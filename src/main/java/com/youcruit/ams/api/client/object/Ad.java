@@ -48,14 +48,35 @@ public class Ad {
 	return "Ad [application=" + application + ", workplace=" + workplace + "]";
     }
     public String getEmail() {
+	return getEmail(false);
+    }
+
+    public String getEmail(boolean preferWorkplace) {
 	String email = null;
-	if(getApplication()!=null && getApplication().getEmail() != null && getApplication().getEmail().length()>0){
-	    email = getApplication().getEmail();
+	if (preferWorkplace) {
+	    email = getWorkPlaceEmail(email);
+	    email = getApplicationEmail(email);
+	} else {
+	    email = getApplicationEmail(email);
+	    email = getWorkPlaceEmail(email);
 	}
-	if((email==null || email.equals("")) && workplace!=null){
-	    if(getWorkplace().getEmail()!=null && getWorkplace().getEmail().length() > 0){
+	return email;
+    }
+
+    private String getWorkPlaceEmail(String email) {
+	if ((email == null || email.equals("")) && workplace != null) {
+	    if (getWorkplace().getEmail() != null && getWorkplace().getEmail().length() > 0) {
 		email = getWorkplace().getEmail();
 	    }
+	}
+	return email;
+    }
+
+    private String getApplicationEmail(String email) {
+	if ((email == null || email.equals("")) && application != null) {
+        	if (getApplication() != null && getApplication().getEmail() != null && getApplication().getEmail().length() > 0) {
+        	    email = getApplication().getEmail();
+        	}
 	}
 	return email;
     }

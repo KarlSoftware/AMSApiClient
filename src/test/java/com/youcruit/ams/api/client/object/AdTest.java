@@ -119,4 +119,11 @@ public class AdTest {
     public void tearDown() throws IOException {
 	is.close();
     }
+    
+    @Test
+    public void testGetEmailPreferWorkPlace(){
+	expected.getApplication().setEmail("1");
+	expected.getWorkplace().setEmail("2");
+	assertEquals("2", expected.getEmail(true));
+    }
 }
