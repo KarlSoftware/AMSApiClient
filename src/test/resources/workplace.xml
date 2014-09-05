@@ -11,14 +11,15 @@
 	<faxnummer />
 	<epostadress>11111@3333.3333</epostadress>
 	<hemsida>http://www.swedengreentrading.se</hemsida>
+	<logotypurl>api.arbetsformedlingen.se/platsannons/2535965/logotyp</logotypurl>
 	<kontaktpersonlista>
 		<kontaktpersondata>
 			<namn>Sara Al-Amrri</namn>
 			<titel>Regionskoordinator</titel>
-			<mobilnummer/>
-			<telefonnummer/>
+			<mobilnummer />
+			<telefonnummer />
 			<telefonnummer2 />
-			<epostadress/>
+			<epostadress />
 			<kontaktpersonertelefon1beskrivning />
 			<kontaktpersonertelefon2beskrivning />
 		</kontaktpersondata>

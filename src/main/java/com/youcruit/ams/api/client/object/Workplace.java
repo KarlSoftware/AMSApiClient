@@ -34,6 +34,8 @@ public class Workplace {
     private String email;
     @JacksonXmlProperty(localName="kontaktpersonlista")
     private List<Contact> contacts;
+    @JacksonXmlProperty(localName="logotypurl")
+    private String logoUrl;
 
     public String getEmail() {
         return email;
@@ -142,6 +144,14 @@ public class Workplace {
         this.contacts = contacts;
     }
 
+    public String getLogoUrl() {
+        return logoUrl;
+    }
+
+    public void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl;
+    }
+
     @Override
     public int hashCode() {
 	final int prime = 31;
@@ -153,6 +163,7 @@ public class Workplace {
 	result = prime * result + ((email == null) ? 0 : email.hashCode());
 	result = prime * result + ((fax == null) ? 0 : fax.hashCode());
 	result = prime * result + ((homepage == null) ? 0 : homepage.hashCode());
+	result = prime * result + ((logoUrl == null) ? 0 : logoUrl.hashCode());
 	result = prime * result + ((name == null) ? 0 : name.hashCode());
 	result = prime * result + ((phone == null) ? 0 : phone.hashCode());
 	result = prime * result + ((postalCode == null) ? 0 : postalCode.hashCode());
@@ -189,6 +200,9 @@ public class Workplace {
 	if (homepage == null) {
 	    if (other.homepage != null) return false;
 	} else if (!homepage.equals(other.homepage)) return false;
+	if (logoUrl == null) {
+	    if (other.logoUrl != null) return false;
+	} else if (!logoUrl.equals(other.logoUrl)) return false;
 	if (name == null) {
 	    if (other.name != null) return false;
 	} else if (!name.equals(other.name)) return false;
@@ -213,6 +227,6 @@ public class Workplace {
     @Override
     public String toString() {
 	return "Workplace [name=" + name + ", postalCode=" + postalCode + ", adress=" + adress + ", visitingAddress=" + visitingAddress + ", visitingCity=" + visitingCity + ", visitingCountry=" + visitingCountry + ", city=" + city
-		+ ", country=" + country + ", phone=" + phone + ", fax=" + fax + ", homepage=" + homepage + ", email=" + email + ", contacts=" + contacts + "]";
+		+ ", country=" + country + ", phone=" + phone + ", fax=" + fax + ", homepage=" + homepage + ", email=" + email + ", contacts=" + contacts + ", logoUrl=" + logoUrl + "]";
     }
 }

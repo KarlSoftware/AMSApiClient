@@ -52,6 +52,7 @@ public class WorkplaceTest {
 	c.setRole("Regionskoordinator");
 	expected.getContacts().add(c);
 	expected.setHomepage("http://www.swedengreentrading.se");
+	expected.setLogoUrl("api.arbetsformedlingen.se/platsannons/2535965/logotyp");
     }
 
     @Test
