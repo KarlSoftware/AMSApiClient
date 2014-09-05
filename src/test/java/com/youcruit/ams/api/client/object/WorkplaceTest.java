@@ -1,10 +1,9 @@
 package com.youcruit.ams.api.client.object;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 
 import org.junit.After;
 import org.junit.Before;
@@ -16,18 +15,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 public class WorkplaceTest {
-    /*<arbetsplatsnamn>SWEDEN GREEN TRADING AB</arbetsplatsnamn>
-	<postnummer>13140</postnummer>
-	<postadress>Kantatvägen 18</postadress>
-	<postort>Nacka</postort>
-	<postland>Sverige</postland>
-	<land>Sverige</land>
-	<besoksadress>Kantatvägen 18</besoksadress>
-	<besoksort>Nacka</besoksort>
-	<telefonnummer>076-2899405</telefonnummer>
-	<faxnummer />
-	<epostadress>11111@3333.3333</epostadress>
-	<hemsida>http://www.swedengreentrading.se</hemsida>*/
     private InputStream is;
     private ObjectMapper om;
     private Workplace expected;

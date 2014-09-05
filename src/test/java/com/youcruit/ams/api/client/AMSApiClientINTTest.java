@@ -1,14 +1,14 @@
 package com.youcruit.ams.api.client;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.HashMap;
+
+import org.junit.Test;
+
 import com.youcruit.ams.api.client.object.Ad;
 import com.youcruit.ams.api.client.object.MatchData;
 import com.youcruit.ams.api.client.object.MatchDataList;
-import org.junit.Test;
-
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class AMSApiClientINTTest {
 
