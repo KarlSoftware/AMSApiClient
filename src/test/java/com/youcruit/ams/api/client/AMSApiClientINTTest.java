@@ -8,6 +8,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class AMSApiClientINTTest {
 
@@ -16,28 +17,32 @@ public class AMSApiClientINTTest {
     @Test
     public void testMatchDataListApiCall() throws IOException, URISyntaxException {
 	AMSApiClient client = new AMSApiClient(amsApiUrl);
-	AMSQuery query = new AMSQueryBuilder(AMSQuery.EndPoint.MATCHING).county(17).build();
+	AMSQuery query;
 	MatchDataList dataList = null;
 	int numberOfPages = 1;
 	int realCount = 0;
-	ArrayList<String> emailAdresses = new ArrayList<String>();
+	int countDupes = 0;
+	HashMap<String, String> adNames = new HashMap<String,String>();
 	for(int i=1; i<=numberOfPages; i++) {
 	    query = new AMSQueryBuilder(AMSQuery.EndPoint.MATCHING).county(17).page(i).build();
 	    dataList = client.executeQuery(query, MatchDataList.class);
-	    numberOfPages = dataList.getCountPages();
+	    if(i == 1) {
+		numberOfPages = dataList.getCountPages();
+	    }
 	    for(MatchData d : dataList.getMatchDataList()) {
 		realCount++;
 		AMSQuery adQuery = new AMSQueryBuilder(AMSQuery.EndPoint.AD).id(d.getAdId()).build();
 		Ad ad = client.executeQuery(adQuery, Ad.class);
-		if(ad.getEmail() != null) {
-		    emailAdresses.add(ad.getEmail(true));
-		    System.out.println(ad.getEmail(true));
+		if(ad.getApplication() != null) {
+		    if(adNames.put(ad.getWorkplace().getName(), ad.getWorkplace().getName()) != null) {
+			countDupes++;
+		    }
 		}
 	    }
 	}
-
-	System.out.println("Found email adresses: " + emailAdresses.size());
+	System.out.println("Found ads: " + adNames.size());
 	System.out.println("No entries by AMS: " + dataList.getCount());
 	System.out.println("No entries real: " + realCount);
+	System.out.println("No dupes: " + countDupes);
     }
 }
