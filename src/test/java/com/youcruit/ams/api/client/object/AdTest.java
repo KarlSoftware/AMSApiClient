@@ -40,6 +40,7 @@ public class AdTest {
     public void testParseAd() throws JsonParseException, JsonMappingException, IOException {
 	Ad actual = om.readValue(is, Ad.class);
 	actual.setWorkplace(workplace);
+	actual.setDetails(null);
 	assertEquals(expected, actual);
     }
     
