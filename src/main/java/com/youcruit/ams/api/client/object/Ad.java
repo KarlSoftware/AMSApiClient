@@ -13,6 +13,8 @@ public class Ad {
     private Details details;
     @JacksonXmlProperty(localName="villkor")
     private Terms terms;
+    @JacksonXmlProperty(localName="krav")
+    private Requirement requirement;
     public Application getApplication() {
         return application;
     }
@@ -37,12 +39,19 @@ public class Ad {
     public void setTerms(Terms terms) {
         this.terms = terms;
     }
+    public Requirement getRequirement() {
+        return requirement;
+    }
+    public void setRequirement(Requirement requirement) {
+        this.requirement = requirement;
+    }
     @Override
     public int hashCode() {
 	final int prime = 31;
 	int result = 1;
 	result = prime * result + ((application == null) ? 0 : application.hashCode());
 	result = prime * result + ((details == null) ? 0 : details.hashCode());
+	result = prime * result + ((requirement == null) ? 0 : requirement.hashCode());
 	result = prime * result + ((terms == null) ? 0 : terms.hashCode());
 	result = prime * result + ((workplace == null) ? 0 : workplace.hashCode());
 	return result;
@@ -59,6 +68,9 @@ public class Ad {
 	if (details == null) {
 	    if (other.details != null) return false;
 	} else if (!details.equals(other.details)) return false;
+	if (requirement == null) {
+	    if (other.requirement != null) return false;
+	} else if (!requirement.equals(other.requirement)) return false;
 	if (terms == null) {
 	    if (other.terms != null) return false;
 	} else if (!terms.equals(other.terms)) return false;
@@ -69,7 +81,7 @@ public class Ad {
     }
     @Override
     public String toString() {
-	return "Ad [application=" + application + ", workplace=" + workplace + ", details=" + details + ", terms=" + terms + "]";
+	return "Ad [application=" + application + ", workplace=" + workplace + ", details=" + details + ", terms=" + terms + ", requirement=" + requirement + "]";
     }
     public String getEmail() {
 	return getEmail(false);

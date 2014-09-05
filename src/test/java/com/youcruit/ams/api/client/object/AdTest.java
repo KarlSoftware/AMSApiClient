@@ -42,6 +42,7 @@ public class AdTest {
 	actual.setWorkplace(workplace);
 	actual.setDetails(null);
 	actual.setTerms(null);
+	actual.setRequirement(null);
 	assertEquals(expected, actual);
     }
     
