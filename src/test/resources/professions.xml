@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<soklista>
+	<listnamn>yrken</listnamn>
+	<totalt_antal_platsannonser>20</totalt_antal_platsannonser>
+	<totalt_antal_ledigajobb>24</totalt_antal_ledigajobb>
+	<sokdata>
+		<id>4742</id>
+		<namn>Bakteriolog</namn>
+		<antal_platsannonser>0</antal_platsannonser>
+		<antal_ledigajobb>0</antal_ledigajobb>
+	</sokdata>
+	<sokdata>
+		<id>6902</id>
+		<namn>Bioinformatiker</namn>
+		<antal_platsannonser>1</antal_platsannonser>
+		<antal_ledigajobb>1</antal_ledigajobb>
+	</sokdata>
+</soklista>
