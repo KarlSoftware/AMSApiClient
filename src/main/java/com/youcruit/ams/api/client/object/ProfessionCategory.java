@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ProffesionCategory {
+public class ProfessionCategory {
     private String id;
     @JacksonXmlProperty(localName="namn")
     private String name;
@@ -41,8 +41,8 @@ public class ProffesionCategory {
     public boolean equals(Object obj) {
 	if (this == obj) return true;
 	if (obj == null) return false;
-	if (!(obj instanceof ProffesionCategory)) return false;
-	ProffesionCategory other = (ProffesionCategory) obj;
+	if (!(obj instanceof ProfessionCategory)) return false;
+	ProfessionCategory other = (ProfessionCategory) obj;
 	if (count != other.count) return false;
 	if (id == null) {
 	    if (other.id != null) return false;
@@ -54,7 +54,7 @@ public class ProffesionCategory {
     }
     @Override
     public String toString() {
-	return "ProffesionCategory [id=" + id + ", name=" + name + ", count=" + count + "]";
+	return "ProfessionCategory [id=" + id + ", name=" + name + ", count=" + count + "]";
     }
 
 }
