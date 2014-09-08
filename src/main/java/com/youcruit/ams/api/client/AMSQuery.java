@@ -9,7 +9,8 @@ public class AMSQuery {
     private StringBuilder queryPath;
     public enum EndPoint {
 	MATCHING("/platsannons/matchning"),
-	AD("/platsannons");
+	AD("/platsannons"),
+	PROFESSION_CATEGORIES("/platsannons/soklista/yrkesomraden");
 
 	private String endPoint;
 	private EndPoint(String endPoint) {

@@ -4,20 +4,29 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.HashMap;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import com.youcruit.ams.api.client.object.Ad;
 import com.youcruit.ams.api.client.object.MatchData;
 import com.youcruit.ams.api.client.object.MatchDataList;
+import com.youcruit.ams.api.client.object.ProfessionCategory;
+import com.youcruit.ams.api.client.object.ProfessionCategoryList;
 
 public class AMSApiClientINTTest {
 
     private static String amsApiUrl = "http://api.arbetsformedlingen.se";
+    private AMSApiClient client;
+    private AMSQuery query;
+    
+    @Before
+    public void setup(){
+	client = new AMSApiClient(amsApiUrl);
+	query = null;
+    }
 
     @Test
     public void testMatchDataListApiCall() throws IOException, URISyntaxException {
-	AMSApiClient client = new AMSApiClient(amsApiUrl);
-	AMSQuery query;
 	MatchDataList dataList = null;
 	int numberOfPages = 1;
 	int realCount = 0;
@@ -44,5 +53,15 @@ public class AMSApiClientINTTest {
 	System.out.println("No entries by AMS: " + dataList.getCount());
 	System.out.println("No entries real: " + realCount);
 	System.out.println("No dupes: " + countDupes);
+    }
+    
+    @Test
+    public void testGetProfessionCategories() throws IOException, URISyntaxException {
+	query = new AMSQueryBuilder(AMSQuery.EndPoint.PROFESSION_CATEGORIES).build();
+	ProfessionCategoryList result = client.executeQuery(query, ProfessionCategoryList.class);
+	System.out.println("Found " + result.getProfessionCategories().size() + " different categories. Number of positionopenings available total: " + result.getCount());
+	for(ProfessionCategory pc : result.getProfessionCategories()){
+	    System.out.println(pc);
+	}
     }
 }
