@@ -30,20 +30,29 @@ public class AMSLookUp {
     }
 
     public void fetch(String amsBaseUrl) throws IOException, URISyntaxException {
-	AMSQuery pCQuery = new AMSQueryBuilder(AMSQuery.EndPoint.PROFESSION_CATEGORIES).build();
-	ProfessionCategoryList pCList = new AMSApiClient(amsBaseUrl).executeQuery(pCQuery, ProfessionCategoryList.class);
-	for(ProfessionCategory pc : pCList.getList()) {
-	    List<ProfessionSubCategory> subCategories = fetchSubCategories(Integer.parseInt(pc.getId()), amsBaseUrl);
-	    for(ProfessionSubCategory psc : subCategories) {
-		List<Profession> pL = fetchProfessions(Integer.parseInt(psc.getId()), amsBaseUrl);
-		for(Profession p : pL) {
-		    profession.put(p.getId(), p);
-		    professionSubCategories.put(p.getId(), psc);
+	if(!inited) {
+	    AMSQuery pCQuery = new AMSQueryBuilder(AMSQuery.EndPoint.PROFESSION_CATEGORIES).build();
+	    ProfessionCategoryList pCList = new AMSApiClient(amsBaseUrl).executeQuery(pCQuery, ProfessionCategoryList.class);
+	    for (ProfessionCategory pc : pCList.getList()) {
+		List<ProfessionSubCategory> subCategories = fetchSubCategories(Integer.parseInt(pc.getId()), amsBaseUrl);
+		for (ProfessionSubCategory psc : subCategories) {
+		    List<Profession> pL = fetchProfessions(Integer.parseInt(psc.getId()), amsBaseUrl);
+		    for (Profession p : pL) {
+			profession.put(p.getId(), p);
+			professionSubCategories.put(p.getId(), psc);
+		    }
+		    professionCategories.put(psc.getId(), pc);
 		}
-		professionCategories.put(psc.getId(), pc);
 	    }
+	    inited = true;
 	}
-	inited = true;
+    }
+
+    public void clearCache() {
+	inited = false;
+	profession = new HashMap<String, Profession>();
+	professionCategories = new HashMap<String, ProfessionCategory>();
+	professionSubCategories = new HashMap<String, ProfessionSubCategory>();
     }
 
     public ProfessionCategory getCategoryByProfessionId(final String professionId) {
