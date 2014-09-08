@@ -38,6 +38,7 @@ public class AdTest {
 
     @Test
     public void testParseAd() throws JsonParseException, JsonMappingException, IOException {
+	expected.setId("2534149");
 	Ad actual = om.readValue(is, Ad.class);
 	actual.setWorkplace(workplace);
 	actual.setDetails(null);

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Ad {
+    private String id;
     @JacksonXmlProperty(localName="ansokan")
     private Application application;
     @JacksonXmlProperty(localName="arbetsplats")
@@ -15,6 +16,12 @@ public class Ad {
     private Terms terms;
     @JacksonXmlProperty(localName="krav")
     private Requirement requirement;
+    public String getId() {
+        return id;
+    }
+    public void setId(String id) {
+        this.id = id;
+    }
     public Application getApplication() {
         return application;
     }
@@ -31,7 +38,10 @@ public class Ad {
         return details;
     }
     public void setDetails(Details details) {
-        this.details = details;
+	this.details = details;
+	if (details != null) {
+	    this.id = details.getAdId();
+	}
     }
     public Terms getTerms() {
         return terms;
@@ -51,6 +61,7 @@ public class Ad {
 	int result = 1;
 	result = prime * result + ((application == null) ? 0 : application.hashCode());
 	result = prime * result + ((details == null) ? 0 : details.hashCode());
+	result = prime * result + ((id == null) ? 0 : id.hashCode());
 	result = prime * result + ((requirement == null) ? 0 : requirement.hashCode());
 	result = prime * result + ((terms == null) ? 0 : terms.hashCode());
 	result = prime * result + ((workplace == null) ? 0 : workplace.hashCode());
@@ -68,6 +79,9 @@ public class Ad {
 	if (details == null) {
 	    if (other.details != null) return false;
 	} else if (!details.equals(other.details)) return false;
+	if (id == null) {
+	    if (other.id != null) return false;
+	} else if (!id.equals(other.id)) return false;
 	if (requirement == null) {
 	    if (other.requirement != null) return false;
 	} else if (!requirement.equals(other.requirement)) return false;
@@ -81,7 +95,7 @@ public class Ad {
     }
     @Override
     public String toString() {
-	return "Ad [application=" + application + ", workplace=" + workplace + ", details=" + details + ", terms=" + terms + ", requirement=" + requirement + "]";
+	return "Ad [id=" + id + ", application=" + application + ", workplace=" + workplace + ", details=" + details + ", terms=" + terms + ", requirement=" + requirement + "]";
     }
     public String getEmail() {
 	return getEmail(false);
