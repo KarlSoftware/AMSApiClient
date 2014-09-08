@@ -10,8 +10,10 @@ import org.junit.Test;
 import com.youcruit.ams.api.client.object.Ad;
 import com.youcruit.ams.api.client.object.MatchData;
 import com.youcruit.ams.api.client.object.MatchDataList;
+import com.youcruit.ams.api.client.object.Profession;
 import com.youcruit.ams.api.client.object.ProfessionCategory;
 import com.youcruit.ams.api.client.object.ProfessionCategoryList;
+import com.youcruit.ams.api.client.object.ProfessionList;
 import com.youcruit.ams.api.client.object.ProfessionSubCategory;
 import com.youcruit.ams.api.client.object.ProfessionSubCategoryList;
 
@@ -73,6 +75,16 @@ public class AMSApiClientINTTest {
 	ProfessionSubCategoryList result = client.executeQuery(query, ProfessionSubCategoryList.class);
 	System.out.println("Found " + result.getList().size() + " different categories. Number of positionopenings available total: " + result.getCount());
 	for(ProfessionSubCategory pc : result.getList()){
+	    System.out.println(pc);
+	}
+    }
+    
+    @Test
+    public void testGetProfessions() throws IOException, URISyntaxException {
+	query = new AMSQueryBuilder(AMSQuery.EndPoint.PROFESSION).professionSubCategory(2131).build();
+	ProfessionList result = client.executeQuery(query, ProfessionList.class);
+	System.out.println("Found " + result.getList().size() + " different categories. Number of positionopenings available total: " + result.getCount());
+	for(Profession pc : result.getList()){
 	    System.out.println(pc);
 	}
     }

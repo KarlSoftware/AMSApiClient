@@ -84,5 +84,11 @@ public class AMSQueryBuilderTest {
 	queryBuilder = new AMSQueryBuilder(AMSQuery.EndPoint.PROFESSION_SUB_CATEGORIES);
 	assertEquals("/platsannons/soklista/yrkesgrupper?yrkesomradeid=1", queryBuilder.professionCategory(1).build().toString());
     }
+    
+    @Test
+    public void testGetProfessions() {
+	queryBuilder = new AMSQueryBuilder(AMSQuery.EndPoint.PROFESSION);
+	assertEquals("/platsannons/soklista/yrken?yrkesgruppid=2131", queryBuilder.professionSubCategory(2131).build().toString());
+    }
 
 }

@@ -11,7 +11,8 @@ public class AMSQuery {
 	MATCHING("/platsannons/matchning"),
 	AD("/platsannons"),
 	PROFESSION_CATEGORIES("/platsannons/soklista/yrkesomraden"),
-	PROFESSION_SUB_CATEGORIES("/platsannons/soklista/yrkesgrupper");
+	PROFESSION_SUB_CATEGORIES("/platsannons/soklista/yrkesgrupper"),
+	PROFESSION("/platsannons/soklista/yrken");
 
 	private String endPoint;
 	private EndPoint(String endPoint) {
