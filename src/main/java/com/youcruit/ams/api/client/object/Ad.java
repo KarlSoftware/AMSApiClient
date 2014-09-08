@@ -2,9 +2,11 @@ package com.youcruit.ams.api.client.object;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.youcruit.ams.api.client.AMSLookUp;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Ad {
+
     private String id;
     @JacksonXmlProperty(localName="ansokan")
     private Application application;
@@ -18,6 +20,7 @@ public class Ad {
     private Requirement requirement;
     private String professionCategoryId;
     private String professionSubCategoryId;
+
     public String getId() {
         return id;
     }
@@ -71,6 +74,11 @@ public class Ad {
 
     public void setProfessionSubCategoryId(String professionSubCategoryId) {
 	this.professionSubCategoryId = professionSubCategoryId;
+    }
+
+    public void fillCategories() {
+	professionCategoryId = AMSLookUp.instance().getCategoryByProfessionId(id).getId();
+	professionSubCategoryId = AMSLookUp.instance().getSubCategoryByProfessionId(id).getId();
     }
 
     @Override

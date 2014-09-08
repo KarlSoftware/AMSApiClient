@@ -17,9 +17,9 @@ public class AMSCategoryLookUpINTTest {
 
     @BeforeClass
     public static void setup() throws IOException, URISyntaxException {
-	lookup = new AMSLookUp(amsApiUrl);
+	lookup = AMSLookUp.instance();
 	long timer = System.currentTimeMillis();
-	lookup.fetch();
+	lookup.fetch(amsApiUrl);
 	System.out.println("Fetch execution time: " + (System.currentTimeMillis() - timer) + " ms");
     }
 
