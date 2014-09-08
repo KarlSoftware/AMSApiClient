@@ -15,7 +15,7 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 public class ProfessionCategoryTest {
     private InputStream is;
     private ObjectMapper om;
-    private ProfessionCategory expected;
+    private SearchItem expected;
 
     @Before
     public void setUp() {
@@ -29,7 +29,7 @@ public class ProfessionCategoryTest {
 
     @Test
     public void testParseDetails() throws IOException {
-	ProfessionCategory actual = om.readValue(is, ProfessionCategory.class);
+	SearchItem actual = om.readValue(is, ProfessionCategory.class);
 	assertEquals(expected, actual);
     }
 
