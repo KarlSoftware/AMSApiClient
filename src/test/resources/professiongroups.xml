@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<soklista>
+	<listnamn>yrkesgrupper</listnamn>
+	<totalt_antal_platsannonser>2039</totalt_antal_platsannonser>
+	<totalt_antal_ledigajobb>2614</totalt_antal_ledigajobb>
+	<sokdata>
+		<id>2611</id>
+		<namn>Advokater</namn>
+		<antal_platsannonser>1</antal_platsannonser>
+		<antal_ledigajobb>1</antal_ledigajobb>
+	</sokdata>
+	<sokdata>
+		<id>2614</id>
+		<namn>Affärs- och företagsjurister</namn>
+		<antal_platsannonser>17</antal_platsannonser>
+		<antal_ledigajobb>19</antal_ledigajobb>
+	</sokdata>
+</soklista>
