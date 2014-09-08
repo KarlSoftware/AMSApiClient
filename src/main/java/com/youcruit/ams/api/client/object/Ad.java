@@ -77,8 +77,10 @@ public class Ad {
     }
 
     public void fillCategories() {
-	professionCategoryId = AMSLookUp.instance().getCategoryByProfessionId(id).getId();
-	professionSubCategoryId = AMSLookUp.instance().getSubCategoryByProfessionId(id).getId();
+	if(details != null && details.getProfessionId() != null) {
+	    professionCategoryId = AMSLookUp.instance().getCategoryByProfessionId(details.getProfessionId()).getId();
+	    professionSubCategoryId = AMSLookUp.instance().getSubCategoryByProfessionId(details.getProfessionId()).getId();
+	}
     }
 
     @Override
