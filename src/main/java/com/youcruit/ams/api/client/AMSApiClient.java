@@ -15,10 +15,7 @@ import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 
-import com.fasterxml.jackson.dataformat.xml.JacksonXmlModule;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import com.youcruit.ams.api.client.deserializers.MatchListDeserializer;
-import com.youcruit.ams.api.client.object.MatchDataList;
 
 public class AMSApiClient {
 
@@ -29,9 +26,6 @@ public class AMSApiClient {
     public AMSApiClient(final String amsBaseApiUrl){
 	this.amsBaseApiUrl = amsBaseApiUrl;
 	xm = new XmlMapper();
-	JacksonXmlModule module = new JacksonXmlModule();
-	module.addDeserializer(MatchDataList.class, new MatchListDeserializer());
-	xm.registerModule(module);
     }
 
     private InputStream executeQuery(final AMSQuery query) throws IOException, URISyntaxException{

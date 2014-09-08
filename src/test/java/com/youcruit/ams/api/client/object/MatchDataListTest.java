@@ -11,9 +11,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.fasterxml.jackson.dataformat.xml.JacksonXmlModule;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import com.youcruit.ams.api.client.deserializers.MatchListDeserializer;
 
 public class MatchDataListTest {
     private InputStream is;
@@ -62,9 +60,6 @@ public class MatchDataListTest {
 
     @Test
     public void testParseAsList() throws IOException {
-	JacksonXmlModule module = new JacksonXmlModule();
-	module.addDeserializer(MatchDataList.class, new MatchListDeserializer());
-	om.registerModule(module);
 	MatchDataList actual = om.readValue(is, MatchDataList.class);
 	assertEquals(expectedList, actual);
     }

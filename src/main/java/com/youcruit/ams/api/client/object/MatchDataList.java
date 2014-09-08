@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.youcruit.ams.api.client.deserializers.MatchListDeserializer;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(using=MatchListDeserializer.class)
 public class MatchDataList {
     @JacksonXmlProperty(localName="antal_platsannonser")
     private int count;
