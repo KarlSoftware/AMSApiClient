@@ -73,40 +73,6 @@ public class Ad {
 	this.professionSubCategoryId = professionSubCategoryId;
     }
 
-    public String getEmail() {
-	return getEmail(false);
-    }
-
-    public String getEmail(boolean preferWorkplace) {
-	String email = null;
-	if (preferWorkplace) {
-	    email = getWorkPlaceEmail(email);
-	    email = getApplicationEmail(email);
-	} else {
-	    email = getApplicationEmail(email);
-	    email = getWorkPlaceEmail(email);
-	}
-	return email;
-    }
-
-    private String getWorkPlaceEmail(String email) {
-	if ((email == null || email.equals("")) && workplace != null) {
-	    if (getWorkplace().getEmail() != null && getWorkplace().getEmail().length() > 0) {
-		email = getWorkplace().getEmail();
-	    }
-	}
-	return email;
-    }
-
-    private String getApplicationEmail(String email) {
-	if ((email == null || email.equals("")) && application != null) {
-        	if (getApplication() != null && getApplication().getEmail() != null && getApplication().getEmail().length() > 0) {
-        	    email = getApplication().getEmail();
-        	}
-	}
-	return email;
-    }
-
     @Override
     public boolean equals(Object o) {
 	if (this == o) return true;
