@@ -10,7 +10,8 @@ public class AMSQuery {
     public enum EndPoint {
 	MATCHING("/platsannons/matchning"),
 	AD("/platsannons"),
-	PROFESSION_CATEGORIES("/platsannons/soklista/yrkesomraden");
+	PROFESSION_CATEGORIES("/platsannons/soklista/yrkesomraden"),
+	PROFESSION_SUB_CATEGORIES("/platsannons/soklista/yrkesgrupper");
 
 	private String endPoint;
 	private EndPoint(String endPoint) {

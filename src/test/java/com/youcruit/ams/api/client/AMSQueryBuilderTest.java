@@ -78,5 +78,11 @@ public class AMSQueryBuilderTest {
     public void unicode() {
 	assertEquals(AMSQuery.EndPoint.MATCHING.getEndPoint() + "?nyckelord=%E2%98%A2", queryBuilder.keyword("☢").build().toString());
     }
+    
+    @Test
+    public void testProfessionSubCategoryQuery() {
+	queryBuilder = new AMSQueryBuilder(AMSQuery.EndPoint.PROFESSION_SUB_CATEGORIES);
+	assertEquals("/platsannons/soklista/yrkesgrupper?yrkesomradeid=1", queryBuilder.professionCategory(1).build().toString());
+    }
 
 }
