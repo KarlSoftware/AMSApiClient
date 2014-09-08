@@ -50,18 +50,18 @@ public abstract class AbstractListDeserializer<TYPE, LIST extends AMSList<TYPE>>
 		    result.getList().add(d);
 		} else {
 		    String localName = jp.getCurrentName();
-		    String fieldName = null;
-		    Class<?> fieldType = null;
-		    for (Field f : LIST_CLAZZ.getDeclaredFields()) {
-			JacksonXmlProperty a = f.getAnnotation(JacksonXmlProperty.class);
-			if (a != null && a.localName().equals(localName)) {
-			    fieldType = f.getType();
-			    fieldName = f.getName();
-			    break;
-			}
+		    Field field = null;
+		    Class<?> clazz = LIST_CLAZZ;
+		    while(field==null && clazz != null){
+			field = search(localName, clazz.getDeclaredFields());
+			clazz = clazz.getSuperclass();
 		    }
-		    if (fieldName != null) {
+		    
+		    if (field != null) {
 			jp.nextToken();
+
+			Class<?> fieldType = field.getType();
+			String fieldName = field.getName();
 			Object value = null;
 			if(Integer.class.isAssignableFrom(fieldType)){
 			    value = jp.getValueAsInt();
@@ -81,4 +81,17 @@ public abstract class AbstractListDeserializer<TYPE, LIST extends AMSList<TYPE>>
 	}
 	return result;
     }
+
+    private Field search(String localName, Field[] declaredFields) {
+	Field field = null;
+	for (Field f : declaredFields) {
+	JacksonXmlProperty a = f.getAnnotation(JacksonXmlProperty.class);
+	if (a != null && a.localName().equals(localName)) {
+	    field = f;
+	    break;
+	}
+	}
+	return field;
+    }
+    
 }
