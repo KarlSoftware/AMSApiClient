@@ -6,16 +6,16 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.youcruit.ams.api.client.deserializers.ProfessionGroupListDeserializer;
+import com.youcruit.ams.api.client.deserializers.ProfessionSubCategoryListDeserializer;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonDeserialize(using=ProfessionGroupListDeserializer.class)
-public class ProfessionGroupList implements AMSList<ProfessionGroup> {
+@JsonDeserialize(using=ProfessionSubCategoryListDeserializer.class)
+public class ProfessionSubCategoryList implements AMSList<ProfessionSubCategory> {
     @JacksonXmlProperty(localName="listnamn")
     private String name;
     @JacksonXmlProperty(localName="totalt_antal_platsannonser")
     private int count;
-    private List<ProfessionGroup> list;
+    private List<ProfessionSubCategory> list;
     public String getName() {
         return name;
     }
@@ -28,14 +28,14 @@ public class ProfessionGroupList implements AMSList<ProfessionGroup> {
     public void setCount(int count) {
         this.count = count;
     }
-    public List<ProfessionGroup> getList() {
+    public List<ProfessionSubCategory> getList() {
 	if(list==null){
-	    list = new ArrayList<ProfessionGroup>();
+	    list = new ArrayList<ProfessionSubCategory>();
 	}
         return list;
     }
-    public void setList(List<ProfessionGroup> professionGroups) {
-        this.list = professionGroups;
+    public void setList(List<ProfessionSubCategory> list) {
+        this.list = list;
     }
     @Override
     public int hashCode() {
@@ -50,8 +50,8 @@ public class ProfessionGroupList implements AMSList<ProfessionGroup> {
     public boolean equals(Object obj) {
 	if (this == obj) return true;
 	if (obj == null) return false;
-	if (!(obj instanceof ProfessionGroupList)) return false;
-	ProfessionGroupList other = (ProfessionGroupList) obj;
+	if (!(obj instanceof ProfessionSubCategoryList)) return false;
+	ProfessionSubCategoryList other = (ProfessionSubCategoryList) obj;
 	if (count != other.count) return false;
 	if (name == null) {
 	    if (other.name != null) return false;
@@ -63,6 +63,6 @@ public class ProfessionGroupList implements AMSList<ProfessionGroup> {
     }
     @Override
     public String toString() {
-	return "ProfessionGroupList [name=" + name + ", count=" + count + ", list=" + list + "]";
+	return "ProfessionSubCategoryList [name=" + name + ", count=" + count + ", list=" + list + "]";
     }
 }

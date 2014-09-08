@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ProfessionGroup {
+public class ProfessionSubCategory {
     private String id;
     @JacksonXmlProperty(localName="namn")
     private String name;
@@ -41,8 +41,8 @@ public class ProfessionGroup {
     public boolean equals(Object obj) {
 	if (this == obj) return true;
 	if (obj == null) return false;
-	if (!(obj instanceof ProfessionGroup)) return false;
-	ProfessionGroup other = (ProfessionGroup) obj;
+	if (!(obj instanceof ProfessionSubCategory)) return false;
+	ProfessionSubCategory other = (ProfessionSubCategory) obj;
 	if (count != other.count) return false;
 	if (id == null) {
 	    if (other.id != null) return false;

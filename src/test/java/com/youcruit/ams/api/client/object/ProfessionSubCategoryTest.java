@@ -12,16 +12,16 @@ import org.junit.Test;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
-public class ProfessionGroupTest {
+public class ProfessionSubCategoryTest {
     private InputStream is;
     private ObjectMapper om;
-    private ProfessionGroup expected;
+    private ProfessionSubCategory expected;
 
     @Before
     public void setUp() {
 	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("professiongroup.xml");
 	om = new XmlMapper();
-	expected = new ProfessionGroup();
+	expected = new ProfessionSubCategory();
 	expected.setCount(1);
 	expected.setName("Advokater");
 	expected.setId("2611");
@@ -29,7 +29,7 @@ public class ProfessionGroupTest {
 
     @Test
     public void testParseDetails() throws IOException {
-	ProfessionGroup actual = om.readValue(is, ProfessionGroup.class);
+	ProfessionSubCategory actual = om.readValue(is, ProfessionSubCategory.class);
 	assertEquals(expected, actual);
     }
 
