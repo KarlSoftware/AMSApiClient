@@ -38,7 +38,7 @@ public class AMSApiClientINTTest {
 	    if(i == 1) {
 		numberOfPages = dataList.getCountPages();
 	    }
-	    for(MatchData d : dataList.getMatchDataList()) {
+	    for(MatchData d : dataList.getList()) {
 		realCount++;
 		AMSQuery adQuery = new AMSQueryBuilder(AMSQuery.EndPoint.AD).id(d.getAdId()).build();
 		Ad ad = client.executeQuery(adQuery, Ad.class);
@@ -59,8 +59,8 @@ public class AMSApiClientINTTest {
     public void testGetProfessionCategories() throws IOException, URISyntaxException {
 	query = new AMSQueryBuilder(AMSQuery.EndPoint.PROFESSION_CATEGORIES).build();
 	ProfessionCategoryList result = client.executeQuery(query, ProfessionCategoryList.class);
-	System.out.println("Found " + result.getProfessionCategories().size() + " different categories. Number of positionopenings available total: " + result.getCount());
-	for(ProfessionCategory pc : result.getProfessionCategories()){
+	System.out.println("Found " + result.getList().size() + " different categories. Number of positionopenings available total: " + result.getCount());
+	for(ProfessionCategory pc : result.getList()){
 	    System.out.println(pc);
 	}
     }

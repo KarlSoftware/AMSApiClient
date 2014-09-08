@@ -10,12 +10,12 @@ import com.youcruit.ams.api.client.deserializers.ProfessionCategoryListDeseriali
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(using=ProfessionCategoryListDeserializer.class)
-public class ProfessionCategoryList {
+public class ProfessionCategoryList implements AMSList<ProfessionCategory>{
     @JacksonXmlProperty(localName="listnamn")
     private String name;
     @JacksonXmlProperty(localName="totalt_antal_platsannonser")
     private int count;
-    private List<ProfessionCategory> professionCategories;
+    private List<ProfessionCategory> list;
     public String getName() {
         return name;
     }
@@ -28,14 +28,14 @@ public class ProfessionCategoryList {
     public void setCount(int count) {
         this.count = count;
     }
-    public List<ProfessionCategory> getProfessionCategories() {
-	if(professionCategories==null){
-	    professionCategories = new ArrayList<ProfessionCategory>();
+    public List<ProfessionCategory> getList() {
+	if(list==null){
+	    list = new ArrayList<ProfessionCategory>();
 	}
-        return professionCategories;
+        return list;
     }
-    public void setProfessionCategories(List<ProfessionCategory> professionCategories) {
-        this.professionCategories = professionCategories;
+    public void setList(List<ProfessionCategory> professionCategories) {
+        this.list = professionCategories;
     }
     @Override
     public int hashCode() {
@@ -43,7 +43,7 @@ public class ProfessionCategoryList {
 	int result = 1;
 	result = prime * result + count;
 	result = prime * result + ((name == null) ? 0 : name.hashCode());
-	result = prime * result + ((professionCategories == null) ? 0 : professionCategories.hashCode());
+	result = prime * result + ((list == null) ? 0 : list.hashCode());
 	return result;
     }
     @Override
@@ -56,13 +56,13 @@ public class ProfessionCategoryList {
 	if (name == null) {
 	    if (other.name != null) return false;
 	} else if (!name.equals(other.name)) return false;
-	if (professionCategories == null) {
-	    if (other.professionCategories != null) return false;
-	} else if (!professionCategories.equals(other.professionCategories)) return false;
+	if (list == null) {
+	    if (other.list != null) return false;
+	} else if (!list.equals(other.list)) return false;
 	return true;
     }
     @Override
     public String toString() {
-	return "ProfessionCategoryList [name=" + name + ", count=" + count + ", professionCategories=" + professionCategories + "]";
+	return "ProfessionCategoryList [name=" + name + ", count=" + count + ", list=" + list + "]";
     }
 }

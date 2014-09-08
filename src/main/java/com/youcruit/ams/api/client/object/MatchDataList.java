@@ -10,7 +10,7 @@ import com.youcruit.ams.api.client.deserializers.MatchListDeserializer;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(using=MatchListDeserializer.class)
-public class MatchDataList {
+public class MatchDataList implements AMSList<MatchData>{
     @JacksonXmlProperty(localName="antal_platsannonser")
     private int count;
     @JacksonXmlProperty(localName="antal_platsannonser_exakta")
@@ -19,7 +19,7 @@ public class MatchDataList {
     private int countAdjacent;
     @JacksonXmlProperty(localName="antal_sidor")
     private int countPages;
-    private List<MatchData> matchDataList;
+    private List<MatchData> list;
     
     public int getCount() {
         return count;
@@ -45,14 +45,14 @@ public class MatchDataList {
     public void setCountPages(int count_pages) {
         this.countPages = count_pages;
     }
-    public List<MatchData> getMatchDataList() {
-	if(matchDataList==null){
-	    matchDataList = new ArrayList<MatchData>();
+    public List<MatchData> getList() {
+	if(list==null){
+	    list = new ArrayList<MatchData>();
 	}
-        return matchDataList;
+        return list;
     }
-    public void setMatchDataList(List<MatchData> matchDataList) {
-        this.matchDataList = matchDataList;
+    public void setList(List<MatchData> list) {
+        this.list = list;
     }
     @Override
     public int hashCode() {
@@ -62,7 +62,7 @@ public class MatchDataList {
 	result = prime * result + countAdjacent;
 	result = prime * result + countExact;
 	result = prime * result + countPages;
-	result = prime * result + ((matchDataList == null) ? 0 : matchDataList.hashCode());
+	result = prime * result + ((list == null) ? 0 : list.hashCode());
 	return result;
     }
     @Override
@@ -75,13 +75,13 @@ public class MatchDataList {
 	if (countAdjacent != other.countAdjacent) return false;
 	if (countExact != other.countExact) return false;
 	if (countPages != other.countPages) return false;
-	if (matchDataList == null) {
-	    if (other.matchDataList != null) return false;
-	} else if (!matchDataList.equals(other.matchDataList)) return false;
+	if (list == null) {
+	    if (other.list != null) return false;
+	} else if (!list.equals(other.list)) return false;
 	return true;
     }
     @Override
     public String toString() {
-	return "MatchDataList [count=" + count + ", countExact=" + countExact + ", countAdjacent=" + countAdjacent + ", countPages=" + countPages + ", matchDataList=" + matchDataList + "]";
+	return "MatchDataList [count=" + count + ", countExact=" + countExact + ", countAdjacent=" + countAdjacent + ", countPages=" + countPages + ", list=" + list + "]";
     }
 }

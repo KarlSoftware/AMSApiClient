@@ -41,7 +41,7 @@ public class MatchDataListTest {
 	expected.setRelevance(100);
 	expected.setCountOpenings(2);
 	expectedList = new MatchDataList();
-	expectedList.getMatchDataList().add(expected);
+	expectedList.getList().add(expected);
 	expectedList.setCount(8440);
 	expectedList.setCountExact(8440);
 	expectedList.setCountAdjacent(0);
@@ -55,7 +55,7 @@ public class MatchDataListTest {
 	expected.setPublished(cal.getTime());
 	expected.setRelevance(100);
 	expected.setCountOpenings(3);
-	expectedList.getMatchDataList().add(expected);
+	expectedList.getList().add(expected);
     }
 
     @Test

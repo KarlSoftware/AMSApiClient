@@ -26,12 +26,12 @@ public class ProfessionCategoryListTest {
 	expected.setId("1");
 	expected.setName("Administration, ekonomi, juridik");
 	expected.setCount(2012);
-	expectedList.getProfessionCategories().add(expected);
+	expectedList.getList().add(expected);
 	expected = new ProfessionCategory();
 	expected.setId("2");
 	expected.setName("Bygg och anläggning");
 	expected.setCount(915);
-	expectedList.getProfessionCategories().add(expected);
+	expectedList.getList().add(expected);
 	expectedList.setCount(23780);
 	expectedList.setName("yrkesomraden");
     }
