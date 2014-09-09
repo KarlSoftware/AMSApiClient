@@ -5,8 +5,10 @@ import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.conn.ClientConnectionManager;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -39,7 +41,11 @@ public class AMSApiClient {
 	getData.addHeader("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.94 Safari/537.36");
 	HttpResponse response = client.execute(getData, localContext);
 	HttpEntity responseEntity = response.getEntity();
-	return responseEntity.getContent();
+	if(response.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
+	    return responseEntity.getContent();
+	}else {
+	    throw new IOException("Server " + amsBaseApiUrl + " responded with statuscode: " + response.getStatusLine().getStatusCode() + " for query: " + query.toString() + " \n " + IOUtils.toString(response.getEntity().getContent()));
+	}
     }
 
     private DefaultHttpClient getClientInstance() {
