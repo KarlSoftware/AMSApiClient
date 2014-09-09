@@ -59,7 +59,11 @@ public class AMSLookUp {
 	if(!inited) {
 	    throw new RuntimeException("Fetch has to be run before anything can be returned");
 	}
-	return professionCategories.get(professionSubCategories.get(professionId).getId());
+	if(professionSubCategories.containsKey(professionId)) {
+	    return professionCategories.get(professionSubCategories.get(professionId).getId());
+	} else {
+	    return null;
+	}
     }
 
     public ProfessionSubCategory getSubCategoryByProfessionId(final String professionId) {
