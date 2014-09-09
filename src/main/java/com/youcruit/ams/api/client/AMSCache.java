@@ -1,5 +1,6 @@
 package com.youcruit.ams.api.client;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.youcruit.ams.api.client.object.Profession;
 import com.youcruit.ams.api.client.object.ProfessionCategory;
 import com.youcruit.ams.api.client.object.ProfessionSubCategory;
@@ -7,6 +8,7 @@ import com.youcruit.ams.api.client.object.ProfessionSubCategory;
 import java.util.Date;
 import java.util.Map;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AMSCache {
 
     public enum CacheType {
