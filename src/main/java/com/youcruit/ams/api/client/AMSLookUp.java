@@ -92,4 +92,15 @@ public class AMSLookUp {
 	return pList.getList();
     }
 
+    public AMSCache getCachableRepresentation() {
+	return new AMSCache(profession, professionCategories, professionSubCategories);
+    }
+
+    public void populateFromCache(final AMSCache cache) {
+	this.profession = cache.getProfession();
+	this.professionCategories = cache.getProfessionCategories();
+	this.professionSubCategories = cache.getProfessionSubCategories();
+	this.inited = true;
+    }
+
 }
