@@ -1,17 +1,21 @@
 package com.youcruit.ams.api.client;
 
+import com.youcruit.ams.api.client.object.Profession;
+import com.youcruit.ams.api.client.object.ProfessionCategory;
+import com.youcruit.ams.api.client.object.ProfessionSubCategory;
+
 public class ProfessionCache {
-    private String amdId;
+    private String amsId;
     private String name;
     private String categoryId;
     private String categoryName;
     private String subCategoryId;
     private String subCategoryName;
-    public String getAmdId() {
-        return amdId;
+    public String getAmsId() {
+        return amsId;
     }
-    public void setAmdId(String amdId) {
-        this.amdId = amdId;
+    public void setAmsId(String amdId) {
+        this.amsId = amdId;
     }
     public String getName() {
         return name;
@@ -47,7 +51,7 @@ public class ProfessionCache {
     public int hashCode() {
 	final int prime = 31;
 	int result = 1;
-	result = prime * result + ((amdId == null) ? 0 : amdId.hashCode());
+	result = prime * result + ((amsId == null) ? 0 : amsId.hashCode());
 	result = prime * result + ((categoryId == null) ? 0 : categoryId.hashCode());
 	result = prime * result + ((categoryName == null) ? 0 : categoryName.hashCode());
 	result = prime * result + ((name == null) ? 0 : name.hashCode());
@@ -61,9 +65,9 @@ public class ProfessionCache {
 	if (obj == null) return false;
 	if (!(obj instanceof ProfessionCache)) return false;
 	ProfessionCache other = (ProfessionCache) obj;
-	if (amdId == null) {
-	    if (other.amdId != null) return false;
-	} else if (!amdId.equals(other.amdId)) return false;
+	if (amsId == null) {
+	    if (other.amsId != null) return false;
+	} else if (!amsId.equals(other.amsId)) return false;
 	if (categoryId == null) {
 	    if (other.categoryId != null) return false;
 	} else if (!categoryId.equals(other.categoryId)) return false;
@@ -83,6 +87,14 @@ public class ProfessionCache {
     }
     @Override
     public String toString() {
-	return "ProfessionCache [amdId=" + amdId + ", name=" + name + ", categoryId=" + categoryId + ", categoryName=" + categoryName + ", subCategoryId=" + subCategoryId + ", subCategoryName=" + subCategoryName + "]";
+	return "ProfessionCache [amsId=" + amsId + ", name=" + name + ", categoryId=" + categoryId + ", categoryName=" + categoryName + ", subCategoryId=" + subCategoryId + ", subCategoryName=" + subCategoryName + "]";
+    }
+    public void fillFrom(Profession p, ProfessionSubCategory psc, ProfessionCategory pc) {
+	amsId = p.getId();
+	name = p.getName();
+	categoryId = pc.getId();
+	categoryName = pc.getName();
+	subCategoryId = psc.getId();
+	subCategoryName = psc.getName();
     }
 }

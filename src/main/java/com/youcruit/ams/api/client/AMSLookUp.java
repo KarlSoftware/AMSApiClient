@@ -4,6 +4,7 @@ import com.youcruit.ams.api.client.object.*;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -91,16 +92,36 @@ public class AMSLookUp {
 	ProfessionList pList = new AMSApiClient(amsBaseUrl).executeQuery(pQuery, ProfessionList.class);
 	return pList.getList();
     }
-
-    public AMSCache getCachableRepresentation() {
-	return new AMSCache(profession, professionCategories, professionSubCategories);
+    
+    public List<ProfessionCache> getCacheableRepresentation() {
+	List<ProfessionCache> cache = new ArrayList<ProfessionCache>();
+	for(Profession p : profession.values()){
+	    ProfessionCache pcache = new ProfessionCache();
+	    ProfessionSubCategory psc = professionSubCategories.get(p.getId());
+	    ProfessionCategory pc = professionCategories.get(psc.getId());
+	    pcache.fillFrom(p, psc, pc);
+	    cache.add(pcache);
+	}
+	return cache;
     }
-
-    public void populateFromCache(final AMSCache cache) {
-	this.profession = cache.getProfession();
-	this.professionCategories = cache.getProfessionCategories();
-	this.professionSubCategories = cache.getProfessionSubCategories();
-	this.inited = true;
+    
+    public void populateFromCache(final List<ProfessionCache> cache){
+	clearCache();
+	for(ProfessionCache pcache : cache){
+	    Profession p = new Profession();
+	    p.setId(pcache.getAmsId());
+	    p.setName(pcache.getName());
+	    profession.put(p.getId(), p);
+	    ProfessionSubCategory subCategory = new ProfessionSubCategory();
+	    subCategory.setId(pcache.getSubCategoryId());
+	    subCategory.setName(pcache.getSubCategoryName());
+	    professionSubCategories.put(p.getId(), subCategory);
+	    if(!professionCategories.containsKey(subCategory.getId())){
+		ProfessionCategory category = new ProfessionCategory();
+		category.setId(pcache.getCategoryId());
+		category.setName(pcache.getCategoryName());
+		professionCategories.put(subCategory.getId(), category);
+	    }
+	}
     }
-
 }
