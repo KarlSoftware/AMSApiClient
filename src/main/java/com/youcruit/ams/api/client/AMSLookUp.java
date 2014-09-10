@@ -123,5 +123,6 @@ public class AMSLookUp {
 		professionCategories.put(subCategory.getId(), category);
 	    }
 	}
+	inited = true;
     }
 }
