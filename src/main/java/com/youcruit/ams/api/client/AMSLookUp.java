@@ -105,7 +105,7 @@ public class AMSLookUp {
 	return cache;
     }
     
-    public void populateFromCache(final List<ProfessionCache> cache){
+    public void populateFromCache(final List<? extends ProfessionCache> cache){
 	clearCache();
 	for(ProfessionCache pcache : cache){
 	    Profession p = new Profession();
