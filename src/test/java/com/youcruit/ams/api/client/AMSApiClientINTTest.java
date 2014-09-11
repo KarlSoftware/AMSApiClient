@@ -10,6 +10,8 @@ import org.junit.Test;
 import com.youcruit.ams.api.client.object.Ad;
 import com.youcruit.ams.api.client.object.MatchData;
 import com.youcruit.ams.api.client.object.MatchDataList;
+import com.youcruit.ams.api.client.object.Municipiality;
+import com.youcruit.ams.api.client.object.MunicipialityList;
 import com.youcruit.ams.api.client.object.Profession;
 import com.youcruit.ams.api.client.object.ProfessionCategory;
 import com.youcruit.ams.api.client.object.ProfessionCategoryList;
@@ -86,6 +88,16 @@ public class AMSApiClientINTTest {
 	System.out.println("Found " + result.getList().size() + " different categories. Number of positionopenings available total: " + result.getCount());
 	for(Profession pc : result.getList()){
 	    System.out.println(pc);
+	}
+    }
+    
+    @Test
+    public void testGetMunicipialities() throws IOException, URISyntaxException {
+	query = new AMSQueryBuilder(AMSQuery.EndPoint.MUNICIPILAITY).county(County.SKANE).build();
+	MunicipialityList list = client.executeQuery(query, MunicipialityList.class);
+	System.out.println("Found " + list.getList().size() + " different munis. Number of positionopenings available total: " + list.getCount());
+	for(Municipiality m : list.getList()){
+	    System.out.println(m);
 	}
     }
 }

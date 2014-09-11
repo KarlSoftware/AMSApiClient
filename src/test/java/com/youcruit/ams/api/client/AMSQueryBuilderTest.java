@@ -90,5 +90,11 @@ public class AMSQueryBuilderTest {
 	queryBuilder = new AMSQueryBuilder(AMSQuery.EndPoint.PROFESSION);
 	assertEquals("/platsannons/soklista/yrken?yrkesgruppid=2131", queryBuilder.professionSubCategory(2131).build().toString());
     }
+    
+    @Test
+    public void testGetMunicipilaity(){
+	queryBuilder = new AMSQueryBuilder(AMSQuery.EndPoint.MUNICIPILAITY);
+	assertEquals("/platsannons/soklista/kommuner?lanid=10", queryBuilder.county(County.fromId(10)).build().toString());
+    }
 
 }

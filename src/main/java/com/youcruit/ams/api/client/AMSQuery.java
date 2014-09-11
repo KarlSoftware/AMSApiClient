@@ -12,7 +12,8 @@ public class AMSQuery {
 	AD("/platsannons"),
 	PROFESSION_CATEGORIES("/platsannons/soklista/yrkesomraden"),
 	PROFESSION_SUB_CATEGORIES("/platsannons/soklista/yrkesgrupper"),
-	PROFESSION("/platsannons/soklista/yrken");
+	PROFESSION("/platsannons/soklista/yrken"),
+	MUNICIPILAITY("/platsannons/soklista/kommuner");
 
 	private String endPoint;
 	private EndPoint(String endPoint) {

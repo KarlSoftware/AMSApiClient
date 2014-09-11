@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<soklista>
+	<listnamn>kommuner</listnamn>
+	<totalt_antal_platsannonser>241</totalt_antal_platsannonser>
+	<totalt_antal_ledigajobb>401</totalt_antal_ledigajobb>
+	<sokdata>
+		<id>1082</id>
+		<namn>Karlshamn</namn>
+		<antal_platsannonser>34</antal_platsannonser>
+		<antal_ledigajobb>44</antal_ledigajobb>
+	</sokdata>
+</soklista>
