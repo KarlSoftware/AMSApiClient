@@ -20,6 +20,8 @@ public class Ad {
     private Requirement requirement;
     private String professionCategoryId;
     private String professionSubCategoryId;
+    private String countyId;
+    private String municipialityId;
 
     public String getId() {
         return id;
@@ -76,6 +78,18 @@ public class Ad {
 	this.professionSubCategoryId = professionSubCategoryId;
     }
 
+    public String getCountyId() {
+        return countyId;
+    }
+    public void setCountyId(String countyId) {
+        this.countyId = countyId;
+    }
+    public String getMunicipialityId() {
+        return municipialityId;
+    }
+    public void setMunicipialityId(String municipialityId) {
+        this.municipialityId = municipialityId;
+    }
     public void fillCategories() {
 	if(details != null && details.getProfessionId() != null) {
 	    if(AMSLookUp.instance().getSubCategoryByProfessionId(details.getProfessionId()) != null) {
@@ -86,51 +100,65 @@ public class Ad {
     }
 
     @Override
-    public boolean equals(Object o) {
-	if (this == o) return true;
-	if (!(o instanceof Ad)) return false;
-
-	Ad ad = (Ad) o;
-
-	if (application != null ? !application.equals(ad.application) : ad.application != null) return false;
-	if (details != null ? !details.equals(ad.details) : ad.details != null) return false;
-	if (id != null ? !id.equals(ad.id) : ad.id != null) return false;
-	if (professionCategoryId != null ? !professionCategoryId.equals(ad.professionCategoryId) : ad.professionCategoryId != null)
-	    return false;
-	if (professionSubCategoryId != null ? !professionSubCategoryId.equals(ad.professionSubCategoryId) : ad.professionSubCategoryId != null)
-	    return false;
-	if (requirement != null ? !requirement.equals(ad.requirement) : ad.requirement != null) return false;
-	if (terms != null ? !terms.equals(ad.terms) : ad.terms != null) return false;
-	if (workplace != null ? !workplace.equals(ad.workplace) : ad.workplace != null) return false;
-
+    public boolean equals(Object obj) {
+	if (this == obj) return true;
+	if (obj == null) return false;
+	if (!(obj instanceof Ad)) return false;
+	Ad other = (Ad) obj;
+	if (application == null) {
+	    if (other.application != null) return false;
+	} else if (!application.equals(other.application)) return false;
+	if (countyId == null) {
+	    if (other.countyId != null) return false;
+	} else if (!countyId.equals(other.countyId)) return false;
+	if (details == null) {
+	    if (other.details != null) return false;
+	} else if (!details.equals(other.details)) return false;
+	if (id == null) {
+	    if (other.id != null) return false;
+	} else if (!id.equals(other.id)) return false;
+	if (municipialityId == null) {
+	    if (other.municipialityId != null) return false;
+	} else if (!municipialityId.equals(other.municipialityId)) return false;
+	if (professionCategoryId == null) {
+	    if (other.professionCategoryId != null) return false;
+	} else if (!professionCategoryId.equals(other.professionCategoryId)) return false;
+	if (professionSubCategoryId == null) {
+	    if (other.professionSubCategoryId != null) return false;
+	} else if (!professionSubCategoryId.equals(other.professionSubCategoryId)) return false;
+	if (requirement == null) {
+	    if (other.requirement != null) return false;
+	} else if (!requirement.equals(other.requirement)) return false;
+	if (terms == null) {
+	    if (other.terms != null) return false;
+	} else if (!terms.equals(other.terms)) return false;
+	if (workplace == null) {
+	    if (other.workplace != null) return false;
+	} else if (!workplace.equals(other.workplace)) return false;
 	return true;
     }
 
     @Override
     public int hashCode() {
-	int result = id != null ? id.hashCode() : 0;
-	result = 31 * result + (application != null ? application.hashCode() : 0);
-	result = 31 * result + (workplace != null ? workplace.hashCode() : 0);
-	result = 31 * result + (details != null ? details.hashCode() : 0);
-	result = 31 * result + (terms != null ? terms.hashCode() : 0);
-	result = 31 * result + (requirement != null ? requirement.hashCode() : 0);
-	result = 31 * result + (professionCategoryId != null ? professionCategoryId.hashCode() : 0);
-	result = 31 * result + (professionSubCategoryId != null ? professionSubCategoryId.hashCode() : 0);
+	final int prime = 31;
+	int result = 1;
+	result = prime * result + ((application == null) ? 0 : application.hashCode());
+	result = prime * result + ((countyId == null) ? 0 : countyId.hashCode());
+	result = prime * result + ((details == null) ? 0 : details.hashCode());
+	result = prime * result + ((id == null) ? 0 : id.hashCode());
+	result = prime * result + ((municipialityId == null) ? 0 : municipialityId.hashCode());
+	result = prime * result + ((professionCategoryId == null) ? 0 : professionCategoryId.hashCode());
+	result = prime * result + ((professionSubCategoryId == null) ? 0 : professionSubCategoryId.hashCode());
+	result = prime * result + ((requirement == null) ? 0 : requirement.hashCode());
+	result = prime * result + ((terms == null) ? 0 : terms.hashCode());
+	result = prime * result + ((workplace == null) ? 0 : workplace.hashCode());
 	return result;
     }
 
     @Override
     public String toString() {
-	return "Ad{" +
-		"id='" + id + '\'' +
-		", application=" + application +
-		", workplace=" + workplace +
-		", details=" + details +
-		", terms=" + terms +
-		", requirement=" + requirement +
-		", professionCategoryId='" + professionCategoryId + '\'' +
-		", professionSubCategoryId='" + professionSubCategoryId + '\'' +
-		'}';
+	return "Ad [id=" + id + ", application=" + application + ", workplace=" + workplace + ", details=" + details + ", terms=" + terms + ", requirement=" + requirement + ", professionCategoryId=" + professionCategoryId
+		+ ", professionSubCategoryId=" + professionSubCategoryId + ", countyId=" + countyId + ", municipialityId=" + municipialityId + "]";
     }
 
 }
