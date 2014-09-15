@@ -4,7 +4,8 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 public abstract class SearchItem {
 
-    private String id;
+    @JacksonXmlProperty(localName = "id")
+    private String amsId;
     @JacksonXmlProperty(localName = "namn")
     private String name;
     @JacksonXmlProperty(localName = "antal_platsannonser")
@@ -14,12 +15,12 @@ public abstract class SearchItem {
 	super();
     }
 
-    public String getId() {
-        return id;
+    public String getAmsId() {
+        return amsId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setAmsId(String id) {
+        this.amsId = id;
     }
 
     public String getName() {
@@ -43,7 +44,7 @@ public abstract class SearchItem {
         final int prime = 31;
         int result = 1;
         result = prime * result + count;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        result = prime * result + ((amsId == null) ? 0 : amsId.hashCode());
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         return result;
     }
@@ -55,9 +56,9 @@ public abstract class SearchItem {
         if (!(obj instanceof SearchItem)) return false;
         SearchItem other = (SearchItem) obj;
         if (count != other.count) return false;
-        if (id == null) {
-            if (other.id != null) return false;
-        } else if (!id.equals(other.id)) return false;
+        if (amsId == null) {
+            if (other.amsId != null) return false;
+        } else if (!amsId.equals(other.amsId)) return false;
         if (name == null) {
             if (other.name != null) return false;
         } else if (!name.equals(other.name)) return false;
@@ -66,7 +67,7 @@ public abstract class SearchItem {
 
     @Override
     public String toString() {
-        return "SearchItem [id=" + id + ", name=" + name + ", count=" + count + "]";
+        return "SearchItem [amsId=" + amsId + ", name=" + name + ", count=" + count + "]";
     }
 
 }

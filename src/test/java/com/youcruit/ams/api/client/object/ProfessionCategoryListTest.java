@@ -23,12 +23,12 @@ public class ProfessionCategoryListTest {
 	om = new XmlMapper();
 	expectedList = new ProfessionCategoryList();
 	expected = new ProfessionCategory();
-	expected.setId("1");
+	expected.setAmsId("1");
 	expected.setName("Administration, ekonomi, juridik");
 	expected.setCount(2012);
 	expectedList.getList().add(expected);
 	expected = new ProfessionCategory();
-	expected.setId("2");
+	expected.setAmsId("2");
 	expected.setName("Bygg och anläggning");
 	expected.setCount(915);
 	expectedList.getList().add(expected);

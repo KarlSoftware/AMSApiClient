@@ -90,11 +90,11 @@ public class ProfessionCache {
 	return "ProfessionCache [amsId=" + amsId + ", name=" + name + ", categoryId=" + categoryId + ", categoryName=" + categoryName + ", subCategoryId=" + subCategoryId + ", subCategoryName=" + subCategoryName + "]";
     }
     public void fillFrom(Profession p, ProfessionSubCategory psc, ProfessionCategory pc) {
-	amsId = p.getId();
+	amsId = p.getAmsId();
 	name = p.getName();
-	categoryId = pc.getId();
+	categoryId = pc.getAmsId();
 	categoryName = pc.getName();
-	subCategoryId = psc.getId();
+	subCategoryId = psc.getAmsId();
 	subCategoryName = psc.getName();
     }
 }

@@ -24,7 +24,7 @@ public class MunicipialityListTest {
 	expectedList = new MunicipialityList();
 	expected = new Municipiality();
 	expected.setName("Karlshamn");
-	expected.setId("1082");
+	expected.setAmsId("1082");
 	expected.setCount(34);
 	expectedList.getList().add(expected);
 	expectedList.setCount(241);

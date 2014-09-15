@@ -23,12 +23,12 @@ public class ProfessionListTest {
 	om = new XmlMapper();
 	expectedList = new ProfessionList();
 	expected = new Profession();
-	expected.setId("4742");
+	expected.setAmsId("4742");
 	expected.setName("Bakteriolog");
 	expected.setCount(0);
 	expectedList.getList().add(expected);
 	expected = new Profession();
-	expected.setId("6902");
+	expected.setAmsId("6902");
 	expected.setName("Bioinformatiker");
 	expected.setCount(1);
 	expectedList.getList().add(expected);

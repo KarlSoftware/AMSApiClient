@@ -23,7 +23,7 @@ public class ProfessionTest {
 	om = new XmlMapper();
 	expected = new Profession();
 	expected.setCount(0);
-	expected.setId("4742");
+	expected.setAmsId("4742");
 	expected.setName("Bakteriolog");
     }
 

@@ -23,7 +23,7 @@ public class MunicipialityTest {
 	om = new XmlMapper();
 	expected = new Municipiality();
 	expected.setName("Karlshamn");
-	expected.setId("1082");
+	expected.setAmsId("1082");
 	expected.setCount(34);
     }
 

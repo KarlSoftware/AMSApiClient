@@ -22,7 +22,7 @@ public class ProfessionCategoryTest {
 	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("professioncategory.xml");
 	om = new XmlMapper();
 	expected = new ProfessionCategory();
-	expected.setId("1");
+	expected.setAmsId("1");
 	expected.setName("Administration, ekonomi, juridik");
 	expected.setCount(2013);
     }

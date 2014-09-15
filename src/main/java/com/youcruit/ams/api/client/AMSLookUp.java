@@ -35,14 +35,14 @@ public class AMSLookUp {
 	    AMSQuery pCQuery = new AMSQueryBuilder(AMSQuery.EndPoint.PROFESSION_CATEGORIES).build();
 	    ProfessionCategoryList pCList = new AMSApiClient(amsBaseUrl).executeQuery(pCQuery, ProfessionCategoryList.class);
 	    for (ProfessionCategory pc : pCList.getList()) {
-		List<ProfessionSubCategory> subCategories = fetchSubCategories(Integer.parseInt(pc.getId()), amsBaseUrl);
+		List<ProfessionSubCategory> subCategories = fetchSubCategories(Integer.parseInt(pc.getAmsId()), amsBaseUrl);
 		for (ProfessionSubCategory psc : subCategories) {
-		    List<Profession> pL = fetchProfessions(Integer.parseInt(psc.getId()), amsBaseUrl);
+		    List<Profession> pL = fetchProfessions(Integer.parseInt(psc.getAmsId()), amsBaseUrl);
 		    for (Profession p : pL) {
-			profession.put(p.getId(), p);
-			professionSubCategories.put(p.getId(), psc);
+			profession.put(p.getAmsId(), p);
+			professionSubCategories.put(p.getAmsId(), psc);
 		    }
-		    professionCategories.put(psc.getId(), pc);
+		    professionCategories.put(psc.getAmsId(), pc);
 		}
 	    }
 	    inited = true;
@@ -61,7 +61,7 @@ public class AMSLookUp {
 	    throw new RuntimeException("Fetch has to be run before anything can be returned");
 	}
 	if(professionSubCategories.containsKey(professionId)) {
-	    return professionCategories.get(professionSubCategories.get(professionId).getId());
+	    return professionCategories.get(professionSubCategories.get(professionId).getAmsId());
 	} else {
 	    return null;
 	}
@@ -97,8 +97,8 @@ public class AMSLookUp {
 	List<ProfessionCache> cache = new ArrayList<ProfessionCache>();
 	for(Profession p : profession.values()){
 	    ProfessionCache pcache = new ProfessionCache();
-	    ProfessionSubCategory psc = professionSubCategories.get(p.getId());
-	    ProfessionCategory pc = professionCategories.get(psc.getId());
+	    ProfessionSubCategory psc = professionSubCategories.get(p.getAmsId());
+	    ProfessionCategory pc = professionCategories.get(psc.getAmsId());
 	    pcache.fillFrom(p, psc, pc);
 	    cache.add(pcache);
 	}
@@ -109,18 +109,18 @@ public class AMSLookUp {
 	clearCache();
 	for(ProfessionCache pcache : cache){
 	    Profession p = new Profession();
-	    p.setId(pcache.getAmsId());
+	    p.setAmsId(pcache.getAmsId());
 	    p.setName(pcache.getName());
-	    profession.put(p.getId(), p);
+	    profession.put(p.getAmsId(), p);
 	    ProfessionSubCategory subCategory = new ProfessionSubCategory();
-	    subCategory.setId(pcache.getSubCategoryId());
+	    subCategory.setAmsId(pcache.getSubCategoryId());
 	    subCategory.setName(pcache.getSubCategoryName());
-	    professionSubCategories.put(p.getId(), subCategory);
-	    if(!professionCategories.containsKey(subCategory.getId())){
+	    professionSubCategories.put(p.getAmsId(), subCategory);
+	    if(!professionCategories.containsKey(subCategory.getAmsId())){
 		ProfessionCategory category = new ProfessionCategory();
-		category.setId(pcache.getCategoryId());
+		category.setAmsId(pcache.getCategoryId());
 		category.setName(pcache.getCategoryName());
-		professionCategories.put(subCategory.getId(), category);
+		professionCategories.put(subCategory.getAmsId(), category);
 	    }
 	}
 	inited = true;

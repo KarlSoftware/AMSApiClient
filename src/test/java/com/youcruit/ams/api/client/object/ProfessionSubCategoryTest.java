@@ -24,7 +24,7 @@ public class ProfessionSubCategoryTest {
 	expected = new ProfessionSubCategory();
 	expected.setCount(1);
 	expected.setName("Advokater");
-	expected.setId("2611");
+	expected.setAmsId("2611");
     }
 
     @Test

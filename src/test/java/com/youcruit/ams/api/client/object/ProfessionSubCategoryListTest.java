@@ -23,12 +23,12 @@ public class ProfessionSubCategoryListTest {
 	om = new XmlMapper();
 	expectedList = new ProfessionSubCategoryList();
 	expected = new ProfessionSubCategory();
-	expected.setId("2611");
+	expected.setAmsId("2611");
 	expected.setName("Advokater");
 	expected.setCount(1);
 	expectedList.getList().add(expected);
 	expected = new ProfessionSubCategory();
-	expected.setId("2614");
+	expected.setAmsId("2614");
 	expected.setName("Affärs- och företagsjurister");
 	expected.setCount(17);
 	expectedList.getList().add(expected);
