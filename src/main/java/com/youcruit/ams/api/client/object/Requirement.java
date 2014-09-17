@@ -16,6 +16,9 @@ public class Requirement {
         this.carOwner = car;
     }
     public DriversLicenseClasses getDriversLicenseClass() {
+	if(driversLicenseClass == null) {
+	    driversLicenseClass = new DriversLicenseClasses();
+	}
         return driversLicenseClass;
     }
     public void setDriversLicenseClass(DriversLicenseClasses driversLicenseClass) {
