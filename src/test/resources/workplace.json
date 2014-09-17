@@ -1,0 +1,31 @@
+{
+  "arbetsplats": {
+    "arbetsplatsnamn": "SWEDEN GREEN TRADING AB",
+    "postnummer": "13140",
+    "postadress": "Kantatvägen 18",
+    "postort": "Nacka",
+    "postland": "Sverige",
+    "land": "Sverige",
+    "besoksadress": "Kantatvägen 18",
+    "besoksort": "Nacka",
+    "telefonnummer": "076-2899405",
+    "faxnummer": "",
+    "epostadress": "11111@3333.3333",
+    "hemsida": "http://www.swedengreentrading.se",
+    "logotypurl" : "api.arbetsformedlingen.se/platsannons/2535965/logotyp",
+    "kontaktpersonlista": {
+      "kontaktpersondata": [
+        {
+          "namn": "Sara Al-Amrri",
+          "titel": "Regionskoordinator",
+          "mobilnummer": "",
+          "telefonnummer": "",
+          "telefonnummer2": "",
+          "epostadress": "",
+          "kontaktpersonertelefon1beskrivning": "",
+          "kontaktpersonertelefon2beskrivning": ""
+        }
+      ]
+    }
+  }
+}
