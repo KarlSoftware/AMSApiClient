@@ -1,0 +1,15 @@
+{
+  "soklista": {
+    "listnamn": "kommuner",
+    "totalt_antal_platsannonser": 241,
+    "totalt_antal_ledigajobb": 401,
+    "sokdata": [
+      {
+        "id": 1082,
+        "namn": "Karlshamn",
+        "antal_platsannonser": 34,
+        "antal_ledigajobb": 44
+      }
+    ]
+  }
+}
