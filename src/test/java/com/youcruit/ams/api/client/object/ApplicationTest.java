@@ -19,6 +19,7 @@ public class ApplicationTest {
 
     @Before
     public void setUp() {
+	om = new ObjectMapper();
 	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("application.json");
 	expected = new Application();
 	expected.setEmail("kontakt@modelhouse.se");
