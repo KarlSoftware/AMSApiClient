@@ -1,0 +1,21 @@
+{
+  "soklista": {
+    "listnamn": "yrken",
+    "totalt_antal_platsannonser": 20,
+    "totalt_antal_ledigajobb": 24,
+    "sokdata": [
+      {
+        "id": 4742,
+        "namn": "Bakteriolog",
+        "antal_platsannonser": 0,
+        "antal_ledigajobb": 0
+      },
+      {
+        "id": 6902,
+        "namn": "Bioinformatiker",
+        "antal_platsannonser": 1,
+        "antal_ledigajobb": 1
+      }
+    ]
+  }
+}

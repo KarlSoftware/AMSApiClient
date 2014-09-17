@@ -1,0 +1,21 @@
+{
+  "soklista": {
+    "listnamn": "yrkesgrupper",
+    "totalt_antal_platsannonser": 23780,
+    "totalt_antal_ledigajobb": 42406,
+    "sokdata": [
+      {
+        "id": 1,
+        "namn": "Administration, ekonomi, juridik",
+        "antal_platsannonser": 2012,
+        "antal_ledigajobb": 2584
+      },
+      {
+        "id": 2,
+        "namn": "Bygg och anläggning",
+        "antal_platsannonser": 915,
+        "antal_ledigajobb": 1642
+      }
+    ]
+  }
+}
