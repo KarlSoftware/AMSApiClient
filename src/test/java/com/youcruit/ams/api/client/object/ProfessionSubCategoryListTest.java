@@ -9,7 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ProfessionSubCategoryListTest extends AbstractTest {
+public class ProfessionSubCategoryListTest extends AbstractListTest {
     private InputStream is;
     private ProfessionSubCategory expected;
     private ProfessionSubCategoryList expectedList;

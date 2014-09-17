@@ -9,7 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class MunicipialityListTest extends AbstractTest {
+public class MunicipialityListTest extends AbstractListTest {
     private InputStream is;
     private Municipiality expected;
     private MunicipialityList expectedList;

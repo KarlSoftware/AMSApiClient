@@ -11,7 +11,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class MatchDataListTest extends AbstractTest{
+public class MatchDataListTest extends AbstractListTest{
     private InputStream is;
     private MatchData expected;
     private MatchDataList expectedList;
