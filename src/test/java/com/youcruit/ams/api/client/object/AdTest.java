@@ -9,7 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class AdTest extends AbstractTest {
+public class AdTest extends AbstractListTest {
 
     private InputStream is;
     private Ad expected;
