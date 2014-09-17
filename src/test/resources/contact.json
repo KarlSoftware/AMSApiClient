@@ -1,14 +1,10 @@
 {
-  "kontaktpersondata": [
-    {
       "namn": "Sara Al-Amrri",
       "titel": "Regionskoordinator",
-      "mobilnummer": "",
-      "telefonnummer": "",
-      "telefonnummer2": "",
-      "epostadress": "",
-      "kontaktpersonertelefon1beskrivning": "",
-      "kontaktpersonertelefon2beskrivning": ""
-    }
-  ]
+      "mobilnummer": "0766 34 89 79",
+      "telefonnummer": "07 66 34 89 79",
+      "telefonnummer2": null,
+      "epostadress": "sara@backupevent.se",
+      "kontaktpersonertelefon1beskrivning": null,
+      "kontaktpersonertelefon2beskrivning": null
 }
