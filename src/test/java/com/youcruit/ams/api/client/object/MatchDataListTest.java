@@ -7,23 +7,18 @@ import java.io.InputStream;
 import java.util.Calendar;
 import java.util.TimeZone;
 
-import org.codehaus.jackson.map.DeserializationConfig.Feature;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class MatchDataListTest {
+public class MatchDataListTest extends AbstractTest{
     private InputStream is;
-    private ObjectMapper om;
     private MatchData expected;
     private MatchDataList expectedList;
 
     @Before
     public void setUp() {
 	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("MatchDataList.json");
-	om = new ObjectMapper();
-	om.configure(Feature.UNWRAP_ROOT_VALUE, true);
 	expected = new MatchData();
 	expected.setAdId("2534149");
 	expected.setAdHeader("Taxiförare / Hela Stockholm / Taxikurir");

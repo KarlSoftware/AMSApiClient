@@ -5,20 +5,17 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TermsTest {
+public class TermsTest extends AbstractTest {
     private InputStream is;
-    private ObjectMapper om;
     private Terms expected;
 
     @Before
     public void setUp() {
 	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("terms.json");
-	om = new ObjectMapper();
 	expected = new Terms();
 	expected.setPermanency("Tillsvidare");
 	expected.setWorkingTime("Heltid/Deltid");

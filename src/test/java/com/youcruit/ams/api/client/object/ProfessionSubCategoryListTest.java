@@ -5,23 +5,18 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.DeserializationConfig.Feature;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ProfessionSubCategoryListTest {
+public class ProfessionSubCategoryListTest extends AbstractTest {
     private InputStream is;
-    private ObjectMapper om;
     private ProfessionSubCategory expected;
     private ProfessionSubCategoryList expectedList;
 
     @Before
     public void setUp() {
 	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("professiongroups.json");
-	om = new ObjectMapper();
-	om.configure(Feature.UNWRAP_ROOT_VALUE, true);
 	expectedList = new ProfessionSubCategoryList();
 	expected = new ProfessionSubCategory();
 	expected.setAmsId("2611");

@@ -19,6 +19,8 @@ import org.apache.http.protocol.HttpContext;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.DeserializationConfig.Feature;
 
+import com.youcruit.ams.api.client.serialization.AMSSerializationModule;
+
 public class AMSApiClient {
 
 
@@ -29,6 +31,7 @@ public class AMSApiClient {
 	this.amsBaseApiUrl = amsBaseApiUrl;
 	xm = new ObjectMapper();
 	xm.configure(Feature.UNWRAP_ROOT_VALUE, true);
+	xm.registerModule(new AMSSerializationModule());
     }
 
     private InputStream internalExecuteQuery(final AMSQuery query) throws IOException, URISyntaxException{

@@ -7,19 +7,16 @@ import java.io.InputStream;
 import java.util.Calendar;
 import java.util.TimeZone;
 
-import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ApplicationTest {
+public class ApplicationTest extends AbstractTest{
     private InputStream is;
-    private ObjectMapper om;
     private Application expected;
 
     @Before
     public void setUp() {
-	om = new ObjectMapper();
 	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("application.json");
 	expected = new Application();
 	expected.setEmail("kontakt@modelhouse.se");

@@ -10,7 +10,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class RequirementTest {
+public class RequirementTest extends AbstractTest {
     private InputStream is;
     private ObjectMapper om;
     private Requirement expected;
@@ -18,7 +18,6 @@ public class RequirementTest {
     @Before
     public void setUp() {
 	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("requirement.json");
-	om = new ObjectMapper();
 	expected = new Requirement();
 	expected.setCarOwner(false);
 	expected.getDriversLicenseClass().getDriversLicenseClasses().add("B");

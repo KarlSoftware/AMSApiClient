@@ -7,20 +7,17 @@ import java.io.InputStream;
 import java.util.Calendar;
 import java.util.TimeZone;
 
-import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class MatchDataTest {
+public class MatchDataTest extends AbstractTest {
     private InputStream is;
-    private ObjectMapper om;
     private MatchData expected;
 
     @Before
     public void setUp() {
 	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("MatchData.json");
-	om = new ObjectMapper();
 	expected = new MatchData();
 	expected.setAdId("2534149");
 	expected.setAdHeader("Taxiförare / Hela Stockholm / Taxikurir");

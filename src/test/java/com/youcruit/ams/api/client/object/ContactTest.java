@@ -5,20 +5,17 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ContactTest {
+public class ContactTest  extends AbstractTest{
     private InputStream is;
-    private ObjectMapper om;
     private Contact expected;
 
     @Before
     public void setUp() {
 	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("contact.json");
-	om = new ObjectMapper();
 	expected = new Contact();
 	expected.setName("Sara Al-Amrri");
 	expected.setRole("Regionskoordinator");

@@ -12,15 +12,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class WorkplaceTest {
+public class WorkplaceTest extends AbstractTest {
     private InputStream is;
-    private ObjectMapper om;
     private Workplace expected;
 
     @Before
     public void setUp() {
 	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("workplace.json");
-	om = new ObjectMapper();
 	expected = new Workplace();
 	expected.setName("SWEDEN GREEN TRADING AB");
 	expected.setPostalCode("13140");
