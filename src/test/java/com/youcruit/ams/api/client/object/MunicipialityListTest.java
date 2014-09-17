@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.DeserializationConfig.Feature;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,6 +21,7 @@ public class MunicipialityListTest {
     public void setUp() {
 	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("municipialities.json");
 	om = new ObjectMapper();
+	om.configure(Feature.UNWRAP_ROOT_VALUE, true);
 	expectedList = new MunicipialityList();
 	expected = new Municipiality();
 	expected.setName("Karlshamn");

@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.codehaus.jackson.annotate.JsonProperty;
-
+import org.codehaus.jackson.map.annotate.JsonRootName;
+@JsonRootName(value="soklista")
 public abstract class SearchItemList<T> implements AMSList<T>{
 
     @JsonProperty(value="listnamn")
     private String name;
     @JsonProperty(value="totalt_antal_platsannonser")
     private int count;
+    @JsonProperty(value="sokdata")
     private List<T> list;
 
     public SearchItemList() {
