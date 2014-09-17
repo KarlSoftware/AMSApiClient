@@ -1,14 +1,14 @@
 package com.youcruit.ams.api.client.object;
 
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import org.codehaus.jackson.annotate.JsonProperty;
 
 public abstract class SearchItem {
 
-    @JacksonXmlProperty(localName = "id")
+    @JsonProperty(value="id")
     private String amsId;
-    @JacksonXmlProperty(localName = "namn")
+    @JsonProperty(value="namn")
     private String name;
-    @JacksonXmlProperty(localName = "antal_platsannonser")
+    @JsonProperty(value="antal_platsannonser")
     private int count;
 
     public SearchItem() {

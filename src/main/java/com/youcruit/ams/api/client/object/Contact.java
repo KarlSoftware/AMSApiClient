@@ -1,25 +1,24 @@
 package com.youcruit.ams.api.client.object;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import org.codehaus.jackson.annotate.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@org.codehaus.jackson.annotate.JsonIgnoreProperties(ignoreUnknown = true)
 public class Contact {
-    @JacksonXmlProperty(localName = "namn")
+    @JsonProperty(value="namn")
     private String name;
-    @JacksonXmlProperty(localName = "titel")
+    @JsonProperty(value="titel")
     private String role;
-    @JacksonXmlProperty(localName = "mobilnummer")
+    @JsonProperty(value="mobilnummer")
     private String mobilePhone;
-    @JacksonXmlProperty(localName = "telefonnummer")
+    @JsonProperty(value="telefonnummer")
     private String phone;
-    @JacksonXmlProperty(localName = "telefonnummer2")
+    @JsonProperty(value="telefonnummer2")
     private String phone2;
-    @JacksonXmlProperty(localName = "epostadress")
+    @JsonProperty(value="epostadress")
     private String email;
-    @JacksonXmlProperty(localName = "kontaktpersonertelefon1beskrivning")
+    @JsonProperty(value="kontaktpersonertelefon1beskrivning")
     private String phoneDescription;
-    @JacksonXmlProperty(localName = "kontaktpersonertelefon2beskrivning")
+    @JsonProperty(value="kontaktpersonertelefon2beskrivning")
     private String phone2Description;
     public String getName() {
         return name;

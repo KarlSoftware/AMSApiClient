@@ -3,13 +3,13 @@ package com.youcruit.ams.api.client.object;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import org.codehaus.jackson.annotate.JsonProperty;
 
 public abstract class SearchItemList<T> implements AMSList<T>{
 
-    @JacksonXmlProperty(localName = "listnamn")
+    @JsonProperty(value="listnamn")
     private String name;
-    @JacksonXmlProperty(localName = "totalt_antal_platsannonser")
+    @JsonProperty(value="totalt_antal_platsannonser")
     private int count;
     private List<T> list;
 

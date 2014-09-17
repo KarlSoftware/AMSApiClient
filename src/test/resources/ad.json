@@ -1,0 +1,49 @@
+{
+  "platsannons": {
+    "annons": {
+      "annonsid": "2534149",
+      "annonsrubrik": "Taxiförare/Hela Stockholm/Taxikurir",
+      "annonstext": "Nu söker vi flera chaufförer för anställning på heltid/deltid.\nVi är ett taxiåkeri som är anslutna till Norden största taxi bolag (Taxi Kurir). \nFör rätt person med rätt stämning kan företaget stå till Taxi legitimation och taxikurir intern varumärkesutbildning.\n\nKontakta oss via mejl eller telefon om du har frågor och funderingar.\n\nLönen är provisionslön av inkört kassan , vi erbjuder 45% av inkört kassa exklusiv moms. Ring eller mejla så berättar vi mer .\n\nVi har garage plats i Södertälje, Skärholmen,Sätra,Tumba, Farsta, Skogås och Nacka . Det finns möjlighet att ni får bilen hos er om ni är två som bor nära varandra och vill dela bilen, företaget betalar självklart parkeringen . Detta gäller hela stora Stockholm.",
+      "yrkesbenamning": "Taxiförare/Taxichaufför",
+      "yrkesid": 6242,
+      "publiceraddatum": "2014-09-04T00:00:00+02:00",
+      "antal_platser": 2,
+      "kommunnamn": "Stockholm"
+    },
+    "villkor": {
+      "varaktighet": "Tillsvidare",
+      "arbetstid": "Heltid/Deltid",
+      "arbetstidvaraktighet": "Tillsvidare/Heltid/Deltid",
+      "lonetyp": "Rörlig lön",
+      "loneform": "Rörlig lön"
+    },
+    "ansokan": {
+      "referens": "",
+      "epostadress": "hasanin.farhan@swedengreentrading.se",
+      "sista_ansokningsdag": "",
+      "ovrigt_om_ansokan": ""
+    },
+    "arbetsplats": {
+      "arbetsplatsnamn": "SWEDEN GREEN TRADING AB",
+      "postnummer": "13140",
+      "postadress": "Kantatvägen 18",
+      "postort": "Nacka",
+      "postland": "Sverige",
+      "land": "Sverige",
+      "besoksadress": "Kantatvägen 18",
+      "besoksort": "Nacka",
+      "telefonnummer": "076-2899405",
+      "faxnummer": "",
+      "epostadress": "hasanin.farhan@swedengreentrading.se",
+      "hemsida": "http://www.swedengreentrading.se"
+    },
+    "krav": {
+      "korkortslista": {
+        "korkortstyp": [
+          "B"
+        ]
+      },
+      "egenbil": false
+    }
+  }
+}

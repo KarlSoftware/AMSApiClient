@@ -1,0 +1,30 @@
+{
+  "matchningslista": {
+    "antal_platsannonser": 8440,
+    "antal_platsannonser_exakta": 8440,
+    "antal_platsannonser_narliggande": 0,
+    "antal_sidor": 422,
+    "matchningdata": [
+      {
+        "annonsid": "2534149",
+        "annonsrubrik": "Taxiförare / Hela Stockholm / Taxikurir",
+        "yrkesbenamning": "Taxiförare/Taxichaufför",
+        "arbetsplatsnamn": "SWEDEN GREEN TRADING AB",
+        "kommunnamn": "Stockholm",
+        "publiceraddatum": "2014-09-04T00:00:00+02:00",
+        "relevans": 100,
+        "antalplatser": "2"
+      },
+      {
+        "annonsid": "2535235",
+        "annonsrubrik": "Däckmontör säsong",
+        "yrkesbenamning": "Däckmontör/Däck- och hjulmekaniker",
+        "arbetsplatsnamn": "JOAKIM ERIKSSON BIL AB",
+        "kommunnamn": "Botkyrka",
+        "publiceraddatum": "2014-09-04T00:00:00+02:00",
+        "relevans": 100,
+        "antalplatser": "3"
+      }
+    ]
+  }
+}

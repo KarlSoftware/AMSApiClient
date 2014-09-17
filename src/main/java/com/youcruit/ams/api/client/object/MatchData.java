@@ -2,26 +2,26 @@ package com.youcruit.ams.api.client.object;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MatchData {
-    @JacksonXmlProperty(localName="annonsid")
+    @JsonProperty(value="annonsid")
     private String adId;
-    @JacksonXmlProperty(localName="annonsrubrik")
+    @JsonProperty(value="annonsrubrik")
     private String adHeader;
-    @JacksonXmlProperty(localName="yrkesbenamning")
+    @JsonProperty(value="yrkesbenamning")
     private String professionName;
-    @JacksonXmlProperty(localName="arbetsplatsnamn")
+    @JsonProperty(value="arbetsplatsnamn")
     private String employerName;
-    @JacksonXmlProperty(localName="kommunnamn")
+    @JsonProperty(value="kommunnamn")
     private String municipialityName;
-    @JacksonXmlProperty(localName="publiceraddatum")
+    @JsonProperty(value="publiceraddatum")
     private Date published;
-    @JacksonXmlProperty(localName="relevans")
+    @JsonProperty(value="relevans")
     private int relevance;
-    @JacksonXmlProperty(localName="antalplatser")
+    @JsonProperty(value="antalplatser")
     private int countOpenings;
     public String getAdId() {
         return adId;

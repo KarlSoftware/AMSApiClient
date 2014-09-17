@@ -3,38 +3,38 @@ package com.youcruit.ams.api.client.object;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Workplace {
-    @JacksonXmlProperty(localName="arbetsplatsnamn")
+    @JsonProperty(value="arbetsplatsnamn")
     private String name;
-    @JacksonXmlProperty(localName="postnummer")
+    @JsonProperty(value="postnummer")
     private String postalCode;
-    @JacksonXmlProperty(localName="postadress")
+    @JsonProperty(value="postadress")
     private String adress;
-    @JacksonXmlProperty(localName="besoksadress")
+    @JsonProperty(value="besoksadress")
     private String visitingAddress;
-    @JacksonXmlProperty(localName="besoksort")
+    @JsonProperty(value="besoksort")
     private String visitingCity;
-    @JacksonXmlProperty(localName="land")
+    @JsonProperty(value="land")
     private String visitingCountry;
-    @JacksonXmlProperty(localName="postort")
+    @JsonProperty(value="postort")
     private String city;
-    @JacksonXmlProperty(localName="postland")
+    @JsonProperty(value="postland")
     private String country;
-    @JacksonXmlProperty(localName="telefonnummer")
+    @JsonProperty(value="telefonnummer")
     private String phone;
-    @JacksonXmlProperty(localName="faxnummer")
+    @JsonProperty(value="faxnummer")
     private String fax;
-    @JacksonXmlProperty(localName="hemsida")
+    @JsonProperty(value="hemsida")
     private String homepage;
-    @JacksonXmlProperty(localName="epostadress")
+    @JsonProperty(value="epostadress")
     private String email;
-    @JacksonXmlProperty(localName="kontaktpersonlista")
+    @JsonProperty(value="kontaktpersonlista")
     private List<Contact> contacts;
-    @JacksonXmlProperty(localName="logotypurl")
+    @JsonProperty(value="logotypurl")
     private String logoUrl;
 
     public String getEmail() {

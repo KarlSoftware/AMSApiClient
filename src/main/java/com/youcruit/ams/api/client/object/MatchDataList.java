@@ -3,22 +3,22 @@ package com.youcruit.ams.api.client.object;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.youcruit.ams.api.client.deserializers.MatchListDeserializer;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.map.annotate.JsonRootName;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonDeserialize(using=MatchListDeserializer.class)
+@JsonRootName(value="matchningslista")
 public class MatchDataList implements AMSList<MatchData>{
-    @JacksonXmlProperty(localName="antal_platsannonser")
+    @JsonProperty(value="antal_platsannonser")
     private int count;
-    @JacksonXmlProperty(localName="antal_platsannonser_exakta")
+    @JsonProperty(value="antal_platsannonser_exakta")
     private int countExact;
-    @JacksonXmlProperty(localName="antal_platsannonser_narliggande")
+    @JsonProperty(value="antal_platsannonser_narliggande")
     private int countAdjacent;
-    @JacksonXmlProperty(localName="antal_sidor")
+    @JsonProperty(value="antal_sidor")
     private int countPages;
+    @JsonProperty(value="matchningdata")
     private List<MatchData> list;
     
     public int getCount() {

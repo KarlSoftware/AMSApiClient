@@ -7,12 +7,10 @@ import java.io.InputStream;
 import java.util.Calendar;
 import java.util.TimeZone;
 
+import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 public class DetailsTest {
     private InputStream is;
@@ -21,8 +19,8 @@ public class DetailsTest {
 
     @Before
     public void setUp() {
-	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("details.xml");
-	om = new XmlMapper();
+	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("details.json");
+	om = new ObjectMapper();
 	expected = new Details();
 	expected.setAdId("2534149");
 	expected.setAdHeader("Taxiförare/Hela Stockholm/Taxikurir");

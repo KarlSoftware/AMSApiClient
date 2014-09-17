@@ -7,22 +7,23 @@ import java.io.InputStream;
 import java.util.Calendar;
 import java.util.TimeZone;
 
+import org.codehaus.jackson.map.DeserializationConfig.Feature;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-
 public class MatchDataListTest {
     private InputStream is;
-    private XmlMapper om;
+    private ObjectMapper om;
     private MatchData expected;
     private MatchDataList expectedList;
 
     @Before
     public void setUp() {
-	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("MatchDataList.xml");
-	om = new XmlMapper();
+	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("MatchDataList.json");
+	om = new ObjectMapper();
+	om.configure(Feature.UNWRAP_ROOT_VALUE, true);
 	expected = new MatchData();
 	expected.setAdId("2534149");
 	expected.setAdHeader("Taxiförare / Hela Stockholm / Taxikurir");

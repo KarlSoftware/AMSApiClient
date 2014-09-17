@@ -3,23 +3,24 @@ package com.youcruit.ams.api.client.object;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.map.annotate.JsonRootName;
+
 import com.youcruit.ams.api.client.AMSLookUp;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonRootName(value="platsannons")
 public class Ad {
-
+    @JsonProperty(value="annonsid")
     private String id;
-    @JacksonXmlProperty(localName="ansokan")
+    @JsonProperty(value="ansokan")
     private Application application;
-    @JacksonXmlProperty(localName="arbetsplats")
+    @JsonProperty(value="arbetsplats")
     private Workplace workplace;
-    @JacksonXmlProperty(localName="annons")
+    @JsonProperty(value="annons")
     private Details details;
-    @JacksonXmlProperty(localName="villkor")
+    @JsonProperty(value="villkor")
     private Terms terms;
-    @JacksonXmlProperty(localName="krav")
+    @JsonProperty(value="krav")
     private Requirement requirement;
     private String professionCategoryId;
     private String professionSubCategoryId;

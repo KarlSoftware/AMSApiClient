@@ -7,12 +7,10 @@ import java.io.InputStream;
 import java.util.Calendar;
 import java.util.TimeZone;
 
+import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 public class ApplicationTest {
     private InputStream is;
@@ -21,8 +19,7 @@ public class ApplicationTest {
 
     @Before
     public void setUp() {
-	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("application.xml");
-	om = new XmlMapper();
+	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("application.json");
 	expected = new Application();
 	expected.setEmail("kontakt@modelhouse.se");
 	expected.setReference("Säljare/värdinna");

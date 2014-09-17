@@ -2,18 +2,17 @@ package com.youcruit.ams.api.client.object;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import org.codehaus.jackson.annotate.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@org.codehaus.jackson.annotate.JsonIgnoreProperties(ignoreUnknown = true)
 public class Application {
-    @JacksonXmlProperty(localName="epostadress")
+    @JsonProperty(value="epostadress")
     private String email;
-    @JacksonXmlProperty(localName="referens")
+    @JsonProperty(value="referens")
     private String reference;
-    @JacksonXmlProperty(localName="sista_ansokningsdag")
+    @JsonProperty(value="sista_ansokningsdag")
     private Date closeDate;
-    @JacksonXmlProperty(localName="ovrigt_om_ansokan")
+    @JsonProperty(value="ovrigt_om_ansokan")
     private String additionalInformation;
 
     public String getEmail() {

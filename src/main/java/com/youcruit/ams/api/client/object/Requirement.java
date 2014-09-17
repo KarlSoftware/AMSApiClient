@@ -1,30 +1,24 @@
 package com.youcruit.ams.api.client.object;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Requirement {
-    @JacksonXmlProperty(localName = "egenbil")
+    @JsonProperty(value="egenbil")
     private boolean carOwner;
-    @JacksonXmlProperty(localName = "korkortslista")
-    private List<String> driversLicenseClass;
+    @JsonProperty(value="korkortslista")
+    private DriversLicenseClasses driversLicenseClass;
     public boolean isCarOwner() {
         return carOwner;
     }
     public void setCarOwner(boolean car) {
         this.carOwner = car;
     }
-    public List<String> getDriversLicenseClass() {
-	if(driversLicenseClass==null){
-	    driversLicenseClass = new ArrayList<String>();
-	}
+    public DriversLicenseClasses getDriversLicenseClass() {
         return driversLicenseClass;
     }
-    public void setDriversLicenseClass(List<String> driversLicenseClass) {
+    public void setDriversLicenseClass(DriversLicenseClasses driversLicenseClass) {
         this.driversLicenseClass = driversLicenseClass;
     }
     @Override
@@ -50,6 +44,5 @@ public class Requirement {
     @Override
     public String toString() {
 	return "Requirement [carOwner=" + carOwner + ", driversLicenseClass=" + driversLicenseClass + "]";
-    } 
-
+    }
 }

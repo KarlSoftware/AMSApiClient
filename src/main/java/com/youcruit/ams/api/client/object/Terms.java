@@ -1,19 +1,19 @@
 package com.youcruit.ams.api.client.object;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Terms {
-    @JacksonXmlProperty(localName = "varaktighet")
+    @JsonProperty(value="varaktighet")
     private String permanency;
-    @JacksonXmlProperty(localName = "arbetstid")
+    @JsonProperty(value="arbetstid")
     private String workingTime;
-    @JacksonXmlProperty(localName = "arbetstidvaraktighet")
+    @JsonProperty(value="arbetstidvaraktighet")
     private String workingTimePermanency;
-    @JacksonXmlProperty(localName = "lonetyp")
+    @JsonProperty(value="lonetyp")
     private String wageType;
-    @JacksonXmlProperty(localName = "loneform")
+    @JsonProperty(value="loneform")
     private String wageText;
     public String getPermanency() {
         return permanency;

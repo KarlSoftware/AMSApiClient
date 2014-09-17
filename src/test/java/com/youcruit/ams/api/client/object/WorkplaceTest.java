@@ -5,14 +5,12 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 public class WorkplaceTest {
     private InputStream is;
@@ -21,8 +19,8 @@ public class WorkplaceTest {
 
     @Before
     public void setUp() {
-	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("workplace.xml");
-	om = new XmlMapper();
+	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("workplace.json");
+	om = new ObjectMapper();
 	expected = new Workplace();
 	expected.setName("SWEDEN GREEN TRADING AB");
 	expected.setPostalCode("13140");
