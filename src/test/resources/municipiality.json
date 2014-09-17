@@ -1,10 +1,6 @@
 {
-  "sokdata": [
-    {
-      "id": 1082,
-      "namn": "Karlshamn",
-      "antal_platsannonser": 34,
-      "antal_ledigajobb": 44
-    }
-  ]
+  "id": 1082,
+  "namn": "Karlshamn",
+  "antal_platsannonser": 34,
+  "antal_ledigajobb": 44
 }
