@@ -35,7 +35,7 @@ public class WorkplaceTest {
 	Contact c = new Contact();
 	c.setName("Sara Al-Amrri");
 	c.setRole("Regionskoordinator");
-	expected.getContacts().add(c);
+	expected.getContacts().getContacts().add(c);
 	expected.setHomepage("http://www.swedengreentrading.se");
 	expected.setLogoUrl("api.arbetsformedlingen.se/platsannons/2535965/logotyp");
     }

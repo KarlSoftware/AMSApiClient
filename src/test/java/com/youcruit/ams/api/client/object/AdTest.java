@@ -42,7 +42,7 @@ public class AdTest {
 	contact.setPhone2("");
 	contact.setPhoneDescription("");
 	contact.setPhone2Description("");
-	workplace.getContacts().add(contact);
+	workplace.getContacts().getContacts().add(contact);
     }
 
     @Test

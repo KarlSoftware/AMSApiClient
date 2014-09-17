@@ -1,8 +1,5 @@
 package com.youcruit.ams.api.client.object;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 
@@ -33,7 +30,7 @@ public class Workplace {
     @JsonProperty(value="epostadress")
     private String email;
     @JsonProperty(value="kontaktpersonlista")
-    private List<Contact> contacts;
+    private ContactList contacts;
     @JsonProperty(value="logotypurl")
     private String logoUrl;
 
@@ -133,14 +130,14 @@ public class Workplace {
         this.homepage = homepage;
     }
 
-    public List<Contact> getContacts() {
+    public ContactList getContacts() {
 	if(contacts == null){
-	    contacts = new ArrayList<Contact>();
+	    contacts = new ContactList();
 	}
         return contacts;
     }
 
-    public void setContacts(List<Contact> contacts) {
+    public void setContacts(ContactList contacts) {
         this.contacts = contacts;
     }
 
