@@ -17,6 +17,7 @@ import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.DeserializationConfig.Feature;
 
 public class AMSApiClient {
 
@@ -27,6 +28,7 @@ public class AMSApiClient {
     public AMSApiClient(final String amsBaseApiUrl){
 	this.amsBaseApiUrl = amsBaseApiUrl;
 	xm = new ObjectMapper();
+	xm.configure(Feature.UNWRAP_ROOT_VALUE, true);
     }
 
     private InputStream internalExecuteQuery(final AMSQuery query) throws IOException, URISyntaxException{
