@@ -3,18 +3,10 @@ package com.youcruit.ams.api.client.object;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.annotate.JsonRootName;
-@JsonRootName(value="soklista")
-@JsonIgnoreProperties(ignoreUnknown=true)
-public abstract class SearchItemList<T> implements AMSList<T>{
+public abstract class SearchItemList<T> implements AMSList<T> {
 
-    @JsonProperty(value="listnamn")
     private String name;
-    @JsonProperty(value="totalt_antal_platsannonser")
     private int count;
-    @JsonProperty(value="sokdata")
     private List<T> list;
 
     public SearchItemList() {
@@ -22,30 +14,30 @@ public abstract class SearchItemList<T> implements AMSList<T>{
     }
 
     public String getName() {
-        return name;
+	return name;
     }
 
     public void setName(String name) {
-        this.name = name;
+	this.name = name;
     }
 
     public int getCount() {
-        return count;
+	return count;
     }
 
     public void setCount(int count) {
-        this.count = count;
+	this.count = count;
     }
 
     public List<T> getList() {
-        if(list==null){
-            list = new ArrayList<T>();
-        }
-        return list;
+	if (list == null) {
+	    list = new ArrayList<T>();
+	}
+	return list;
     }
 
     public void setList(List<T> professionCategories) {
-        this.list = professionCategories;
+	this.list = professionCategories;
     }
 
     @Override

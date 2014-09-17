@@ -1,152 +1,147 @@
 package com.youcruit.ams.api.client.object;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
-
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Workplace {
-    @JsonProperty(value="arbetsplatsnamn")
+
     private String name;
-    @JsonProperty(value="postnummer")
     private String postalCode;
-    @JsonProperty(value="postadress")
+
     private String adress;
-    @JsonProperty(value="besoksadress")
+
     private String visitingAddress;
-    @JsonProperty(value="besoksort")
+
     private String visitingCity;
-    @JsonProperty(value="land")
+
     private String visitingCountry;
-    @JsonProperty(value="postort")
+
     private String city;
-    @JsonProperty(value="postland")
+
     private String country;
-    @JsonProperty(value="telefonnummer")
+
     private String phone;
-    @JsonProperty(value="faxnummer")
+
     private String fax;
-    @JsonProperty(value="hemsida")
+
     private String homepage;
-    @JsonProperty(value="epostadress")
+
     private String email;
-    @JsonProperty(value="kontaktpersonlista")
+
     private ContactList contacts;
-    @JsonProperty(value="logotypurl")
+
     private String logoUrl;
 
     public String getEmail() {
-        return email;
+	return email;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+	this.email = email;
     }
 
     public String getName() {
-        return name;
+	return name;
     }
 
     public void setName(String name) {
-        this.name = name;
+	this.name = name;
     }
 
     public String getPostalCode() {
-        return postalCode;
+	return postalCode;
     }
 
     public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
+	this.postalCode = postalCode;
     }
 
     public String getAdress() {
-        return adress;
+	return adress;
     }
 
     public void setAdress(String adress) {
-        this.adress = adress;
+	this.adress = adress;
     }
 
     public String getVisitingAddress() {
-        return visitingAddress;
+	return visitingAddress;
     }
 
     public void setVisitingAddress(String visitingAddress) {
-        this.visitingAddress = visitingAddress;
+	this.visitingAddress = visitingAddress;
     }
 
     public String getVisitingCity() {
-        return visitingCity;
+	return visitingCity;
     }
 
     public void setVisitingCity(String visitingCity) {
-        this.visitingCity = visitingCity;
+	this.visitingCity = visitingCity;
     }
 
     public String getVisitingCountry() {
-        return visitingCountry;
+	return visitingCountry;
     }
 
     public void setVisitingCountry(String visitingCountry) {
-        this.visitingCountry = visitingCountry;
+	this.visitingCountry = visitingCountry;
     }
 
     public String getCity() {
-        return city;
+	return city;
     }
 
     public void setCity(String city) {
-        this.city = city;
+	this.city = city;
     }
 
     public String getCountry() {
-        return country;
+	return country;
     }
 
     public void setCountry(String country) {
-        this.country = country;
+	this.country = country;
     }
 
     public String getPhone() {
-        return phone;
+	return phone;
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+	this.phone = phone;
     }
 
     public String getFax() {
-        return fax;
+	return fax;
     }
 
     public void setFax(String fax) {
-        this.fax = fax;
+	this.fax = fax;
     }
 
     public String getHomepage() {
-        return homepage;
+	return homepage;
     }
 
     public void setHomepage(String homepage) {
-        this.homepage = homepage;
+	this.homepage = homepage;
     }
 
     public ContactList getContacts() {
-	if(contacts == null){
+	if (contacts == null) {
 	    contacts = new ContactList();
 	}
-        return contacts;
+	return contacts;
     }
 
     public void setContacts(ContactList contacts) {
-        this.contacts = contacts;
+	this.contacts = contacts;
     }
 
     public String getLogoUrl() {
-        return logoUrl;
+	return logoUrl;
     }
 
     public void setLogoUrl(String logoUrl) {
-        this.logoUrl = logoUrl;
+	this.logoUrl = logoUrl;
     }
 
     @Override

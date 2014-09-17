@@ -2,26 +2,14 @@ package com.youcruit.ams.api.client.object;
 
 import java.util.Date;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
-
-@JsonIgnoreProperties(ignoreUnknown=true)
 public class Details {
-    @JsonProperty(value="annonsid")
     private String adId;
-    @JsonProperty(value="annonsrubrik")
     private String adHeader;
-    @JsonProperty(value="annonstext")
     private String description;
-    @JsonProperty(value="yrkesbenamning")
     private String professionName;
-    @JsonProperty(value="yrkesid")
     private String professionId;
-    @JsonProperty(value="publiceraddatum")
     private Date published;
-    @JsonProperty(value="antal_platser")
     private int countOpenings;
-    @JsonProperty(value="kommunnamn")
     private String municipialityName;
 
     public String getAdId() {

@@ -2,17 +2,10 @@ package com.youcruit.ams.api.client.object;
 
 import java.util.Date;
 
-import org.codehaus.jackson.annotate.JsonProperty;
-
-@org.codehaus.jackson.annotate.JsonIgnoreProperties(ignoreUnknown = true)
 public class Application {
-    @JsonProperty(value="epostadress")
     private String email;
-    @JsonProperty(value="referens")
     private String reference;
-    @JsonProperty(value="sista_ansokningsdag")
     private Date closeDate;
-    @JsonProperty(value="ovrigt_om_ansokan")
     private String additionalInformation;
 
     public String getEmail() {

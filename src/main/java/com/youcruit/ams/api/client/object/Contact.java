@@ -1,24 +1,14 @@
 package com.youcruit.ams.api.client.object;
 
-import org.codehaus.jackson.annotate.JsonProperty;
 
-@org.codehaus.jackson.annotate.JsonIgnoreProperties(ignoreUnknown = true)
 public class Contact {
-    @JsonProperty(value="namn")
     private String name;
-    @JsonProperty(value="titel")
     private String role;
-    @JsonProperty(value="mobilnummer")
     private String mobilePhone;
-    @JsonProperty(value="telefonnummer")
     private String phone;
-    @JsonProperty(value="telefonnummer2")
     private String phone2;
-    @JsonProperty(value="epostadress")
     private String email;
-    @JsonProperty(value="kontaktpersonertelefon1beskrivning")
     private String phoneDescription;
-    @JsonProperty(value="kontaktpersonertelefon2beskrivning")
     private String phone2Description;
     public String getName() {
         return name;

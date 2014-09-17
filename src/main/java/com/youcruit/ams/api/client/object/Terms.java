@@ -1,50 +1,52 @@
 package com.youcruit.ams.api.client.object;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
-
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Terms {
-    @JsonProperty(value="varaktighet")
     private String permanency;
-    @JsonProperty(value="arbetstid")
     private String workingTime;
-    @JsonProperty(value="arbetstidvaraktighet")
     private String workingTimePermanency;
-    @JsonProperty(value="lonetyp")
     private String wageType;
-    @JsonProperty(value="loneform")
     private String wageText;
+
     public String getPermanency() {
-        return permanency;
+	return permanency;
     }
+
     public void setPermanency(String permanency) {
-        this.permanency = permanency;
+	this.permanency = permanency;
     }
+
     public String getWorkingTime() {
-        return workingTime;
+	return workingTime;
     }
+
     public void setWorkingTime(String workingTime) {
-        this.workingTime = workingTime;
+	this.workingTime = workingTime;
     }
+
     public String getWorkingTimePermanency() {
-        return workingTimePermanency;
+	return workingTimePermanency;
     }
+
     public void setWorkingTimePermanency(String workingTimePermanency) {
-        this.workingTimePermanency = workingTimePermanency;
+	this.workingTimePermanency = workingTimePermanency;
     }
+
     public String getWageType() {
-        return wageType;
+	return wageType;
     }
+
     public void setWageType(String wageType) {
-        this.wageType = wageType;
+	this.wageType = wageType;
     }
+
     public String getWageText() {
-        return wageText;
+	return wageText;
     }
+
     public void setWageText(String wageText) {
-        this.wageText = wageText;
+	this.wageText = wageText;
     }
+
     @Override
     public int hashCode() {
 	final int prime = 31;
@@ -56,6 +58,7 @@ public class Terms {
 	result = prime * result + ((workingTimePermanency == null) ? 0 : workingTimePermanency.hashCode());
 	return result;
     }
+
     @Override
     public boolean equals(Object obj) {
 	if (this == obj) return true;
@@ -79,6 +82,7 @@ public class Terms {
 	} else if (!workingTimePermanency.equals(other.workingTimePermanency)) return false;
 	return true;
     }
+
     @Override
     public String toString() {
 	return "Terms [permanency=" + permanency + ", workingTime=" + workingTime + ", workingTimePermanency=" + workingTimePermanency + ", wageType=" + wageType + ", wageText=" + wageText + "]";

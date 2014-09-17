@@ -1,13 +1,9 @@
 package com.youcruit.ams.api.client.object;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+
 public class Requirement {
-    @JsonProperty(value="egenbil")
     private boolean carOwner;
-    @JsonProperty(value="korkortslista")
     private DriversLicenseClasses driversLicenseClass;
     public boolean isCarOwner() {
         return carOwner;

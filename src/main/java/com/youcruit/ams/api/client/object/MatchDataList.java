@@ -3,22 +3,11 @@ package com.youcruit.ams.api.client.object;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.annotate.JsonRootName;
-
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonRootName(value="matchningslista")
 public class MatchDataList implements AMSList<MatchData>{
-    @JsonProperty(value="antal_platsannonser")
     private int count;
-    @JsonProperty(value="antal_platsannonser_exakta")
     private int countExact;
-    @JsonProperty(value="antal_platsannonser_narliggande")
     private int countAdjacent;
-    @JsonProperty(value="antal_sidor")
     private int countPages;
-    @JsonProperty(value="matchningdata")
     private List<MatchData> list;
     
     public int getCount() {
