@@ -1,7 +1,9 @@
 package com.youcruit.ams.api.client.object;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown=true)
 public abstract class SearchItem {
 
     @JsonProperty(value="id")

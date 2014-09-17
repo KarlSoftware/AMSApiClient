@@ -2,8 +2,10 @@ package com.youcruit.ams.api.client.object;
 
 import java.util.Date;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Details {
     @JsonProperty(value="annonsid")
     private String adId;

@@ -3,12 +3,14 @@ package com.youcruit.ams.api.client.object;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonRootName;
 
 import com.youcruit.ams.api.client.AMSLookUp;
 
 @JsonRootName(value="platsannons")
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Ad {
     @JsonProperty(value="annonsid")
     private String id;

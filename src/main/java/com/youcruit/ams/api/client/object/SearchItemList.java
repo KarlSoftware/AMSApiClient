@@ -3,9 +3,11 @@ package com.youcruit.ams.api.client.object;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonRootName;
 @JsonRootName(value="soklista")
+@JsonIgnoreProperties(ignoreUnknown=true)
 public abstract class SearchItemList<T> implements AMSList<T>{
 
     @JsonProperty(value="listnamn")
