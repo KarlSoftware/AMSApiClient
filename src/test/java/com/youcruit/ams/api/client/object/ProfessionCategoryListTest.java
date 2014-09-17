@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.DeserializationConfig.Feature;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,6 +21,7 @@ public class ProfessionCategoryListTest {
     public void setUp() {
 	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("professioncategories.json");
 	om = new ObjectMapper();
+	om.configure(Feature.UNWRAP_ROOT_VALUE, true);
 	expectedList = new ProfessionCategoryList();
 	expected = new ProfessionCategory();
 	expected.setAmsId("1");
