@@ -5,12 +5,10 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 public class ProfessionTest {
     private InputStream is;
@@ -19,8 +17,8 @@ public class ProfessionTest {
 
     @Before
     public void setUp() {
-	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("profession.xml");
-	om = new XmlMapper();
+	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("profession.json");
+	om = new ObjectMapper();
 	expected = new Profession();
 	expected.setCount(0);
 	expected.setAmsId("4742");

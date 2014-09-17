@@ -7,9 +7,7 @@ import java.util.HashMap;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.youcruit.ams.api.client.object.Ad;
-import com.youcruit.ams.api.client.object.ListContainer;
 import com.youcruit.ams.api.client.object.MatchData;
 import com.youcruit.ams.api.client.object.MatchDataList;
 import com.youcruit.ams.api.client.object.Municipiality;
@@ -43,7 +41,7 @@ public class AMSApiClientINTTest {
 	for(int i=1; i<=numberOfPages; i++) {
 	    query = new AMSQueryBuilder(AMSQuery.EndPoint.MATCHING).county(County.VARMLAND).page(i).build();
 	    
-	    dataList = client.executeQuery2(query, MatchDataList.class);
+	    dataList = client.executeQuery(query, MatchDataList.class);
 	    if(i == 1) {
 		numberOfPages = dataList.getCountPages();
 	    }

@@ -5,22 +5,21 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-
 public class ProfessionSubCategoryListTest {
     private InputStream is;
-    private XmlMapper om;
+    private ObjectMapper om;
     private ProfessionSubCategory expected;
     private ProfessionSubCategoryList expectedList;
 
     @Before
     public void setUp() {
-	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("professiongroups.xml");
-	om = new XmlMapper();
+	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("professiongroups.json");
+	om = new ObjectMapper();
 	expectedList = new ProfessionSubCategoryList();
 	expected = new ProfessionSubCategory();
 	expected.setAmsId("2611");

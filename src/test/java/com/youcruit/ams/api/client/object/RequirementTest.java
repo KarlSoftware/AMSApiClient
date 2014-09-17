@@ -5,12 +5,10 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 public class RequirementTest {
     private InputStream is;
@@ -19,11 +17,11 @@ public class RequirementTest {
 
     @Before
     public void setUp() {
-	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("requirement.xml");
-	om = new XmlMapper();
+	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("requirement.json");
+	om = new ObjectMapper();
 	expected = new Requirement();
 	expected.setCarOwner(false);
-	expected.getDriversLicenseClass().add("B");
+	expected.getDriversLicenseClass().getDriversLicenseClasses().add("B");
     }
 
     @Test

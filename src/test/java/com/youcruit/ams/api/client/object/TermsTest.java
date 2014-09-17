@@ -5,12 +5,10 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 public class TermsTest {
     private InputStream is;
@@ -19,8 +17,8 @@ public class TermsTest {
 
     @Before
     public void setUp() {
-	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("terms.xml");
-	om = new XmlMapper();
+	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("terms.json");
+	om = new ObjectMapper();
 	expected = new Terms();
 	expected.setPermanency("Tillsvidare");
 	expected.setWorkingTime("Heltid/Deltid");
