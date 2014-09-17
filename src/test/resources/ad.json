@@ -35,7 +35,21 @@
       "telefonnummer": "076-2899405",
       "faxnummer": "",
       "epostadress": "hasanin.farhan@swedengreentrading.se",
-      "hemsida": "http://www.swedengreentrading.se"
+      "hemsida": "http://www.swedengreentrading.se",
+      "kontaktpersonlista": {
+        "kontaktpersondata": [
+          {
+            "namn": "Lena Grahn",
+            "titel": "Operativ chef",
+            "mobilnummer": "0703-53 83 49",
+            "telefonnummer": "",
+            "telefonnummer2": "",
+            "epostadress": "lena.grahn@partner.verisure.se",
+            "kontaktpersonertelefon1beskrivning": "",
+            "kontaktpersonertelefon2beskrivning": ""
+          }
+        ]
+      }
     },
     "krav": {
       "korkortslista": {

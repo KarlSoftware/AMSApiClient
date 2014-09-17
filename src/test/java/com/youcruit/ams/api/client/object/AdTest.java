@@ -33,6 +33,16 @@ public class AdTest {
 	workplace = new Workplace();
 	workplace.setEmail("hasanin.farhan@swedengreentrading.se");
 	expected.setWorkplace(workplace);
+	Contact contact = new Contact();
+	contact.setEmail("lena.grahn@partner.verisure.se");
+	contact.setName("Lena Grahn");
+	contact.setRole("Operativ chef");
+	contact.setMobilePhone("0703-53 83 49");
+	contact.setPhone("");
+	contact.setPhone2("");
+	contact.setPhoneDescription("");
+	contact.setPhone2Description("");
+	workplace.getContacts().add(contact);
     }
 
     @Test
