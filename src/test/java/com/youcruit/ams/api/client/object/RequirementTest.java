@@ -5,14 +5,12 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 public class RequirementTest extends AbstractTest {
     private InputStream is;
-    private ObjectMapper om;
     private Requirement expected;
 
     @Before
