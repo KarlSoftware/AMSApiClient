@@ -1,0 +1,21 @@
+{
+  "soklista": {
+    "listnamn": "yrkesgrupper",
+    "totalt_antal_platsannonser": 2039,
+    "totalt_antal_ledigajobb": 2614,
+    "sokdata": [
+      {
+        "id": 2611,
+        "namn": "Advokater",
+        "antal_platsannonser": 1,
+        "antal_ledigajobb": 1
+      },
+      {
+        "id": 2614,
+        "namn": "Affärs- och företagsjurister",
+        "antal_platsannonser": 17,
+        "antal_ledigajobb": 19
+      }
+    ]
+  }
+}
