@@ -10,7 +10,7 @@ public class ContactList {
 
     public List<Contact> getContacts() {
 	if(contacts==null){
-	    return new ArrayList<Contact>();
+	    contacts =  new ArrayList<Contact>();
 	}
         return contacts;
     }
