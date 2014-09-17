@@ -1,9 +1,7 @@
 {
-  "villkor": {
     "varaktighet": "Tillsvidare",
     "arbetstid": "Heltid/Deltid",
     "arbetstidvaraktighet": "Tillsvidare/Heltid/Deltid",
     "lonetyp": "Rörlig lön",
     "loneform": "Rörlig lön"
-  }
 }
