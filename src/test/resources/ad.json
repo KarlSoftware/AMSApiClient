@@ -18,10 +18,10 @@
       "loneform": "Rörlig lön"
     },
     "ansokan": {
-      "referens": "",
+      "referens": null,
       "epostadress": "hasanin.farhan@swedengreentrading.se",
-      "sista_ansokningsdag": "",
-      "ovrigt_om_ansokan": ""
+      "sista_ansokningsdag": null,
+      "ovrigt_om_ansokan": null
     },
     "arbetsplats": {
       "arbetsplatsnamn": "SWEDEN GREEN TRADING AB",
