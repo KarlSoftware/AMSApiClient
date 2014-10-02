@@ -40,7 +40,6 @@ public class AMSApiClient {
 	URI amsQueryUrl = new URI(amsBaseApiUrl + query.toString());
 	HttpGet getData = new HttpGet(amsQueryUrl);
 	getData.addHeader("Accept", "application/json");
-//	getData.addHeader("Content-Type", "application/json");
 	getData.addHeader("Accept-Language", "en-US,en;q=0.8,da;q=0.6,nb;q=0.4,sv;q=0.2");
 	getData.addHeader("Accept-Encoding","gzip,deflate,sdch");
 	getData.addHeader("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.94 Safari/537.36");
@@ -49,7 +48,13 @@ public class AMSApiClient {
 	if(response.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
 	    return responseEntity.getContent();
 	}else {
-	    throw new IOException("Server " + amsBaseApiUrl + " responded with statuscode: " + response.getStatusLine().getStatusCode() + " for query: " + query.toString() + " \n " + IOUtils.toString(response.getEntity().getContent()));
+	    String content;
+	    try {
+		content = IOUtils.toString(response.getEntity().getContent());
+	    } catch (IOException e) {
+		content = "Caught IOException, while trying to read content: " + e.getMessage();
+	    }
+	    throw new AMSApiClientException(response, query, amsBaseApiUrl, content);
 	}
     }
 
