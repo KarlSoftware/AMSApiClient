@@ -44,6 +44,13 @@ for(MatchData d : dataList.getList()) {
 }
 ```
 
+### More examples:
+See AMSApiClientINTTest.java in the com.youcruit.ams.api.client package for more examples of how to use the client.
+
+### Notes on usage
+The API endpoint sometimes returns a response code of 500 or 404 (the latter even though it is returned in the MATCHING searches).
+So be warned and handle thrown IOExceptions and AMSAPIExceptions accordingly.
+
 Building
 --------
 
