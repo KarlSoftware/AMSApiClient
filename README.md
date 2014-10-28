@@ -8,26 +8,26 @@ The client is built and distributed with Maven
 ### Maven depdencies
 Add our Maven Snapshot repository to your pom file
 ```
-        <repository>
-            <id>youcruit-cloudbees-snapshot</id>
-            <name>youcruit-cloudbees-snapshot</name>
-            <url>http://repository-youcruit.forge.cloudbees.com/snapshot/</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
+<repository>
+    <id>youcruit-cloudbees-snapshot</id>
+    <name>youcruit-cloudbees-snapshot</name>
+    <url>http://repository-youcruit.forge.cloudbees.com/snapshot/</url>
+    <releases>
+        <enabled>false</enabled>
+    </releases>
+    <snapshots>
+        <enabled>true</enabled>
+    </snapshots>
+</repository>
 ```
 
 Also add the dependency to your pom
 ```
-        <dependency>
-            <groupId>com.youcruit.ams.api.client</groupId>
-            <artifactId>AMSApiClient</artifactId>
-            <version>0.2.4-SNAPSHOT</version>
-        </dependency>
+<dependency>
+    <groupId>com.youcruit.ams.api.client</groupId>
+    <artifactId>AMSApiClient</artifactId>
+    <version>0.2.4-SNAPSHOT</version>
+</dependency>
 ```
 
 ### Simple usage:
