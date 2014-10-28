@@ -5,7 +5,7 @@ Usage
 -----
 
 The client is built and distributed with Maven
-### Maven depdencies
+### Maven dependencies
 Add our Maven Snapshot repository to your pom file
 ```
 <repository>
@@ -48,7 +48,7 @@ for(MatchData d : dataList.getList()) {
 See AMSApiClientINTTest.java in the com.youcruit.ams.api.client package for more examples of how to use the client.
 
 ### Notes on usage
-The API endpoint sometimes returns a response code of 500 or 404 (the latter even though it is returned in the MATCHING searches).
+The API end point sometimes returns a response code of 500 or 404 (the latter even though it is returned in the MATCHING searches).
 So be warned and handle thrown IOExceptions and AMSAPIExceptions accordingly.
 
 Building
