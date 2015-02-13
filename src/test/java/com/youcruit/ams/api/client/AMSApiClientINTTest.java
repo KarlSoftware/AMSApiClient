@@ -22,12 +22,13 @@ import com.youcruit.ams.api.client.object.ProfessionSubCategoryList;
 public class AMSApiClientINTTest {
 
     private static String amsApiUrl = "http://api.arbetsformedlingen.se";
+    private static String from = "inttest@youcruit.com";
     private AMSApiClient client;
     private AMSQuery query;
     
     @Before
     public void setup(){
-	client = new AMSApiClient(amsApiUrl);
+	client = new AMSApiClient(amsApiUrl, from);
 	query = null;
     }
 

@@ -14,12 +14,13 @@ public class AMSCategoryLookUpINTTest {
     public static final String PROFESSION_ID = "6242";
     private static AMSLookUp lookup;
     private static String amsApiUrl = "http://api.arbetsformedlingen.se";
+    private static String fromEmail = "inttest@youcruit.com";
 
     @BeforeClass
     public static void setup() throws IOException, URISyntaxException {
 	lookup = AMSLookUp.instance();
 	long timer = System.currentTimeMillis();
-	lookup.fetch(amsApiUrl);
+	lookup.fetch(amsApiUrl, fromEmail);
 	System.out.println("Fetch execution time: " + (System.currentTimeMillis() - timer) + " ms");
     }
 

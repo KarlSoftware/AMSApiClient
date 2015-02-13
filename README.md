@@ -33,7 +33,7 @@ Also add the dependency to your pom
 ### Simple usage:
 
 ```java
-AMSApiClient client = new AMSApiClient("http://api.arbetsformedlingen.se");
+AMSApiClient client = new AMSApiClient("http://api.arbetsformedlingen.se", "youremail@example.com");
 //The Api is paged and the first page starts at 1
 AMSQuery query = new AMSQueryBuilder(AMSQuery.EndPoint.MATCHING).county(County.VARMLAND).page(1).build();
 MatchDataList dataList = client.executeQuery(query, MatchDataList.class);

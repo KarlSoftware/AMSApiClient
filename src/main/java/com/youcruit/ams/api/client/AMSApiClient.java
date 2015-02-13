@@ -25,10 +25,12 @@ public class AMSApiClient {
 
 
     private String amsBaseApiUrl;
+    private String from;
     private ObjectMapper xm;
 
-    public AMSApiClient(final String amsBaseApiUrl){
+    public AMSApiClient(final String amsBaseApiUrl, final String fromEmail){
 	this.amsBaseApiUrl = amsBaseApiUrl;
+	this.from = fromEmail;
 	xm = new ObjectMapper();
 	xm.configure(Feature.UNWRAP_ROOT_VALUE, true);
 	xm.registerModule(new AMSSerializationModule());
@@ -43,6 +45,7 @@ public class AMSApiClient {
 	getData.addHeader("Accept-Language", "en-US,en;q=0.8,da;q=0.6,nb;q=0.4,sv;q=0.2");
 	getData.addHeader("Accept-Encoding","gzip,deflate,sdch");
 	getData.addHeader("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.94 Safari/537.36");
+	getData.addHeader("From", from);
 	HttpResponse response = client.execute(getData, localContext);
 	HttpEntity responseEntity = response.getEntity();
 	if(response.getStatusLine().getStatusCode() == HttpStatus.SC_OK){

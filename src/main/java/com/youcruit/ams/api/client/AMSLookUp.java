@@ -30,14 +30,14 @@ public class AMSLookUp {
 	profession = new HashMap<String, Profession>();
     }
 
-    public void fetch(String amsBaseUrl) throws IOException, URISyntaxException {
+    public void fetch(String amsBaseUrl, String fromEmail) throws IOException, URISyntaxException {
 	if(!inited) {
 	    AMSQuery pCQuery = new AMSQueryBuilder(AMSQuery.EndPoint.PROFESSION_CATEGORIES).build();
-	    ProfessionCategoryList pCList = new AMSApiClient(amsBaseUrl).executeQuery(pCQuery, ProfessionCategoryList.class);
+	    ProfessionCategoryList pCList = new AMSApiClient(amsBaseUrl, fromEmail).executeQuery(pCQuery, ProfessionCategoryList.class);
 	    for (ProfessionCategory pc : pCList.getList()) {
-		List<ProfessionSubCategory> subCategories = fetchSubCategories(Integer.parseInt(pc.getAmsId()), amsBaseUrl);
+		List<ProfessionSubCategory> subCategories = fetchSubCategories(Integer.parseInt(pc.getAmsId()), amsBaseUrl, fromEmail);
 		for (ProfessionSubCategory psc : subCategories) {
-		    List<Profession> pL = fetchProfessions(Integer.parseInt(psc.getAmsId()), amsBaseUrl);
+		    List<Profession> pL = fetchProfessions(Integer.parseInt(psc.getAmsId()), amsBaseUrl, fromEmail);
 		    for (Profession p : pL) {
 			profession.put(p.getAmsId(), p);
 			professionSubCategories.put(p.getAmsId(), psc);
@@ -81,15 +81,15 @@ public class AMSLookUp {
 	return profession.get(professionId);
     }
 
-    private List<ProfessionSubCategory> fetchSubCategories(final Integer categoryId, final String amsBaseUrl) throws IOException, URISyntaxException {
+    private List<ProfessionSubCategory> fetchSubCategories(final Integer categoryId, final String amsBaseUrl, final String fromEmail) throws IOException, URISyntaxException {
 	AMSQuery pSCQuery = new AMSQueryBuilder(AMSQuery.EndPoint.PROFESSION_SUB_CATEGORIES).professionCategory(categoryId).build();
-	ProfessionSubCategoryList pSCList = new AMSApiClient(amsBaseUrl).executeQuery(pSCQuery, ProfessionSubCategoryList.class);
+	ProfessionSubCategoryList pSCList = new AMSApiClient(amsBaseUrl, fromEmail).executeQuery(pSCQuery, ProfessionSubCategoryList.class);
 	return pSCList.getList();
     }
 
-    private List<Profession> fetchProfessions(final Integer subCategoryId, final String amsBaseUrl) throws IOException, URISyntaxException {
+    private List<Profession> fetchProfessions(final Integer subCategoryId, final String amsBaseUrl, final String fromEmail) throws IOException, URISyntaxException {
 	AMSQuery pQuery = new AMSQueryBuilder(AMSQuery.EndPoint.PROFESSION).professionSubCategory(subCategoryId).build();
-	ProfessionList pList = new AMSApiClient(amsBaseUrl).executeQuery(pQuery, ProfessionList.class);
+	ProfessionList pList = new AMSApiClient(amsBaseUrl, fromEmail).executeQuery(pQuery, ProfessionList.class);
 	return pList.getList();
     }
     
