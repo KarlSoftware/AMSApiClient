@@ -11,7 +11,7 @@ Add our Maven Snapshot repository to your pom file
 <repository>
     <id>youcruit-cloudbees-snapshot</id>
     <name>youcruit-cloudbees-snapshot</name>
-    <url>http://repository-youcruit.forge.cloudbees.com/snapshot/</url>
+    <url>http://repository-youcruit.forge.cloudbees.com/public/</url>
     <releases>
         <enabled>false</enabled>
     </releases>

@@ -19,17 +19,17 @@
         <repository>
             <id>youcruit-cloudbees-release</id>
             <name>youcruit-cloudbees-release</name>
-            <url>dav:https://repository-youcruit.forge.cloudbees.com/release/</url>
+            <url>dav:https://repository-youcruit.forge.cloudbees.com/public/</url>
         </repository>
         <snapshotRepository>
             <id>youcruit-cloudbees-snapshot</id>
             <name>youcruit-cloudbees-snapshot</name>
-            <url>dav:https://repository-youcruit.forge.cloudbees.com/snapshot/</url>
+            <url>dav:https://repository-youcruit.forge.cloudbees.com/public/</url>
         </snapshotRepository>
         <site>
             <id>youcruit-cloudbees-site</id>
             <name>youcruit-cloudbees-site</name>
-            <url>dav:https://repository-youcruit.forge.cloudbees.com/release/sites/${project.artifactId}</url>
+            <url>dav:https://repository-youcruit.forge.cloudbees.com/public/sites/${project.artifactId}</url>
         </site>
     </distributionManagement>
 
