@@ -13,6 +13,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.conn.ClientConnectionManager;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
+import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
@@ -24,6 +25,10 @@ import com.youcruit.ams.api.client.serialization.AMSSerializationModule;
 public class AMSApiClient {
 
 
+    private static final int CONNECTION_TIMEOUT_DEFAULT = 30000;
+    private static final int SO_TIMEOUT_DEFAULT = 30000;
+    private int soTimeout;
+    private int connectionTimeout;
     private String amsBaseApiUrl;
     private String from;
     private ObjectMapper xm;
@@ -34,6 +39,8 @@ public class AMSApiClient {
 	xm = new ObjectMapper();
 	xm.configure(Feature.UNWRAP_ROOT_VALUE, true);
 	xm.registerModule(new AMSSerializationModule());
+	soTimeout = SO_TIMEOUT_DEFAULT;
+	connectionTimeout = CONNECTION_TIMEOUT_DEFAULT;
     }
 
     private InputStream internalExecuteQuery(final AMSQuery query) throws IOException, URISyntaxException{
@@ -66,6 +73,8 @@ public class AMSApiClient {
 	ClientConnectionManager mgr = client.getConnectionManager();
 
 	HttpParams params = client.getParams();
+	params.setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, connectionTimeout);
+	params.setParameter(CoreConnectionPNames.SO_TIMEOUT, soTimeout);
 	client = new DefaultHttpClient(new ThreadSafeClientConnManager(mgr.getSchemeRegistry()), params);
 	return client;
     }
@@ -74,5 +83,13 @@ public class AMSApiClient {
 	InputStream is = internalExecuteQuery(query);
 	T value = xm.readValue(is, clazz);
 	return value;
+    }
+
+    public int getConnectionTimeout() {
+        return connectionTimeout;
+    }
+
+    public void setConnectionTimeout(int connectionTimeout) {
+        this.connectionTimeout = connectionTimeout;
     }
 }
