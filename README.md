@@ -26,7 +26,7 @@ Also add the dependency to your pom
 <dependency>
     <groupId>com.youcruit.ams.api.client</groupId>
     <artifactId>AMSApiClient</artifactId>
-    <version>0.2.4-SNAPSHOT</version>
+    <version>0.2.5</version>
 </dependency>
 ```
 
