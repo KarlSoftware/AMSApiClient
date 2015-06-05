@@ -1,23 +1,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.youcruit.ams.api.client</groupId>
     <artifactId>AMSApiClient</artifactId>
     <version>0.2.8-SNAPSHOT</version>
     <packaging>jar</packaging>
-
     <name>AMSApiClient</name>
     <url>https://github.com/YouCruit/AMSApiClient</url>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
     <scm>
         <connection>scm:git:git@github.com:YouCruit/AMSApiClient.git</connection>
     </scm>
-
     <!-- Deploy releases and snapshots to the CloudBees maven repositories -->
     <distributionManagement>
         <repository>
@@ -36,7 +31,6 @@
             <url>dav:https://repository-youcruit.forge.cloudbees.com/public/sites/${project.artifactId}</url>
         </site>
     </distributionManagement>
-
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -57,12 +51,12 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>4.1.2</version>
+            <version>4.3.6</version>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpmime</artifactId>
-            <version>4.1.2</version>
+            <version>4.3.6</version>
         </dependency>
         <dependency>
             <groupId>commons-beanutils</groupId>
@@ -75,7 +69,6 @@
             <version>2.4</version>
         </dependency>
     </dependencies>
-
     <build>
         <extensions>
             <!-- Extension required to deploy a snapshot or a release to the CloudBees remote maven repository using Webdav -->
