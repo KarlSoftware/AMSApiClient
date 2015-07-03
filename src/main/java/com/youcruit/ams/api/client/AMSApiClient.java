@@ -9,16 +9,14 @@ import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.conn.ClientConnectionManager;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
-import org.apache.http.params.CoreConnectionPNames;
-import org.apache.http.params.HttpParams;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.DeserializationConfig.Feature;
+import org.codehaus.jackson.map.ObjectMapper;
 
 import com.youcruit.ams.api.client.serialization.AMSSerializationModule;
 
@@ -27,6 +25,7 @@ public class AMSApiClient {
 
     private static final int CONNECTION_TIMEOUT_DEFAULT = 30000;
     private static final int SO_TIMEOUT_DEFAULT = 30000;
+    private final CloseableHttpClient client;
     private int soTimeout;
     private int connectionTimeout;
     private String amsBaseApiUrl;
@@ -41,10 +40,11 @@ public class AMSApiClient {
 	xm.registerModule(new AMSSerializationModule());
 	soTimeout = SO_TIMEOUT_DEFAULT;
 	connectionTimeout = CONNECTION_TIMEOUT_DEFAULT;
+	client = getClientInstance();
+
     }
 
     private InputStream internalExecuteQuery(final AMSQuery query) throws IOException, URISyntaxException{
-	DefaultHttpClient client = getClientInstance();
 	HttpContext localContext = new BasicHttpContext();
 	URI amsQueryUrl = new URI(amsBaseApiUrl + query.toString());
 	HttpGet getData = new HttpGet(amsQueryUrl);
@@ -53,6 +53,8 @@ public class AMSApiClient {
 	getData.addHeader("Accept-Encoding","gzip,deflate,sdch");
 	getData.addHeader("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.94 Safari/537.36");
 	getData.addHeader("From", from);
+	RequestConfig requestConfig = RequestConfig.custom().setConnectionRequestTimeout(getConnectionTimeout()).setConnectTimeout(getConnectionTimeout()).setSocketTimeout(soTimeout).build();
+	getData.setConfig(requestConfig);
 	HttpResponse response = client.execute(getData, localContext);
 	HttpEntity responseEntity = response.getEntity();
 	if(response.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
@@ -68,15 +70,8 @@ public class AMSApiClient {
 	}
     }
 
-    private DefaultHttpClient getClientInstance() {
-	DefaultHttpClient client = new DefaultHttpClient();
-	ClientConnectionManager mgr = client.getConnectionManager();
-
-	HttpParams params = client.getParams();
-	params.setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, connectionTimeout);
-	params.setParameter(CoreConnectionPNames.SO_TIMEOUT, soTimeout);
-	client = new DefaultHttpClient(new ThreadSafeClientConnManager(mgr.getSchemeRegistry()), params);
-	return client;
+    private CloseableHttpClient getClientInstance() {
+	return HttpClientBuilder.create().build();
     }
 
     public <T> T executeQuery(final AMSQuery query, Class<T> clazz) throws IOException, URISyntaxException {
