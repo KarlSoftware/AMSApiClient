@@ -11,6 +11,7 @@ public class Details {
     private Date published;
     private int countOpenings;
     private String municipialityName;
+    private String municipialityId;
 
     public String getAdId() {
 	return adId;
@@ -76,6 +77,13 @@ public class Details {
 	this.municipialityName = municipialityName;
     }
 
+    public String getMunicipialityId() {
+	return municipialityId;
+    }
+
+    public void setMunicipialityId(String municipialityId) {
+	this.municipialityId = municipialityId;
+    }
     @Override
     public int hashCode() {
 	final int prime = 31;
@@ -88,6 +96,7 @@ public class Details {
 	result = prime * result + ((professionId == null) ? 0 : professionId.hashCode());
 	result = prime * result + ((professionName == null) ? 0 : professionName.hashCode());
 	result = prime * result + ((published == null) ? 0 : published.hashCode());
+	result = prime * result + ((municipialityId == null) ? 0 : municipialityId.hashCode());
 	return result;
     }
 
@@ -119,12 +128,15 @@ public class Details {
 	if (published == null) {
 	    if (other.published != null) return false;
 	} else if (!published.equals(other.published)) return false;
+	if (municipialityId == null) {
+	    if (other.municipialityId != null) return false;
+	} else if (!municipialityId.equals(other.municipialityId)) return false;
 	return true;
     }
 
     @Override
     public String toString() {
 	return "Details [adId=" + adId + ", adHeader=" + adHeader + ", description=" + description + ", professionName=" + professionName + ", professionId=" + professionId + ", published=" + published + ", countOpenings=" + countOpenings
-		+ ", municipialityName=" + municipialityName + "]";
+		+ ", municipialityName=" + municipialityName + ", municipialityId=" + municipialityId + "]";
     }
 }

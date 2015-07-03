@@ -23,4 +23,6 @@ public abstract class DetailsMixIn {
     public abstract void setCountOpenings(int countOpenings);
     @JsonProperty(value="kommunnamn")
     public abstract void setMunicipialityName(String municipialityName);
+    @JsonProperty("kommunkod")
+    public abstract void setMunicipialityId(String municipialityId);
 }
