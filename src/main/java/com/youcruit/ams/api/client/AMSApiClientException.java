@@ -2,14 +2,12 @@ package com.youcruit.ams.api.client;
 
 import java.io.IOException;
 
-import org.apache.http.HttpResponse;
-
 public class AMSApiClientException extends IOException {
     private static final long serialVersionUID = 209583503848459181L;
     private int responseCode;
-    public AMSApiClientException(final HttpResponse response, final AMSQuery query, String url, String content) {
-	super("Server " + url + " responded with statuscode: " + response.getStatusLine().getStatusCode() + " for query: " + query.toString() + " \n " + content);
-	setResponseCode(response.getStatusLine().getStatusCode());
+    public AMSApiClientException(final int statusCode, final AMSQuery query, String url, String content) {
+	super("Server " + url + " responded with statuscode: " + statusCode + " for query: " + query.toString() + " \n " + content);
+	setResponseCode(statusCode);
     }
     public int getResponseCode() {
 	return responseCode;

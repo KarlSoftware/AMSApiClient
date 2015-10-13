@@ -41,7 +41,6 @@ public class AMSApiClient {
 	soTimeout = SO_TIMEOUT_DEFAULT;
 	connectionTimeout = CONNECTION_TIMEOUT_DEFAULT;
 	client = getClientInstance();
-
     }
 
     private InputStream internalExecuteQuery(final AMSQuery query) throws IOException, URISyntaxException{
@@ -66,7 +65,7 @@ public class AMSApiClient {
 	    } catch (IOException e) {
 		content = "Caught IOException, while trying to read content: " + e.getMessage();
 	    }
-	    throw new AMSApiClientException(response, query, amsBaseApiUrl, content);
+	    throw new AMSApiClientException(response.getStatusLine().getStatusCode(), query, amsBaseApiUrl, content);
 	}
     }
 
