@@ -15,4 +15,7 @@ public abstract class ApplicationMixIn {
     public abstract void setCloseDate(Date closeDate);
     @JsonProperty(value="ovrigt_om_ansokan")
     public abstract void setAdditionalInformation(String additionalInformation);
+    @JsonProperty(value="webbplats")
+    public abstract void setWebAddress(String webAddress);
+
 }

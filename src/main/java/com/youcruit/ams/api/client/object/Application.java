@@ -7,6 +7,7 @@ public class Application {
     private String reference;
     private Date closeDate;
     private String additionalInformation;
+    private String webAddress;
 
     public String getEmail() {
         return email;
@@ -40,40 +41,46 @@ public class Application {
         this.additionalInformation = additionalInformation;
     }
 
-    @Override
-    public int hashCode() {
-	final int prime = 31;
-	int result = 1;
-	result = prime * result + ((additionalInformation == null) ? 0 : additionalInformation.hashCode());
-	result = prime * result + ((closeDate == null) ? 0 : closeDate.hashCode());
-	result = prime * result + ((email == null) ? 0 : email.hashCode());
-	result = prime * result + ((reference == null) ? 0 : reference.hashCode());
-	return result;
+    public String getWebAddress() {
+        return webAddress;
+    }
+
+    public void setWebAddress(String webAddress) {
+        this.webAddress = webAddress;
     }
 
     @Override
-    public boolean equals(Object obj) {
-	if (this == obj) return true;
-	if (obj == null) return false;
-	if (!(obj instanceof Application)) return false;
-	Application other = (Application) obj;
-	if (additionalInformation == null) {
-	    if (other.additionalInformation != null) return false;
-	} else if (!additionalInformation.equals(other.additionalInformation)) return false;
-	if (closeDate == null) {
-	    if (other.closeDate != null) return false;
-	} else if (!closeDate.equals(other.closeDate)) return false;
-	if (email == null) {
-	    if (other.email != null) return false;
-	} else if (!email.equals(other.email)) return false;
-	if (reference == null) {
-	    if (other.reference != null) return false;
-	} else if (!reference.equals(other.reference)) return false;
-	return true;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Application)) return false;
+
+        Application that = (Application) o;
+
+        if (getEmail() != null ? !getEmail().equals(that.getEmail()) : that.getEmail() != null) return false;
+        if (getReference() != null ? !getReference().equals(that.getReference()) : that.getReference() != null) return false;
+        if (getCloseDate() != null ? !getCloseDate().equals(that.getCloseDate()) : that.getCloseDate() != null) return false;
+        if (getAdditionalInformation() != null ? !getAdditionalInformation().equals(that.getAdditionalInformation()) : that.getAdditionalInformation() != null) return false;
+        return !(getWebAddress() != null ? !getWebAddress().equals(that.getWebAddress()) : that.getWebAddress() != null);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getEmail() != null ? getEmail().hashCode() : 0;
+        result = 31 * result + (getReference() != null ? getReference().hashCode() : 0);
+        result = 31 * result + (getCloseDate() != null ? getCloseDate().hashCode() : 0);
+        result = 31 * result + (getAdditionalInformation() != null ? getAdditionalInformation().hashCode() : 0);
+        result = 31 * result + (getWebAddress() != null ? getWebAddress().hashCode() : 0);
+        return result;
     }
 
     @Override
     public String toString() {
-	return "Application [email=" + email + ", reference=" + reference + ", closeDate=" + closeDate + ", additionalInformation=" + additionalInformation + "]";
+        return "Application{" +
+                        "email='" + email + '\'' +
+                        ", reference='" + reference + '\'' +
+                        ", closeDate=" + closeDate +
+                        ", additionalInformation='" + additionalInformation + '\'' +
+                        ", webAddress='" + webAddress + '\'' +
+                        '}';
     }
 }
