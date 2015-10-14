@@ -49,3 +49,34 @@ Building
 --------
 
 mvn clean install
+
+Releasing
+---------
+
+The copy-paste way of setting up releasing is adding the following to the ~/.m2/settings.xml
+
+```maven
+	<servers>
+		<server>
+			<id>ossrh</id>
+			<username>**nexus username**</username>
+			<password>**nexus password**</password>
+		</server>
+	</servers>
+	<profiles>
+		<profile>
+			<id>gpg</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<gpg.passphrase>**gpg passphrase**</gpg.passphrase>
+				<gpg.keyname>**gpg keyname**</gpg.keyname>
+			</properties>
+		</profile>
+	</profiles>
+```
+
+```sh
+mvn release:prepare release:perform
+```
