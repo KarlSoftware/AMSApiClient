@@ -6,28 +6,18 @@ Usage
 
 The client is built and distributed with Maven
 ### Maven dependencies
-Add our Maven Snapshot repository to your pom file
-```
-<repository>
-    <id>youcruit-cloudbees-snapshot</id>
-    <name>youcruit-cloudbees-snapshot</name>
-    <url>http://repository-youcruit.forge.cloudbees.com/public/</url>
-    <releases>
-        <enabled>true</enabled>
-    </releases>
-    <snapshots>
-        <enabled>true</enabled>
-    </snapshots>
-</repository>
-```
-
-Also add the dependency to your pom
-```
+Add the dependency to your pom:
+```maven
 <dependency>
     <groupId>com.youcruit.ams.api.client</groupId>
     <artifactId>AMSApiClient</artifactId>
-    <version>0.4.2</version>
+    <version>0.4.4</version>
 </dependency>
+```
+
+or for gradle:
+```gradle
+    compile 'com.youcruit.ams.api.client:AMSApiClient:0.4.4'
 ```
 
 ### Simple usage:
@@ -50,6 +40,10 @@ See AMSApiClientINTTest.java in the com.youcruit.ams.api.client package for more
 ### Notes on usage
 The API end point sometimes returns a response code of 500 or 404 (the latter even though it is returned in the MATCHING searches).
 So be warned and handle thrown IOExceptions and AMSAPIExceptions accordingly.
+
+There are more than one server answering requests, and they are *NOT* in sync nor are there any sticky sessions. This means
+inter-page search results are incomplete.
+
 
 Building
 --------
