@@ -6,13 +6,38 @@
     <packaging>jar</packaging>
     <name>AMSApiClient</name>
     <url>https://github.com/YouCruit/AMSApiClient</url>
+    <description>Java client for Arbetsförmedlingens public API</description>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <scm>
         <connection>scm:git:git@github.com:YouCruit/AMSApiClient.git</connection>
         <developerConnection>scm:git:git@github.com:YouCruit/AMSApiClient.git</developerConnection>
+        <url>https://github.com/YouCruit/AMSApiClient</url>
     </scm>
+    <developers>
+        <developer>
+            <id>tobias-</id>
+            <name>Tobias Olsson</name>
+        </developer>
+        <developer>
+            <id>christianekstrand</id>
+            <name>Christian Ekstrand</name>
+        </developer>
+        <developer>
+            <id>pgilmore</id>
+            <name>Patrick Gilmore</name>
+        </developer>
+    </developers>
     <!-- Deploy releases and snapshots to the CloudBees maven repositories -->
     <distributionManagement>
         <snapshotRepository>
