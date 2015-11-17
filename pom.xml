@@ -12,6 +12,7 @@
 
     <properties>
 	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<targetJdk>1.7</targetJdk>
     </properties>
 
     <!-- Deploy releases and snapshots to the CloudBees maven repositories -->
@@ -83,6 +84,28 @@
 	</extensions>
 	<plugins>
 	    <plugin>
+		<groupId>org.codehaus.mojo</groupId>
+		<artifactId>jaxws-maven-plugin</artifactId>
+		<version>1.9</version>
+		<executions>
+		    <execution>
+			<id>generate-jaxws-classes</id>
+			<phase>generate-sources</phase>
+			<goals>
+			    <goal>wsimport</goal>
+			</goals>
+			<configuration>
+			    <wsdlLocation>http://api.arbetsformedlingen.se/af/v0/Occupation/wsoccupation.asmx</wsdlLocation>
+			    <wsdlDirectory>${project.basedir}/src/main/wsdl/</wsdlDirectory>
+			    <packageName>com.youcruit.ams.api.soap</packageName>
+			    <extension>true</extension>
+			    <sourceDestDir>${project.build.directory}/generated-sources/jaxb2</sourceDestDir>
+			</configuration>
+		    </execution>
+		</executions>
+
+	    </plugin>
+	    <plugin>
 		<artifactId>maven-deploy-plugin</artifactId>
 		<version>2.8.1</version>
 	    </plugin>
@@ -102,6 +125,18 @@
 		</configuration>
 	    </plugin>
 
+	    <plugin>
+		<inherited>true</inherited>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-compiler-plugin</artifactId>
+		<version>2.3.2</version>
+		<configuration>
+		    <source>${targetJdk}</source>
+		    <target>${targetJdk}</target>
+		    <optimize>true</optimize>
+		    <debug>true</debug>
+		</configuration>
+	    </plugin>
 	</plugins>
     </build>
 </project>
