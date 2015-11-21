@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.youcruit.ams.api.soap.Article;
 import com.youcruit.ams.api.soap.OccupationList;
 import com.youcruit.ams.api.soap.WSOccupation;
 import com.youcruit.ams.api.soap.WSOccupationSoap;
@@ -31,7 +32,14 @@ public class SoapINTTest {
 
     @Test
     public void getOccupations() {
-        OccupationList allOccupations = wsOccupationSoap.getAllOccupations();
-        System.err.println(allOccupations);
+        OccupationList result = wsOccupationSoap.getAllOccupationsDetailed();
+        System.err.println(result);
+    }
+
+
+    @Test
+    public void getAds() {
+        Article result = wsOccupationSoap.getArticle(2817199);
+            System.err.println(result);
     }
 }
