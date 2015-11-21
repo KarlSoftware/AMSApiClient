@@ -25,9 +25,9 @@ public class AMSApiClientINTTest {
     private static String from = "inttest@youcruit.com";
     private AMSApiClient client;
     private AMSQuery query;
-    
+
     @Before
-    public void setup(){
+    public void setup() {
 	client = new AMSApiClient(amsApiUrl, from);
 	query = null;
     }
@@ -38,22 +38,22 @@ public class AMSApiClientINTTest {
 	int numberOfPages = 1;
 	int realCount = 0;
 	int countDupes = 0;
-	HashMap<String, String> adNames = new HashMap<String,String>();
-	for(int i=1; i<=numberOfPages; i++) {
+	HashMap<String, String> adNames = new HashMap<String, String>();
+	for (int i = 1; i <= numberOfPages; i++) {
 	    System.out.println("Fetching Searchresults for page " + i);
 	    query = new AMSQueryBuilder(AMSQuery.EndPoint.MATCHING).county(County.VARMLAND).page(i).build();
-	    
+
 	    dataList = client.executeQuery(query, MatchDataList.class);
-	    if(i == 1) {
+	    if (i == 1) {
 		numberOfPages = dataList.getCountPages();
 		System.out.println("Found " + numberOfPages + " pages");
 	    }
-	    for(MatchData d : dataList.getList()) {
+	    for (MatchData d : dataList.getList()) {
 		realCount++;
 		AMSQuery adQuery = new AMSQueryBuilder(AMSQuery.EndPoint.AD).id(d.getAdId()).build();
 		Ad ad = client.executeQuery(adQuery, Ad.class);
-		if(ad.getApplication() != null) {
-		    if(adNames.put(ad.getWorkplace().getName(), ad.getWorkplace().getName()) != null) {
+		if (ad.getApplication() != null) {
+		    if (adNames.put(ad.getWorkplace().getName(), ad.getWorkplace().getName()) != null) {
 			countDupes++;
 		    }
 		}
@@ -64,43 +64,43 @@ public class AMSApiClientINTTest {
 	System.out.println("No entries real: " + realCount);
 	System.out.println("No dupes: " + countDupes);
     }
-    
+
     @Test
     public void testGetProfessionCategories() throws IOException, URISyntaxException {
 	query = new AMSQueryBuilder(AMSQuery.EndPoint.PROFESSION_CATEGORIES).build();
 	ProfessionCategoryList result = client.executeQuery(query, ProfessionCategoryList.class);
 	System.out.println("Found " + result.getList().size() + " different categories. Number of positionopenings available total: " + result.getCount());
-	for(ProfessionCategory pc : result.getList()){
+	for (ProfessionCategory pc : result.getList()) {
 	    System.out.println(pc);
 	}
     }
-    
+
     @Test
     public void testGetProfessionSubCategories() throws IOException, URISyntaxException {
 	query = new AMSQueryBuilder(AMSQuery.EndPoint.PROFESSION_SUB_CATEGORIES).professionCategory(1).build();
 	ProfessionSubCategoryList result = client.executeQuery(query, ProfessionSubCategoryList.class);
 	System.out.println("Found " + result.getList().size() + " different categories. Number of positionopenings available total: " + result.getCount());
-	for(ProfessionSubCategory pc : result.getList()){
+	for (ProfessionSubCategory pc : result.getList()) {
 	    System.out.println(pc);
 	}
     }
-    
+
     @Test
     public void testGetProfessions() throws IOException, URISyntaxException {
 	query = new AMSQueryBuilder(AMSQuery.EndPoint.PROFESSION).professionSubCategory(2131).build();
 	ProfessionList result = client.executeQuery(query, ProfessionList.class);
 	System.out.println("Found " + result.getList().size() + " different categories. Number of positionopenings available total: " + result.getCount());
-	for(Profession pc : result.getList()){
+	for (Profession pc : result.getList()) {
 	    System.out.println(pc);
 	}
     }
-    
+
     @Test
     public void testGetMunicipialities() throws IOException, URISyntaxException {
 	query = new AMSQueryBuilder(AMSQuery.EndPoint.MUNICIPILAITY).county(County.SKANE).build();
 	MunicipialityList list = client.executeQuery(query, MunicipialityList.class);
 	System.out.println("Found " + list.getList().size() + " different munis. Number of positionopenings available total: " + list.getCount());
-	for(Municipiality m : list.getList()){
+	for (Municipiality m : list.getList()) {
 	    System.out.println(m);
 	}
     }
