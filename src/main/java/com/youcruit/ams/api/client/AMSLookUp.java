@@ -1,7 +1,5 @@
 package com.youcruit.ams.api.client;
 
-import com.youcruit.ams.api.client.object.*;
-
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -9,12 +7,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.youcruit.ams.api.client.object.Profession;
+import com.youcruit.ams.api.client.object.ProfessionCategory;
+import com.youcruit.ams.api.client.object.ProfessionCategoryList;
+import com.youcruit.ams.api.client.object.ProfessionList;
+import com.youcruit.ams.api.client.object.ProfessionSubCategory;
+import com.youcruit.ams.api.client.object.ProfessionSubCategoryList;
+
 public class AMSLookUp {
 
-    private Map<String, ProfessionCategory> professionCategories;
-    private Map<String, ProfessionSubCategory> professionSubCategories;
-    private Map<String, Profession> profession;
-    private boolean inited = false;
+    private static class Cache {
+	private final Map<String, ProfessionCategory> professionCategories = new HashMap<>();
+	private final Map<String, ProfessionSubCategory> professionSubCategories = new HashMap<>();
+	private final Map<String, Profession> profession = new HashMap<>();
+    }
+
+    private Cache professionCache;
 
     private static class Instance {
 	private static final AMSLookUp instance = new AMSLookUp();
@@ -25,13 +33,17 @@ public class AMSLookUp {
     }
 
     private AMSLookUp() {
-	professionCategories = new HashMap<String, ProfessionCategory>();
-	professionSubCategories = new HashMap<String, ProfessionSubCategory>();
-	profession = new HashMap<String, Profession>();
     }
 
     public void fetch(String amsBaseUrl, String fromEmail) throws IOException, URISyntaxException {
-	if(!inited) {
+	if (professionCache == null) {
+	    forceFetch(amsBaseUrl, fromEmail);
+	}
+    }
+
+    public void forceFetch(String amsBaseUrl, String fromEmail) throws IOException, URISyntaxException {
+	if (professionCache == null) {
+	    Cache cache = new Cache();
 	    AMSQuery pCQuery = new AMSQueryBuilder(AMSQuery.EndPoint.PROFESSION_CATEGORIES).build();
 	    ProfessionCategoryList pCList = new AMSApiClient(amsBaseUrl, fromEmail).executeQuery(pCQuery, ProfessionCategoryList.class);
 	    for (ProfessionCategory pc : pCList.getList()) {
@@ -39,46 +51,44 @@ public class AMSLookUp {
 		for (ProfessionSubCategory psc : subCategories) {
 		    List<Profession> pL = fetchProfessions(Integer.parseInt(psc.getAmsId()), amsBaseUrl, fromEmail);
 		    for (Profession p : pL) {
-			profession.put(p.getAmsId(), p);
-			professionSubCategories.put(p.getAmsId(), psc);
+			cache.profession.put(p.getAmsId(), p);
+			cache.professionSubCategories.put(p.getAmsId(), psc);
 		    }
-		    professionCategories.put(psc.getAmsId(), pc);
+		    cache.professionCategories.put(psc.getAmsId(), pc);
 		}
 	    }
-	    inited = true;
+	    this.professionCache = cache;
 	}
     }
 
+    @Deprecated
+    // Use forceFetch instead
     public void clearCache() {
-	inited = false;
-	profession = new HashMap<String, Profession>();
-	professionCategories = new HashMap<String, ProfessionCategory>();
-	professionSubCategories = new HashMap<String, ProfessionSubCategory>();
     }
 
     public ProfessionCategory getCategoryByProfessionId(final String professionId) {
-	if(!inited) {
+	if (professionCache == null) {
 	    throw new RuntimeException("Fetch has to be run before anything can be returned");
 	}
-	if(professionSubCategories.containsKey(professionId)) {
-	    return professionCategories.get(professionSubCategories.get(professionId).getAmsId());
+	if (professionCache.professionSubCategories.containsKey(professionId)) {
+	    return professionCache.professionCategories.get(professionCache.professionSubCategories.get(professionId).getAmsId());
 	} else {
 	    return null;
 	}
     }
 
     public ProfessionSubCategory getSubCategoryByProfessionId(final String professionId) {
-	if(!inited) {
+	if (professionCache == null) {
 	    throw new RuntimeException("Fetch has to be run before anything can be returned");
 	}
-	return professionSubCategories.get(professionId);
+	return professionCache.professionSubCategories.get(professionId);
     }
 
     public Profession getProfessionById(final String professionId) {
-	if(!inited) {
+	if (professionCache == null) {
 	    throw new RuntimeException("Fetch has to be run before anything can be returned");
 	}
-	return profession.get(professionId);
+	return professionCache.profession.get(professionId);
     }
 
     private List<ProfessionSubCategory> fetchSubCategories(final Integer categoryId, final String amsBaseUrl, final String fromEmail) throws IOException, URISyntaxException {
@@ -92,37 +102,37 @@ public class AMSLookUp {
 	ProfessionList pList = new AMSApiClient(amsBaseUrl, fromEmail).executeQuery(pQuery, ProfessionList.class);
 	return pList.getList();
     }
-    
+
     public List<ProfessionCache> getCacheableRepresentation() {
-	List<ProfessionCache> cache = new ArrayList<ProfessionCache>();
-	for(Profession p : profession.values()){
+	List<ProfessionCache> cache = new ArrayList<>();
+	for (Profession p : professionCache.profession.values()) {
 	    ProfessionCache pcache = new ProfessionCache();
-	    ProfessionSubCategory psc = professionSubCategories.get(p.getAmsId());
-	    ProfessionCategory pc = professionCategories.get(psc.getAmsId());
+	    ProfessionSubCategory psc = professionCache.professionSubCategories.get(p.getAmsId());
+	    ProfessionCategory pc = professionCache.professionCategories.get(psc.getAmsId());
 	    pcache.fillFrom(p, psc, pc);
 	    cache.add(pcache);
 	}
 	return cache;
     }
-    
-    public void populateFromCache(final List<? extends ProfessionCache> cache){
-	clearCache();
-	for(ProfessionCache pcache : cache){
+
+    public void populateFromCache(final List<? extends ProfessionCache> cache) {
+	Cache professionCache = new Cache();
+	for (ProfessionCache pcache : cache) {
 	    Profession p = new Profession();
 	    p.setAmsId(pcache.getAmsId());
 	    p.setName(pcache.getName());
-	    profession.put(p.getAmsId(), p);
+	    professionCache.profession.put(p.getAmsId(), p);
 	    ProfessionSubCategory subCategory = new ProfessionSubCategory();
 	    subCategory.setAmsId(pcache.getSubCategoryId());
 	    subCategory.setName(pcache.getSubCategoryName());
-	    professionSubCategories.put(p.getAmsId(), subCategory);
-	    if(!professionCategories.containsKey(subCategory.getAmsId())){
+	    professionCache.professionSubCategories.put(p.getAmsId(), subCategory);
+	    if (!professionCache.professionCategories.containsKey(subCategory.getAmsId())) {
 		ProfessionCategory category = new ProfessionCategory();
 		category.setAmsId(pcache.getCategoryId());
 		category.setName(pcache.getCategoryName());
-		professionCategories.put(subCategory.getAmsId(), category);
+		professionCache.professionCategories.put(subCategory.getAmsId(), category);
 	    }
 	}
-	inited = true;
+	this.professionCache = professionCache;
     }
 }
