@@ -71,8 +71,8 @@ public class AMSApiClient {
     }
 
     public <T> T executeQuery(final AMSQuery query, Class<T> clazz) throws IOException, URISyntaxException {
-	InputStream is = internalExecuteQuery(query);
-	T value = xm.readValue(is, clazz);
-	return value;
+	try (InputStream is = internalExecuteQuery(query)) {
+	    return xm.readValue(is, clazz);
+	}
     }
 }
