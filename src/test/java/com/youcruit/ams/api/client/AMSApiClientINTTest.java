@@ -136,4 +136,9 @@ public class AMSApiClientINTTest {
 	return pList.getList();
     }
 
+    public void getAd() throws Exception {
+	query = new AMSQueryBuilder(AMSQuery.EndPoint.AD).id("10381431").build();
+	Ad ad = client.executeQuery(query, Ad.class);
+	System.err.println(ad);
+    }
 }

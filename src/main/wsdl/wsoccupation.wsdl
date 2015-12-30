@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="urn:ams.se:wsoccupation" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="urn:ams.se:wsoccupation" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="urn:ams.se:wsoccupation">
+      <s:element name="GetOccupationById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="occupationId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOccupationByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetOccupationByIdResult" nillable="true" type="tns:Occupation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Occupation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="tns:LocalisedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="OtherNames" type="tns:ArrayOfLocalisedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="OccupationAreas" type="tns:ArrayOfOccupationArea" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="tns:Description" />
+          <s:element minOccurs="0" maxOccurs="1" name="PlatsbankenReferences" type="tns:ArrayOfPlatsbankenReference" />
+          <s:element minOccurs="0" maxOccurs="1" name="RelatedOccupations" type="tns:ArrayOfRelatedOccupation" />
+          <s:element minOccurs="0" maxOccurs="1" name="EducationOccupations" type="tns:ArrayOfEducationOccupation" />
+          <s:element minOccurs="0" maxOccurs="1" name="Articles" type="tns:ArrayOfArticleLink" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LocalisedString">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute default="sv" name="language" type="s:string" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfLocalisedString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OtherName" type="tns:LocalisedString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfOccupationArea">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OccupationArea" type="tns:OccupationArea" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OccupationArea">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="tns:LocalisedString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Description">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Author" type="tns:Author" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModificationDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Items" type="tns:ArrayOfOccupationDescriptionItem" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pictures" type="tns:ArrayOfPicture" />
+          <s:element minOccurs="0" maxOccurs="1" name="Films" type="tns:ArrayOfFilm" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Author">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmailAddress" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfOccupationDescriptionItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OccupationDescriptionItem" type="tns:OccupationDescriptionItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OccupationDescriptionItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="tns:LocalisedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Text" type="tns:LocalisedString" />
+        </s:sequence>
+        <s:attribute name="type" type="tns:OccupationDescriptionItemType" use="required" />
+      </s:complexType>
+      <s:simpleType name="OccupationDescriptionItemType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Work" />
+          <s:enumeration value="Education" />
+          <s:enumeration value="FutureProspects" />
+          <s:enumeration value="Competence" />
+          <s:enumeration value="ToConsider" />
+          <s:enumeration value="MoreInformation" />
+          <s:enumeration value="Summary" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfPicture">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Picture" type="tns:Picture" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Picture">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="tns:LocalisedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="tns:LocalisedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Url" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Width" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="Height" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="PhotographerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Text" type="tns:LocalisedString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFilm">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Film" type="tns:Film" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Film">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="tns:LocalisedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="tns:LocalisedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="FastConnectionUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SlowConnectionUrl" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPlatsbankenReference">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PlatsbankenReference" type="tns:PlatsbankenReference" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PlatsbankenReference">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="NumberOfJobPositionPostings" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="OccupationGroupDescription" type="tns:LocalisedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="OccupationGroupUrl" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRelatedOccupation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RelatedOccupation" type="tns:RelatedOccupation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RelatedOccupation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="tns:LocalisedString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEducationOccupation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EducationOccupation" type="tns:EducationOccupation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EducationOccupation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="EducationId" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="OccupationId" type="s:integer" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfArticleLink">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ArticleLink" type="tns:ArticleLink" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArticleLink">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ArticleId" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="ArticleTitle" type="tns:LocalisedString" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FindOccupation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindOccupationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Occupations" type="tns:OccupationList" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="OccupationList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Occupation" type="tns:Occupation" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllOccupations">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllOccupationsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Occupations" type="tns:OccupationList" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllOccupationsShort">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllOccupationsShortResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OccupationsShort" type="tns:OccupationlistShort" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="OccupationlistShort">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OccupationShort" type="tns:OccupationShort" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OccupationShort">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="tns:LocalisedString" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllOccupationsDetailed">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllOccupationsDetailedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Occupations" type="tns:OccupationList" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetArticle">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="articleId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetArticleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetArticleResult" nillable="true" type="tns:Article" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Article">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="tns:LocalisedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Author" type="tns:Author" />
+          <s:element minOccurs="1" maxOccurs="1" name="PublishDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Items" type="tns:ArrayOfArticleItem" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pictures" type="tns:ArrayOfPicture" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfArticleItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Item" type="tns:ArticleItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArticleItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="tns:LocalisedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Text" type="tns:LocalisedString" />
+        </s:sequence>
+        <s:attribute name="type" type="tns:ArticleItemType" use="required" />
+      </s:complexType>
+      <s:simpleType name="ArticleItemType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Unknown" />
+          <s:enumeration value="SubTitle" />
+          <s:enumeration value="ArticleText" />
+          <s:enumeration value="Author" />
+          <s:enumeration value="AuthorEmail" />
+          <s:enumeration value="Responsible" />
+          <s:enumeration value="ForComments" />
+          <s:enumeration value="FurtherInformation" />
+          <s:enumeration value="PressContact" />
+          <s:enumeration value="MoreInformation" />
+          <s:enumeration value="Alias" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="LoadAllOccupationIdAndName">
+        <s:complexType />
+      </s:element>
+      <s:element name="LoadAllOccupationIdAndNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoadAllOccupationIdAndNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadAllEducationConnections">
+        <s:complexType />
+      </s:element>
+      <s:element name="LoadAllEducationConnectionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoadAllEducationConnectionsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocaleGroups">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="occupationId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocaleGroupsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLocaleGroupsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPlatsbankenLink">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="localegroupid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPlatsbankenLinkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPlatsbankenLinkResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetOccupationByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOccupationById" />
+  </wsdl:message>
+  <wsdl:message name="GetOccupationByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOccupationByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindOccupationSoapIn">
+    <wsdl:part name="parameters" element="tns:FindOccupation" />
+  </wsdl:message>
+  <wsdl:message name="FindOccupationSoapOut">
+    <wsdl:part name="parameters" element="tns:FindOccupationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllOccupationsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllOccupations" />
+  </wsdl:message>
+  <wsdl:message name="GetAllOccupationsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllOccupationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllOccupationsShortSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllOccupationsShort" />
+  </wsdl:message>
+  <wsdl:message name="GetAllOccupationsShortSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllOccupationsShortResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllOccupationsDetailedSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllOccupationsDetailed" />
+  </wsdl:message>
+  <wsdl:message name="GetAllOccupationsDetailedSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllOccupationsDetailedResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetArticleSoapIn">
+    <wsdl:part name="parameters" element="tns:GetArticle" />
+  </wsdl:message>
+  <wsdl:message name="GetArticleSoapOut">
+    <wsdl:part name="parameters" element="tns:GetArticleResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoadAllOccupationIdAndNameSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadAllOccupationIdAndName" />
+  </wsdl:message>
+  <wsdl:message name="LoadAllOccupationIdAndNameSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadAllOccupationIdAndNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoadAllEducationConnectionsSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadAllEducationConnections" />
+  </wsdl:message>
+  <wsdl:message name="LoadAllEducationConnectionsSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadAllEducationConnectionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLocaleGroupsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLocaleGroups" />
+  </wsdl:message>
+  <wsdl:message name="GetLocaleGroupsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLocaleGroupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPlatsbankenLinkSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPlatsbankenLink" />
+  </wsdl:message>
+  <wsdl:message name="GetPlatsbankenLinkSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPlatsbankenLinkResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WSOccupationSoap">
+    <wsdl:operation name="GetOccupationById">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Anropas med yrke id och returnerar ett yrkesinformation för yrket med det id:t</wsdl:documentation>
+      <wsdl:input message="tns:GetOccupationByIdSoapIn" />
+      <wsdl:output message="tns:GetOccupationByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindOccupation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Anropas med yrkesnamn och returnerar en lista med alla matchande yrken</wsdl:documentation>
+      <wsdl:input message="tns:FindOccupationSoapIn" />
+      <wsdl:output message="tns:FindOccupationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllOccupations">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Anropas utan parametrar och returnerar bantad yrkesinformation, endast id och namn, för samtliga yrken.</wsdl:documentation>
+      <wsdl:input message="tns:GetAllOccupationsSoapIn" />
+      <wsdl:output message="tns:GetAllOccupationsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllOccupationsShort">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Anropas utan parametrar och returnerar en bantad occupationslist</wsdl:documentation>
+      <wsdl:input message="tns:GetAllOccupationsShortSoapIn" />
+      <wsdl:output message="tns:GetAllOccupationsShortSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllOccupationsDetailed">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Anropas utan parametrar och returnerar full yrkesinformation för samtliga yrken.</wsdl:documentation>
+      <wsdl:input message="tns:GetAllOccupationsDetailedSoapIn" />
+      <wsdl:output message="tns:GetAllOccupationsDetailedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArticle">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Anropas med artikel id och returnerar ett XML dokument med information och innehåll för en artikel</wsdl:documentation>
+      <wsdl:input message="tns:GetArticleSoapIn" />
+      <wsdl:output message="tns:GetArticleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadAllOccupationIdAndName">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Hämta all översättningar mellan YrkesId och YrkesNamn. Anropas utan parametrar och returnerar en &lt;tab&gt; separerad sträng av parvis: iOccupationNameID &lt;tab&gt; chOccupationName &lt;tab&gt; iOccupationNameID &lt;tab&gt; chOccupationName &lt;tab&gt; ...</wsdl:documentation>
+      <wsdl:input message="tns:LoadAllOccupationIdAndNameSoapIn" />
+      <wsdl:output message="tns:LoadAllOccupationIdAndNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadAllEducationConnections">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Hämta alla kopplingar mellan utbildning och yrke. Anropas utan parametrar och returnerar en &lt;tab&gt; separerad sträng av parvis: EducationID &lt;tab&gt; iOccupationNameID &lt;tab&gt; EducationID &lt;tab&gt; iOccupationNameID &lt;tab&gt; ...</wsdl:documentation>
+      <wsdl:input message="tns:LoadAllEducationConnectionsSoapIn" />
+      <wsdl:output message="tns:LoadAllEducationConnectionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocaleGroups">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Hämta alla yrkesgrupper (id + namn) för ett yrke. Semikolonseparerad string med parvis id följt av namn.</wsdl:documentation>
+      <wsdl:input message="tns:GetLocaleGroupsSoapIn" />
+      <wsdl:output message="tns:GetLocaleGroupsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlatsbankenLink">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Hämta länk till platsbanken (url + antal jobb) för en yrkesgrupp. Semikolonseparerad string med url följt av antal jobb.</wsdl:documentation>
+      <wsdl:input message="tns:GetPlatsbankenLinkSoapIn" />
+      <wsdl:output message="tns:GetPlatsbankenLinkSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSOccupationSoap" type="tns:WSOccupationSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetOccupationById">
+      <soap:operation soapAction="urn:ams.se:wsoccupation/GetOccupationById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindOccupation">
+      <soap:operation soapAction="urn:ams.se:wsoccupation/FindOccupation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllOccupations">
+      <soap:operation soapAction="urn:ams.se:wsoccupation/GetAllOccupations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllOccupationsShort">
+      <soap:operation soapAction="urn:ams.se:wsoccupation/GetAllOccupationsShort" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllOccupationsDetailed">
+      <soap:operation soapAction="urn:ams.se:wsoccupation/GetAllOccupationsDetailed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArticle">
+      <soap:operation soapAction="urn:ams.se:wsoccupation/GetArticle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadAllOccupationIdAndName">
+      <soap:operation soapAction="urn:ams.se:wsoccupation/LoadAllOccupationIdAndName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadAllEducationConnections">
+      <soap:operation soapAction="urn:ams.se:wsoccupation/LoadAllEducationConnections" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocaleGroups">
+      <soap:operation soapAction="urn:ams.se:wsoccupation/GetLocaleGroups" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlatsbankenLink">
+      <soap:operation soapAction="urn:ams.se:wsoccupation/GetPlatsbankenLink" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WSOccupationSoap12" type="tns:WSOccupationSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetOccupationById">
+      <soap12:operation soapAction="urn:ams.se:wsoccupation/GetOccupationById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindOccupation">
+      <soap12:operation soapAction="urn:ams.se:wsoccupation/FindOccupation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllOccupations">
+      <soap12:operation soapAction="urn:ams.se:wsoccupation/GetAllOccupations" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllOccupationsShort">
+      <soap12:operation soapAction="urn:ams.se:wsoccupation/GetAllOccupationsShort" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllOccupationsDetailed">
+      <soap12:operation soapAction="urn:ams.se:wsoccupation/GetAllOccupationsDetailed" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArticle">
+      <soap12:operation soapAction="urn:ams.se:wsoccupation/GetArticle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadAllOccupationIdAndName">
+      <soap12:operation soapAction="urn:ams.se:wsoccupation/LoadAllOccupationIdAndName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadAllEducationConnections">
+      <soap12:operation soapAction="urn:ams.se:wsoccupation/LoadAllEducationConnections" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocaleGroups">
+      <soap12:operation soapAction="urn:ams.se:wsoccupation/GetLocaleGroups" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlatsbankenLink">
+      <soap12:operation soapAction="urn:ams.se:wsoccupation/GetPlatsbankenLink" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSOccupation">
+    <wsdl:port name="WSOccupationSoap" binding="tns:WSOccupationSoap">
+      <soap:address location="http://wsoccupation.ams.se/wsoccupation.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WSOccupationSoap12" binding="tns:WSOccupationSoap12">
+      <soap12:address location="http://wsoccupation.ams.se/wsoccupation.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,175 +1,202 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.youcruit.ams.api.client</groupId>
     <artifactId>AMSApiClient</artifactId>
     <version>0.4.5-SNAPSHOT</version>
     <packaging>jar</packaging>
+
     <name>AMSApiClient</name>
     <url>https://github.com/YouCruit/AMSApiClient</url>
-    <description>Java client for Arbetsförmedlingens public API</description>
-
-    <licenses>
-        <license>
-            <name>MIT License</name>
-            <url>http://www.opensource.org/licenses/mit-license.php</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<targetJdk>1.7</targetJdk>
     </properties>
     <scm>
-        <connection>scm:git:git@github.com:YouCruit/AMSApiClient.git</connection>
-        <developerConnection>scm:git:git@github.com:YouCruit/AMSApiClient.git</developerConnection>
-        <url>https://github.com/YouCruit/AMSApiClient</url>
+	<connection>scm:git:git@github.com:YouCruit/AMSApiClient.git</connection>
+	<developerConnection>scm:git:git@github.com:YouCruit/AMSApiClient.git</developerConnection>
+	<url>https://github.com/YouCruit/AMSApiClient</url>
+	<tag>HEAD</tag>
     </scm>
     <developers>
-        <developer>
-            <id>tobias-</id>
-            <name>Tobias Olsson</name>
-        </developer>
-        <developer>
-            <id>christianekstrand</id>
-            <name>Christian Ekstrand</name>
-        </developer>
-        <developer>
-            <id>pgilmore</id>
-            <name>Patrick Gilmore</name>
-        </developer>
+	<developer>
+	    <id>tobias-</id>
+	    <name>Tobias Olsson</name>
+	</developer>
+	<developer>
+	    <id>christianekstrand</id>
+	    <name>Christian Ekstrand</name>
+	</developer>
+	<developer>
+	    <id>pgilmore</id>
+	    <name>Patrick Gilmore</name>
+	</developer>
     </developers>
     <!-- Deploy releases and snapshots to the CloudBees maven repositories -->
     <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
+	<snapshotRepository>
+	    <id>ossrh</id>
+	    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+	</snapshotRepository>
     </distributionManagement>
     <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-core-asl</artifactId>
-            <version>1.9.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-mapper-asl</artifactId>
-            <version>1.9.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.3.6</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpmime</artifactId>
-            <version>4.3.6</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>2.4</version>
-        </dependency>
+	<dependency>
+	    <groupId>junit</groupId>
+	    <artifactId>junit</artifactId>
+	    <version>4.11</version>
+	    <scope>test</scope>
+	</dependency>
+	<dependency>
+	    <groupId>org.codehaus.jackson</groupId>
+	    <artifactId>jackson-core-asl</artifactId>
+	    <version>1.9.2</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.codehaus.jackson</groupId>
+	    <artifactId>jackson-mapper-asl</artifactId>
+	    <version>1.9.2</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.apache.httpcomponents</groupId>
+	    <artifactId>httpclient</artifactId>
+	    <version>4.3.6</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.apache.httpcomponents</groupId>
+	    <artifactId>httpmime</artifactId>
+	    <version>4.3.6</version>
+	</dependency>
+	<dependency>
+	    <groupId>commons-beanutils</groupId>
+	    <artifactId>commons-beanutils</artifactId>
+	    <version>1.9.2</version>
+	</dependency>
+	<dependency>
+	    <groupId>commons-io</groupId>
+	    <artifactId>commons-io</artifactId>
+	    <version>2.4</version>
+	</dependency>
     </dependencies>
     <build>
-        <extensions>
-            <!-- Extension required to deploy a snapshot or a release to the CloudBees remote maven repository using Webdav -->
-            <extension>
-                <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-webdav</artifactId>
-                <version>1.0-beta-2</version>
-            </extension>
-        </extensions>
-        <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.3</version> 
-            </plugin>
-            <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.3</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <serverId>ossrh</serverId>
-                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>1.5</version>
-                <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>versions-maven-plugin</artifactId>
-                <version>2.1</version>
-            </plugin>
-            <plugin>
-                <artifactId>maven-scm-plugin</artifactId>
-                <version>1.8.1</version>
-                <configuration>
-                    <tag>${project.artifactId}-${project.version}</tag>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.16</version>
-                <configuration>
-                    <threadCount>1</threadCount>
-                    <reuseForks>false</reuseForks>
-                    <useSystemClassLoader>true</useSystemClassLoader>
-                    <excludes>
-                        <exclude>
-                            **/*INTTest.java
-                        </exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>2.2.1</version>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.9.1</version>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
+	<extensions>
+	    <!-- Extension required to deploy a snapshot or a release to the CloudBees remote maven repository using Webdav -->
+	    <extension>
+		<groupId>org.apache.maven.wagon</groupId>
+		<artifactId>wagon-webdav</artifactId>
+		<version>1.0-beta-2</version>
+	    </extension>
+	</extensions>
+	<plugins>
+	    <plugin>
+		<artifactId>maven-compiler-plugin</artifactId>
+		<version>3.3</version>
+		<configuration>
+		    <source>${targetJdk}</source>
+		    <target>${targetJdk}</target>
+		</configuration>
+	    </plugin>
+	    <plugin>
+		<groupId>org.sonatype.plugins</groupId>
+		<artifactId>nexus-staging-maven-plugin</artifactId>
+		<version>1.6.3</version>
+		<extensions>true</extensions>
+		<configuration>
+		    <serverId>ossrh</serverId>
+		    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+		    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+		</configuration>
+	    </plugin>
+	    <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-gpg-plugin</artifactId>
+		<version>1.5</version>
+		<executions>
+		    <execution>
+			<id>sign-artifacts</id>
+			<phase>verify</phase>
+			<goals>
+			    <goal>sign</goal>
+			</goals>
+		    </execution>
+		</executions>
+	    </plugin>
+	    <plugin>
+		<groupId>org.codehaus.mojo</groupId>
+		<artifactId>versions-maven-plugin</artifactId>
+		<version>2.1</version>
+	    </plugin>
+	    <plugin>
+		<artifactId>maven-scm-plugin</artifactId>
+		<version>1.8.1</version>
+		<configuration>
+		    <tag>${project.artifactId}-${project.version}</tag>
+		</configuration>
+	    </plugin>
+	    <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-surefire-plugin</artifactId>
+		<version>2.16</version>
+		<configuration>
+		    <threadCount>1</threadCount>
+		    <reuseForks>false</reuseForks>
+		    <useSystemClassLoader>true</useSystemClassLoader>
+		    <excludes>
+			<exclude>
+			    **/*INTTest.java
+			</exclude>
+		    </excludes>
+		</configuration>
+	    </plugin>
+	    <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-source-plugin</artifactId>
+		<version>2.2.1</version>
+		<executions>
+		    <execution>
+			<id>attach-sources</id>
+			<goals>
+			    <goal>jar-no-fork</goal>
+			</goals>
+		    </execution>
+		</executions>
+	    </plugin>
+	    <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-javadoc-plugin</artifactId>
+		<version>2.9.1</version>
+		<executions>
+		    <execution>
+			<id>attach-javadocs</id>
+			<goals>
+			    <goal>jar</goal>
+			</goals>
+		    </execution>
+		</executions>
+	    </plugin>
+	    <plugin>
+		<groupId>org.codehaus.mojo</groupId>
+		<artifactId>jaxws-maven-plugin</artifactId>
+		<version>1.9</version>
+		<executions>
+		    <execution>
+			<id>generate-jaxws-classes</id>
+			<phase>generate-sources</phase>
+			<goals>
+			    <goal>wsimport</goal>
+			</goals>
+			<configuration>
+			    <wsdlLocation>http://api.arbetsformedlingen.se/af/v0/Occupation/wsoccupation.asmx
+			    </wsdlLocation>
+			    <wsdlDirectory>${project.basedir}/src/main/wsdl/</wsdlDirectory>
+			    <packageName>com.youcruit.ams.api.soap</packageName>
+			    <extension>true</extension>
+			    <sourceDestDir>${project.build.directory}/generated-sources/jaxb2</sourceDestDir>
+			</configuration>
+		    </execution>
+		</executions>
+	    </plugin>
+	</plugins>
     </build>
 </project>
