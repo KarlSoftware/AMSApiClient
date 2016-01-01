@@ -45,10 +45,10 @@
     </developers>
     <!-- Deploy releases and snapshots to the CloudBees maven repositories -->
     <distributionManagement>
-	<snapshotRepository>
+	<repository>
 	    <id>ossrh</id>
 	    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-	</snapshotRepository>
+	</repository>
     </distributionManagement>
     <dependencies>
 	<dependency>
@@ -154,7 +154,6 @@
 		    <plugin>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-javadoc-plugin</artifactId>
-			<version>2.9.1</version>
 			<executions>
 			    <execution>
 				<id>attach-javadocs</id>
@@ -169,6 +168,15 @@
 	</profile>
     </profiles>
     <build>
+	<pluginManagement>
+	    <plugins>
+		<plugin>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-javadoc-plugin</artifactId>
+		    <version>2.9.1</version>
+		</plugin>
+	    </plugins>
+	</pluginManagement>
 	<plugins>
 	    <plugin>
 		<artifactId>maven-compiler-plugin</artifactId>
