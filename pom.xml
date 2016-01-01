@@ -3,7 +3,7 @@
 
     <groupId>com.youcruit.ams.api.client</groupId>
     <artifactId>AMSApiClient</artifactId>
-    <version>0.4.7-SNAPSHOT</version>
+    <version>0.4.9-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>AMSApiClient</name>
@@ -124,7 +124,10 @@
 		<configuration>
 		    <serverId>ossrh</serverId>
 		    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-		    <!--<autoReleaseAfterClose>true</autoReleaseAfterClose>-->
+		    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+		    <detail>true</detail>
+		    <keepStagingRepositoryOnFailure>true</keepStagingRepositoryOnFailure>
+		    <keepStagingRepositoryOnCloseRuleFailure>true</keepStagingRepositoryOnCloseRuleFailure>
 		</configuration>
 	    </plugin>
 	    <plugin>
