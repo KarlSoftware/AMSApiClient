@@ -24,21 +24,21 @@ public enum County {
     OSTERGOTLAND(5, "Östergötland"),
     UNDEFINED_CITY(90, "Ospecificerad arbetsort");
     
-    private int id;
+    private String id;
     private String description;
     County(int id , String description){
-	this.id = id;
+	this.id = String.valueOf(id);
 	this.description = description;
     }
-    public int getId(){
+    public String getId(){
 	return id;
     }
     public String getDescription() {
 	return description;
     }
-    public static County fromId(int id){
+    public static County fromId(String id){
 	for(County c : County.values()){
-	    if(c.id == id){
+	    if(c.id.equals(id)) {
 		return c;
 	    }
 	}

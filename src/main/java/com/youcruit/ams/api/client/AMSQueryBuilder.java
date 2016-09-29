@@ -19,32 +19,32 @@ public class AMSQueryBuilder {
     }
 
     public AMSQueryBuilder county(County countyId) {
-	query.add("lanid", Integer.toString(countyId.getId()));
+	query.add("lanid", countyId.getId());
 	return this;
     }
 
-    public AMSQueryBuilder profession(Integer professionId) {
-	query.add("yrkesid", professionId.toString());
+    public AMSQueryBuilder profession(String professionId) {
+	query.add("yrkesid", professionId);
 	return this;
     }
 
-    public AMSQueryBuilder professionCategory(Integer professionCategoryId) {
-	query.add("yrkesomradeid", professionCategoryId.toString());
+    public AMSQueryBuilder professionCategory(String professionCategoryId) {
+	query.add("yrkesomradeid", professionCategoryId);
 	return this;
     }
 
-    public AMSQueryBuilder professionSubCategory(Integer professionSubCategoryId) {
-	query.add("yrkesgruppid", professionSubCategoryId.toString());
+    public AMSQueryBuilder professionSubCategory(String professionSubCategoryId) {
+	query.add("yrkesgruppid", professionSubCategoryId);
 	return this;
     }
 
-    public AMSQueryBuilder municipality(Integer municipalityId) {
-	query.add("kommunid", municipalityId.toString());
+    public AMSQueryBuilder municipality(String municipalityId) {
+	query.add("kommunid", municipalityId);
 	return this;
     }
 
-    public AMSQueryBuilder continentPart(Integer continentPartId) {
-	query.add("omradeid", continentPartId.toString());
+    public AMSQueryBuilder continentPart(String continentPartId) {
+	query.add("omradeid", continentPartId);
 	return this;
     }
 
@@ -53,8 +53,8 @@ public class AMSQueryBuilder {
 	return this;
     }
 
-    public AMSQueryBuilder country(Integer countryId) {
-	query.add("landid", countryId.toString());
+    public AMSQueryBuilder country(String countryId) {
+	query.add("landid", countryId);
 	return this;
     }
     

@@ -46,9 +46,9 @@ public class AMSLookUp {
 	AMSQuery pCQuery = new AMSQueryBuilder(AMSQuery.EndPoint.PROFESSION_CATEGORIES).build();
 	ProfessionCategoryList pCList = new AMSApiClient(amsBaseUrl, fromEmail).executeQuery(pCQuery, ProfessionCategoryList.class);
 	for (ProfessionCategory pc : pCList.getList()) {
-	    List<ProfessionSubCategory> subCategories = fetchSubCategories(Integer.parseInt(pc.getAmsId()), amsBaseUrl, fromEmail);
+	    List<ProfessionSubCategory> subCategories = fetchSubCategories(pc.getAmsId(), amsBaseUrl, fromEmail);
 	    for (ProfessionSubCategory psc : subCategories) {
-		List<Profession> pL = fetchProfessions(Integer.parseInt(psc.getAmsId()), amsBaseUrl, fromEmail);
+		List<Profession> pL = fetchProfessions(psc.getAmsId(), amsBaseUrl, fromEmail);
 		for (Profession p : pL) {
 		    cache.profession.put(p.getAmsId(), p);
 		    cache.professionSubCategories.put(p.getAmsId(), psc);
@@ -89,13 +89,13 @@ public class AMSLookUp {
 	return professionCache.profession.get(professionId);
     }
 
-    private List<ProfessionSubCategory> fetchSubCategories(final Integer categoryId, final String amsBaseUrl, final String fromEmail) throws IOException, URISyntaxException {
+    private List<ProfessionSubCategory> fetchSubCategories(final String categoryId, final String amsBaseUrl, final String fromEmail) throws IOException, URISyntaxException {
 	AMSQuery pSCQuery = new AMSQueryBuilder(AMSQuery.EndPoint.PROFESSION_SUB_CATEGORIES).professionCategory(categoryId).build();
 	ProfessionSubCategoryList pSCList = new AMSApiClient(amsBaseUrl, fromEmail).executeQuery(pSCQuery, ProfessionSubCategoryList.class);
 	return pSCList.getList();
     }
 
-    private List<Profession> fetchProfessions(final Integer subCategoryId, final String amsBaseUrl, final String fromEmail) throws IOException, URISyntaxException {
+    private List<Profession> fetchProfessions(final String subCategoryId, final String amsBaseUrl, final String fromEmail) throws IOException, URISyntaxException {
 	AMSQuery pQuery = new AMSQueryBuilder(AMSQuery.EndPoint.PROFESSION).professionSubCategory(subCategoryId).build();
 	ProfessionList pList = new AMSApiClient(amsBaseUrl, fromEmail).executeQuery(pQuery, ProfessionList.class);
 	return pList.getList();

@@ -79,7 +79,7 @@ public class AMSApiClientINTTest {
 
     @Test
     public void testGetProfessionSubCategories() throws IOException, URISyntaxException {
-	query = new AMSQueryBuilder(AMSQuery.EndPoint.PROFESSION_SUB_CATEGORIES).professionCategory(1).build();
+	query = new AMSQueryBuilder(AMSQuery.EndPoint.PROFESSION_SUB_CATEGORIES).professionCategory("1").build();
 	ProfessionSubCategoryList result = client.executeQuery(query, ProfessionSubCategoryList.class);
 	System.out.println("Found " + result.getList().size() + " different categories. Number of positionopenings available total: " + result.getCount());
 	for (ProfessionSubCategory pc : result.getList()) {
@@ -89,7 +89,7 @@ public class AMSApiClientINTTest {
 
     @Test
     public void testGetProfessions() throws IOException, URISyntaxException {
-	query = new AMSQueryBuilder(AMSQuery.EndPoint.PROFESSION).professionSubCategory(2131).build();
+	query = new AMSQueryBuilder(AMSQuery.EndPoint.PROFESSION).professionSubCategory("2131").build();
 	ProfessionList result = client.executeQuery(query, ProfessionList.class);
 	System.out.println("Found " + result.getList().size() + " different categories. Number of positionopenings available total: " + result.getCount());
 	for (Profession pc : result.getList()) {
@@ -125,13 +125,13 @@ public class AMSApiClientINTTest {
     }
 
     private List<ProfessionSubCategory> fetchSubCategories(final Integer categoryId) throws IOException, URISyntaxException {
-	AMSQuery pSCQuery = new AMSQueryBuilder(AMSQuery.EndPoint.PROFESSION_SUB_CATEGORIES).professionCategory(categoryId).build();
+	AMSQuery pSCQuery = new AMSQueryBuilder(AMSQuery.EndPoint.PROFESSION_SUB_CATEGORIES).professionCategory(categoryId.toString()).build();
 	ProfessionSubCategoryList pSCList = client.executeQuery(pSCQuery, ProfessionSubCategoryList.class);
 	return pSCList.getList();
     }
 
     private List<Profession> fetchProfessions(final Integer subCategoryId) throws IOException, URISyntaxException {
-	AMSQuery pQuery = new AMSQueryBuilder(AMSQuery.EndPoint.PROFESSION).professionSubCategory(subCategoryId).build();
+	AMSQuery pQuery = new AMSQueryBuilder(AMSQuery.EndPoint.PROFESSION).professionSubCategory(subCategoryId.toString()).build();
 	ProfessionList pList = client.executeQuery(pQuery, ProfessionList.class);
 	return pList.getList();
     }
