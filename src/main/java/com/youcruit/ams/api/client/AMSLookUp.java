@@ -44,10 +44,8 @@ public class AMSLookUp {
     public void forceFetch(String amsBaseUrl, String fromEmail) throws IOException, URISyntaxException {
 	Cache cache = new Cache();
 	AMSQuery pCQuery = new AMSQueryBuilder(AMSQuery.EndPoint.PROFESSION_CATEGORIES).build();
-	final AMSApiClient amsApiClient = new AMSApiClient(amsBaseUrl, fromEmail);
-	amsApiClient.executeQuery(pCQuery, ProfessionCategoryList.class).getList()
-		    .parallelStream()
-		    .map((pc) -> fetchSubCategories(Integer.parseInt(pc.getAmsId()), amsBaseUrl, fromEmail).stream()).
+	ProfessionCategoryList pCList = new AMSApiClient(amsBaseUrl, fromEmail).executeQuery(pCQuery, ProfessionCategoryList.class);
+	for (ProfessionCategory pc : pCList.getList()) {
 	    List<ProfessionSubCategory> subCategories = fetchSubCategories(Integer.parseInt(pc.getAmsId()), amsBaseUrl, fromEmail);
 	    for (ProfessionSubCategory psc : subCategories) {
 		List<Profession> pL = fetchProfessions(Integer.parseInt(psc.getAmsId()), amsBaseUrl, fromEmail);
