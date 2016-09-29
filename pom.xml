@@ -3,7 +3,7 @@
 
     <groupId>com.youcruit.ams.api.client</groupId>
     <artifactId>AMSApiClient</artifactId>
-    <version>0.4.14-SNAPSHOT</version>
+    <version>0.5.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>AMSApiClient</name>
@@ -93,23 +93,6 @@
     </dependencies>
     <profiles>
 	<profile>
-	    <id>doclint</id>
-	    <activation>
-		<jdk>[1.8,)</jdk>
-	    </activation>
-	    <build>
-		<plugins>
-		    <plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-javadoc-plugin</artifactId>
-			<configuration>
-			    <additionalparam>-Xdoclint:-html</additionalparam>
-			</configuration>
-		    </plugin>
-		</plugins>
-	    </build>
-	</profile>
-	<profile>
 	    <id>release</id>
 	    <build>
 		<plugins>
@@ -153,6 +136,9 @@
 		    <plugin>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-javadoc-plugin</artifactId>
+			<configuration>
+			    <additionalparam>-Xdoclint:-html</additionalparam>
+			</configuration>
 			<executions>
 			    <execution>
 				<id>attach-javadocs</id>
