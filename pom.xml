@@ -20,7 +20,7 @@
 
     <properties>
 	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	<targetJdk>1.7</targetJdk>
+	<targetJdk>1.8</targetJdk>
     </properties>
     <scm>
 	<connection>scm:git:git@github.com:YouCruit/AMSApiClient.git</connection>
