@@ -1,5 +1,7 @@
 package com.youcruit.ams.api.client;
 
+import static com.fasterxml.jackson.databind.DeserializationFeature.UNWRAP_ROOT_VALUE;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
@@ -12,13 +14,11 @@ import org.apache.http.HttpStatus;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
-import org.codehaus.jackson.map.DeserializationConfig.Feature;
-import org.codehaus.jackson.map.ObjectMapper;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.youcruit.ams.api.client.serialization.AMSSerializationModule;
 
 public class AMSApiClient {
@@ -37,7 +37,7 @@ public class AMSApiClient {
 	this.amsBaseApiUrl = amsBaseApiUrl;
 	this.from = fromEmail;
 	xm = new ObjectMapper();
-	xm.configure(Feature.UNWRAP_ROOT_VALUE, true);
+	xm.enable(UNWRAP_ROOT_VALUE);
 	xm.registerModule(new AMSSerializationModule());
 	soTimeout = SO_TIMEOUT_DEFAULT;
 	connectionTimeout = CONNECTION_TIMEOUT_DEFAULT;

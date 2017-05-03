@@ -1,8 +1,8 @@
 package com.youcruit.ams.api.client.serialization;
 
-import org.codehaus.jackson.Version;
-import org.codehaus.jackson.map.module.SimpleModule;
 
+import com.fasterxml.jackson.core.Version;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.youcruit.ams.api.client.object.Ad;
 import com.youcruit.ams.api.client.object.Application;
 import com.youcruit.ams.api.client.object.Contact;
@@ -20,7 +20,7 @@ import com.youcruit.ams.api.client.object.Workplace;
 public class AMSSerializationModule extends SimpleModule {
 
     public AMSSerializationModule() {
-	super("AMSSerializationModule", new Version(0, 2, 3, null));
+	super("AMSSerializationModule");
     }
     
     @Override

@@ -1,11 +1,11 @@
 package com.youcruit.ams.api.client.object;
 
+import static com.fasterxml.jackson.databind.DeserializationFeature.UNWRAP_ROOT_VALUE;
 import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.codehaus.jackson.map.DeserializationConfig.Feature;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,7 +18,7 @@ public class ProfessionListTest extends AbstractListTest {
     @Before
     public void setUp() {
 	is = Thread.currentThread().getContextClassLoader().getResourceAsStream("professions.json");
-	om.configure(Feature.UNWRAP_ROOT_VALUE, true);
+	om.enable(UNWRAP_ROOT_VALUE);
 	expectedList = new ProfessionList();
 	expected = new Profession();
 	expected.setAmsId("4742");

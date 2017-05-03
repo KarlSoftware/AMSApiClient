@@ -1,8 +1,8 @@
 package com.youcruit.ams.api.client.object;
 
-import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.BeforeClass;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.youcruit.ams.api.client.serialization.AMSSerializationModule;
 
 public class AbstractTest {

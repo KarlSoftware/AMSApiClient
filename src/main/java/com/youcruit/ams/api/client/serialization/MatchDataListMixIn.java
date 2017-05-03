@@ -2,10 +2,9 @@ package com.youcruit.ams.api.client.serialization;
 
 import java.util.List;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.annotate.JsonRootName;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRootName;
 import com.youcruit.ams.api.client.object.MatchData;
 
 @JsonIgnoreProperties(ignoreUnknown = true)

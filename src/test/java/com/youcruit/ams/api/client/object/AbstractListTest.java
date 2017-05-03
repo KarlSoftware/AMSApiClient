@@ -1,11 +1,12 @@
 package com.youcruit.ams.api.client.object;
 
-import org.codehaus.jackson.map.DeserializationConfig.Feature;
+import static com.fasterxml.jackson.databind.DeserializationFeature.UNWRAP_ROOT_VALUE;
+
 import org.junit.Before;
 
 public class AbstractListTest extends AbstractTest {
     @Before
     public void setupListObjectMapper(){
-	om.configure(Feature.UNWRAP_ROOT_VALUE, true);
+	om.enable(UNWRAP_ROOT_VALUE);
     }
 }
